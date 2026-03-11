@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import logoRed from "../assets/logo-red.png"
+
 const missions = [
   'Забезпечити якісний кваліфікований догляд за кожним постояльцем',
   'Створити сприятливу атмосферу для проживання та дозвілля',
@@ -69,7 +71,7 @@ const missions = [
           >
             <div class="relative">
               <img
-                src="https://dobroe-serdce.com.ua/wp-content/uploads/2019/07/favicon-512-02.png"
+                src="../assets/logo.png""
                 alt="Логотип Добре серце"
                 class="h-11 w-11 rounded-full bg-white/20 p-0.5 ring-1 ring-white/30"
               />
@@ -124,22 +126,17 @@ const missions = [
             <li
               v-for="(mission, i) in missions"
               :key="i"
-              class="flex items-start gap-4"
+              class="flex items-start gap-4 group"
             >
               <div
-                class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
+                class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110"
                 style="background: linear-gradient(135deg, var(--color-brand-100), var(--color-brand-50));"
               >
-                <svg
-                  class="h-3.5 w-3.5"
-                  style="color: var(--color-brand-600);"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
+                <img 
+                  :src="logoRed" 
+                  alt="icon" 
+                  class="h-4.5 w-4.5 object-contain" 
+                />
               </div>
               <span class="font-body text-base leading-relaxed text-ink-700">{{ mission }}</span>
             </li>

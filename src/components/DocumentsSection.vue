@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import logoRed from "../assets/logo-red.png"
 const documents = [
   'Ксерокопії паспортів (родича, що укладає договір, та майбутнього постояльця)',
   'Письмова згода від майбутнього постояльця на розміщення',
@@ -92,12 +93,14 @@ const documents = [
                 :key="doc"
                 class="group flex items-start gap-4 transition-colors duration-200 hover:bg-brand-50 -mx-3 px-3 py-2 rounded-xl"
               >
-                <span
-                  class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-body text-xs font-600 transition-colors duration-200 group-hover:bg-brand-600 group-hover:text-white"
-                  style="background: var(--color-brand-100); color: var(--color-brand-700);"
-                >
-                  {{ index + 1 }}
-                </span>
+                <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center">
+                  <img 
+                    :src="logoRed"
+                    alt="icon" 
+                    class="h-6 w-6 object-contain transition-transform duration-200 group-hover:scale-110"
+                  />
+                </div>
+                
                 <span class="font-body text-sm leading-relaxed text-ink-700">{{ doc }}</span>
               </li>
             </ol>

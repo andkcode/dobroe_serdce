@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import logoRed from "../assets/logo-red.png"
+
 const factors = [
   {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>`,
@@ -135,15 +137,18 @@ const steps = [
               :key="step.n"
               class="group flex items-center gap-4"
             >
-              <div
-                class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-body text-sm font-600 text-white shadow-brand transition-all duration-300 group-hover:scale-110"
-                style="background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-500));"
-              >
-                {{ step.n }}
+              <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center">
+                <img 
+                  :src="logoRed" 
+                  alt="icon" 
+                  class="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110" 
+                />
               </div>
-              <p class="font-body text-base font-500 text-ink-700 text-right max-w-[calc(100%-4rem)]">
+              
+              <p class="font-body text-base font-500 text-ink-700 text-left max-w-[calc(100%-4rem)]">
                 {{ step.text }}
               </p>
+              
               <div
                 class="h-px flex-1 bg-ivory-200 transition-all duration-300 group-hover:bg-brand-100"
               />

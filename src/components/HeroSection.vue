@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+import garden from "../assets/hero/garden.mp4"
+
 function scrollTo(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
 }
@@ -11,13 +14,15 @@ function scrollTo(id: string) {
   >
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
-      <img
-        src="../assets/hero/garden.png"
-        alt="Garden background"
-        class="h-full w-full object-cover object-center"
-        loading="eager"
-        fetchpriority="high"
-      />
+    <video
+      :src="garden"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      class="h-full w-full object-cover object-center hero-video"
+    ></video>
       <!-- Multi-layer gradient for depth -->
       <div class="absolute inset-0 bg-hero-gradient" />
       <!-- Warm vignette bottom -->

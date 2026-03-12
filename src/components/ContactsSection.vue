@@ -148,14 +148,14 @@ async function handleSubmit() {
         <!-- ── Right: Contact form ── -->
         <div data-animate class="delay-200">
           <div
-            class="rounded-3xl bg-white p-8 shadow-lift ring-1 ring-ivory-200"
+            class="rounded-3xl bg-white p-8"
           >
             <!-- Form header -->
-            <div class="mb-7 flex items-center gap-3 border-b border-ivory-200 pb-6">
+            <div class="mb-7 flex items-center gap-4 border-b border-ivory-200 pb-6">
               <img
                 src="../assets/logo.png"
                 alt="Добре серце"
-                class="h-11 w-11 rounded-full ring-1 ring-brand-100"
+                class="h-11 w-11"
               />
               <div>
                 <h3 class="font-display text-2xl font-600 text-ink-900">Напишіть нам</h3>

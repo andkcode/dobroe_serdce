@@ -32,28 +32,19 @@ function scrollTo(href: string) {
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 
-        <!-- ── Brand column ── -->
-        <div class="lg:col-span-2">
-          <div class="mb-6 flex items-center gap-3">
-            <div class="relative">
-              <img
-                src="https://dobroe-serdce.com.ua/wp-content/uploads/2019/07/favicon-512-02.png"
-                alt="Логотип Добре серце"
-                class="h-13 w-13 rounded-full ring-1 ring-white/15"
-                style="width: 52px; height: 52px;"
-              />
-              <div
-                class="absolute inset-0 rounded-full"
-                style="box-shadow: 0 0 20px rgba(201,169,78,0.2);"
-              />
-            </div>
-            <div>
-              <div class="font-display text-2xl font-600 text-white">Добре серце</div>
-              <div class="font-body text-xs font-400 tracking-widest text-white/35 uppercase">
-                Пансіонат для людей похилого віку
-              </div>
-            </div>
+      <div class="mb-6 flex flex-col items-start gap-3">
+
+        <img
+          src="../assets/dobre_serce.svg"
+          alt="Логотип Добре серце"
+          style="height: 52px; width: auto;"
+        />
+
+        <div>
+          <div class="font-body text-xs font-400 tracking-widest text-white/35 uppercase">
+            Пансіонат для людей похилого віку
           </div>
+        </div>
           <p class="mb-7 font-body text-sm font-300 leading-prose text-white/45">
             Приватний комфортабельний пансіонат «Добре серце» забезпечує
             цілодобовий кваліфікований догляд за людьми похилого віку у Вінниці

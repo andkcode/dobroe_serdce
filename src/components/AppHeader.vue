@@ -41,27 +41,13 @@ function scrollToTop() {
     <nav class="ds-header__nav" aria-label="Головна навігація">
 
       <!-- Logo -->
-      <a
-        href="#"
-        class="ds-logo"
-        aria-label="Добре серце — на головну"
-        @click.prevent="scrollToTop"
-      >
-        <div class="ds-logo__img-wrap">
-          <img
-            src="../assets/logo.png"
-            alt="Логотип Добре серце"
-            class="ds-logo__img"
-            width="44"
-            height="44"
-          />
-          <span class="ds-logo__ring" aria-hidden="true" />
-        </div>
-        <div class="ds-logo__text">
-          <span class="ds-logo__name">Добре серце</span>
-          <span class="ds-logo__tagline">Пансіонат · Вінниця</span>
-        </div>
-      </a>
+    <div class="ds-logo__img-wrap">
+      <img
+        src="../assets/dobre_serce.svg"
+        alt="Логотип Добре серце"
+        class="ds-logo__img"
+      />
+    </div>
 
       <!-- Desktop nav -->
       <ul class="ds-nav__list" role="list">
@@ -214,27 +200,9 @@ function scrollToTop() {
 .ds-logo__img-wrap { position: relative; flex-shrink: 0; }
 
 .ds-logo__img {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow:
-    0 0 0 1.5px rgba(255,255,255, calc(0.28 - var(--s) * 0.28)),
-    0 0 0 1.5px rgba(199,141,91,  calc(var(--s) * 0.45));
-  transition: box-shadow var(--dur) var(--ease);
-}
-
-.ds-logo__ring {
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(201,169,78,0);
-  transform: scale(0.84);
-  transition: border-color 0.35s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
-  pointer-events: none;
-}
-.ds-logo:hover .ds-logo__ring {
-  border-color: rgba(201,169,78,0.55);
-  transform: scale(1);
+  height: 44px;
+  width: auto;
+  object-fit: contain;
 }
 
 .ds-logo__text { display: flex; flex-direction: column; gap: 1px; }

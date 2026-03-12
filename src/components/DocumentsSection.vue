@@ -49,7 +49,7 @@ const documents = [
             <img
               src="https://dobroe-serdce.com.ua/wp-content/uploads/2019/07/favicon-512-02.png"
               alt=""
-              class="absolute right-5 top-5 h-16 w-16 rounded-full opacity-10"
+              class="absolute right-5 top-5 h-16 w-16 opacity-10"
             />
 
             <div class="mb-4 flex items-center gap-3">
@@ -75,11 +75,11 @@ const documents = [
             class="rounded-3xl bg-white p-8 shadow-card border border-ivory-200"
           >
             <!-- Card header -->
-            <div class="mb-7 flex items-center gap-3 border-b border-ivory-200 pb-6">
+            <div class="mb-7 flex items-center gap-4 border-b border-ivory-200 pb-6">
               <img
                 src="../assets/logo.png"
                 alt="Добре серце"
-                class="h-10 w-10 rounded-full ring-1 ring-brand-100"
+                class="h-10 w-10"
               />
               <div>
                 <h3 class="font-display text-2xl font-600 text-ink-900">Перелік документів</h3>

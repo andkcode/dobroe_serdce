@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logoRed from "../assets/logo-red.png"
+import logoBlue from "../assets/logo-blue.png"
 
 const factors = [
   {
@@ -43,7 +43,7 @@ const steps = [
         <div class="relative" data-animate>
           <div
             class="relative overflow-hidden rounded-3xl p-10 shadow-lift"
-            style="background: linear-gradient(135deg, #1a2744 0%, #1e3058 60%, #162040 100%);"
+            style="background: linear-gradient(135deg, #1a3a5c 0%, #1e3058 60%, #162040 100%);"
           >
             <!-- Decorative circles -->
             <div
@@ -139,7 +139,7 @@ const steps = [
             >
               <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center">
                 <img
-                  :src="logoRed"
+                  :src="logoBlue"
                   alt="icon"
                   class="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110"
                 />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logoRed from "../assets/logo-red.png"
+import logoBlue from "../assets/logo-blue.png"
 
 const missions = [
   'Обеспечить качественный квалифицированный уход за каждым проживающим',
@@ -118,7 +118,7 @@ const missions = [
                 style="background: linear-gradient(135deg, var(--color-brand-100), var(--color-brand-50));"
               >
                 <img 
-                  :src="logoRed" 
+                  :src="logoBlue" 
                   alt="icon" 
                   class="h-4.5 w-4.5 object-contain" 
                 />

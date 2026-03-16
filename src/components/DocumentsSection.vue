@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logoRed from "../assets/logo-red.png"
+import logoBlue from "../assets/logo-blue.png"
 const documents = [
   'Ксерокопии паспортов (родственника, заключающего договор, и будущего проживающего)',
   'Письменное согласие будущего проживающего на размещение',
@@ -86,7 +86,7 @@ const documents = [
               >
                 <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center">
                   <img 
-                    :src="logoRed"
+                    :src="logoBlue"
                     alt="icon" 
                     class="h-6 w-6 object-contain transition-transform duration-200 group-hover:scale-110"
                   />

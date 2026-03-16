@@ -164,10 +164,10 @@ async function handleSubmit() {
               <div
                 v-if="isSubmitted"
                 class="flex flex-col items-center rounded-2xl p-10 text-center"
-                style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);"
+                style="background: linear-gradient(135deg, var(--color-sage-50), var(--color-sage-100));"
               >
-                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full" style="background: #dcfce7;">
-                  <svg class="h-8 w-8" style="color: #16a34a;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full" style="background: var(--color-sage-100);">
+                  <svg class="h-8 w-8" style="color: #4e8060;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>

@@ -3,25 +3,61 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette — deep garnet & warm ivory */
-  --color-brand-50:  #fdf6f4;
-  --color-brand-100: #faeae6;
-  --color-brand-200: #f4cfc7;
-  --color-brand-300: #eba89b;
-  --color-brand-400: #de7b69;
-  --color-brand-500: #cc5240;
-  --color-brand-600: #b33628;
-  --color-brand-700: #922a1f;
-  --color-brand-800: #751f17;
-  --color-brand-900: #5c1710;
+  /* ═══════════════════════════════════════════════════════════
+     BRAND — Абрикосовая терракота  ★ ПОДПИСЬ БРЕНДА
+     Теплее предыдущей версии, ни капли красного.
+     #b86840 — абрикос обожжённой глины, незабываемый.
+     ═══════════════════════════════════════════════════════════ */
+  --color-brand-50:  #fdf6f0;
+  --color-brand-100: #fae9d8;
+  --color-brand-200: #f5cfac;
+  --color-brand-300: #eaaa78;
+  --color-brand-400: #d4895e;
+  --color-brand-500: #c07448;
+  --color-brand-600: #b86840;   /* главный акцент — абрикос-терракота */
+  --color-brand-700: #8a4824;
+  --color-brand-800: #6b3519;
+  --color-brand-900: #4c240f;
 
-  /* Warm ivory tones */
+  /* ═══════════════════════════════════════════════════════════
+     SAPPHIRE — «Ночное море»  ★ ПОДПИСЬ БРЕНДА
+     Глубже и богаче предыдущей версии.
+     #0e2040 / #1a3a5c — ощущение надёжного якоря.
+     ═══════════════════════════════════════════════════════════ */
+  --color-sapphire-950: #070f1f;
+  --color-sapphire-900: #0e2040;
+  --color-sapphire-800: #1a3a5c;   /* основной тёмный фон */
+  --color-sapphire-700: #2a5580;
+  --color-sapphire-600: #3a6fa0;
+  --color-sapphire-500: #5088bc;
+  --color-sapphire-400: #78aad4;
+  --color-sapphire-200: #c8d8ec;
+  --color-sapphire-100: #e4eef6;
+  --color-sapphire-50:  #f0f5fb;
+
+  /* ═══════════════════════════════════════════════════════════
+     GOLD — Медовый янтарь  ★ ПОДПИСЬ БРЕНДА
+     #DAA532 — горит на тёмном фоне как настоящее золото.
+     Не жёлтый, не оранжевый — именно янтарно-медовый.
+     ═══════════════════════════════════════════════════════════ */
+  --color-gold-500:  #c8901e;
+  --color-gold-400:  #DAA532;   /* главный золотой акцент */
+  --color-gold-300:  #e8c060;
+  --color-gold-200:  #f0d49a;
+  --color-gold-100:  #f8ecd0;
+
+  /* ═══════════════════════════════════════════════════════════
+     IVORY — Слоновая кость
+     Не белый, не бежевый — именно тёплый кремовый.
+     ═══════════════════════════════════════════════════════════ */
   --color-ivory-50:  #fdfcf8;
   --color-ivory-100: #f9f6ee;
   --color-ivory-200: #f2ead8;
   --color-ivory-300: #e8ddc2;
 
-  /* Deep editorial neutrals */
+  /* ═══════════════════════════════════════════════════════════
+     INK — Редакционные нейтралы
+     ═══════════════════════════════════════════════════════════ */
   --color-ink-900:   #0f0d0b;
   --color-ink-800:   #1c1815;
   --color-ink-700:   #2e2923;
@@ -32,25 +68,32 @@
   --color-ink-200:   #d9d5cf;
   --color-ink-100:   #eeebe5;
 
-  /* Gold accent */
-  --color-gold-400:  #c9a94e;
-  --color-gold-300:  #dcc07e;
-  --color-gold-200:  #eedcaa;
+  /* ═══════════════════════════════════════════════════════════
+     SAGE — Шалфейный зелёный
+     Здоровье, природа, успех. Тише стандартного зелёного.
+     ═══════════════════════════════════════════════════════════ */
+  --color-sage-700: #3a6048;
+  --color-sage-600: #4e8060;
+  --color-sage-500: #62966e;
+  --color-sage-100: #ddf0e6;
+  --color-sage-50:  #f0f8f3;
 
-  /* Typography */
+  /* Typography — без изменений */
   --font-family-display:  "Playfair Display", Georgia, "Times New Roman", serif;
   --font-family-subhead:  "Cormorant", Georgia, serif;
   --font-family-body:     "Jost", system-ui, sans-serif;
 
-  /* Shadows */
-  --shadow-brand:     0 4px 40px rgba(179, 54, 40, 0.15);
-  --shadow-brand-lg:  0 12px 64px rgba(179, 54, 40, 0.22);
+  /* ═══════════════════════════════════════════════════════════
+     SHADOWS — тени под новую палитру
+     ═══════════════════════════════════════════════════════════ */
+  --shadow-brand:     0 4px 40px rgba(184, 104, 64, 0.20);
+  --shadow-brand-lg:  0 12px 64px rgba(184, 104, 64, 0.32);
   --shadow-card:      0 2px 24px rgba(15, 13, 11, 0.07);
   --shadow-card-hover:0 12px 56px rgba(15, 13, 11, 0.14);
-  --shadow-gold:      0 4px 32px rgba(201, 169, 78, 0.25);
-  --shadow-lift:      0 20px 80px rgba(15, 13, 11, 0.18);
+  --shadow-gold:      0 4px 32px rgba(218, 165, 50, 0.32);
+  --shadow-lift:      0 20px 80px rgba(14, 32, 64, 0.22);
 
-  /* Animations */
+  /* Animations — без изменений */
   --animate-float:     float 7s ease-in-out infinite;
   --animate-drift:     drift 9s ease-in-out infinite;
   --animate-fade-up:   fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -60,7 +103,7 @@
 }
 
 /* ============================================================
-   KEYFRAMES
+   KEYFRAMES — без изменений
    ============================================================ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(32px); }
@@ -146,7 +189,7 @@
     color: var(--color-brand-900);
   }
 
-  /* Elegant scrollbar */
+  /* Скроллбар — терракота */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--color-ivory-100); }
   ::-webkit-scrollbar-thumb {
@@ -161,7 +204,7 @@
    ============================================================ */
 @layer components {
 
-  /* ── Buttons ── */
+  /* ── Кнопки ── */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -231,9 +274,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.12);
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.28);
     border-radius: 9999px;
     font-family: var(--font-family-body);
     font-size: 0.875rem;
@@ -245,12 +288,12 @@
     text-decoration: none;
   }
   .btn-ghost:hover {
-    background: rgba(255,255,255,0.25);
-    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.50);
     transform: translateY(-2px);
   }
 
-  /* ── Section eyebrow label ── */
+  /* ── Eyebrow ── */
   .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -276,7 +319,7 @@
     font-size: clamp(2.2rem, 4.5vw, 3.4rem);
     font-weight: 700;
     line-height: 1.15;
-    color: #243756;
+    color: var(--color-sapphire-800);
     letter-spacing: -0.01em;
   }
   .section-subtitle {
@@ -350,12 +393,12 @@
     box-shadow: var(--shadow-card-hover);
   }
 
-  /* ── Stat counter ── */
+  /* ── Stat counter: сапфир → терракота градиент ── */
   .stat-value {
     font-family: var(--font-family-display);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    background: linear-gradient(135deg, var(--color-ink-900), var(--color-brand-700));
+    background: linear-gradient(135deg, var(--color-sapphire-800), var(--color-brand-600));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -363,9 +406,7 @@
   }
 
   /* ── Ornamental border ── */
-  .ornament {
-    position: relative;
-  }
+  .ornament { position: relative; }
   .ornament::before {
     content: '';
     position: absolute;
@@ -392,14 +433,20 @@
   .form-input::placeholder { color: var(--color-ink-300); }
   .form-input:focus {
     border-color: var(--color-brand-400);
-    box-shadow: 0 0 0 3px rgba(179, 54, 40, 0.08);
+    box-shadow: 0 0 0 3px rgba(184, 104, 64, 0.12);
   }
 
   /* ── Section dividers ── */
   .section-separator {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--color-ivory-300) 30%, var(--color-ivory-300) 70%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-ivory-300) 30%,
+      var(--color-ivory-300) 70%,
+      transparent 100%
+    );
   }
 }
 
@@ -419,7 +466,6 @@
   .delay-700  { animation-delay: 700ms; }
   .delay-800  { animation-delay: 800ms; }
 
-  /* Aliases kept from original for compatibility */
   .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }
   .animation-delay-300 { animation-delay: 300ms; }
@@ -427,7 +473,7 @@
   .animation-delay-500 { animation-delay: 500ms; }
   .animation-delay-600 { animation-delay: 600ms; }
 
-  /* Font shorthand */
+  /* Fonts */
   .font-display  { font-family: var(--font-family-display); }
   .font-subhead  { font-family: var(--font-family-subhead); }
   .font-body     { font-family: var(--font-family-body); }
@@ -444,29 +490,50 @@
   .bg-ivory-100   { background-color: var(--color-ivory-100); }
   .bg-ivory-200   { background-color: var(--color-ivory-200); }
   .bg-warm-gradient {
-    background: linear-gradient(135deg, var(--color-ivory-100) 0%, var(--color-brand-50) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-ivory-100) 0%,
+      var(--color-brand-50)  100%
+    );
   }
+
+  /* Hero: полночный сапфир + абрикосовое свечение снизу */
   .bg-hero-gradient {
     background: linear-gradient(
       160deg,
-      rgba(15, 13, 11, 0.72) 0%,
-      rgba(46, 41, 35, 0.60) 40%,
-      rgba(179, 54, 40, 0.25) 100%
+      rgba(7,   15,  31,  0.82) 0%,    /* sapphire-950 */
+      rgba(14,  32,  64,  0.68) 35%,   /* sapphire-900 */
+      rgba(26,  58,  92,  0.50) 65%,   /* sapphire-800 */
+      rgba(184, 104, 64,  0.20) 100%   /* brand-600    */
     );
   }
+
+  /* Тёмные секции = ночной сапфир */
   .bg-section-dark {
-    background: linear-gradient(160deg, var(--color-ink-900) 0%, var(--color-ink-800) 100%);
+    background: linear-gradient(
+      160deg,
+      var(--color-sapphire-950) 0%,
+      var(--color-sapphire-900) 100%
+    );
   }
 
-  /* Text gradient */
+  /* Text gradients */
   .text-brand-gradient {
-    background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-400));
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-600),
+      var(--color-brand-400)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gold-gradient {
-    background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-300));
+    background: linear-gradient(
+      135deg,
+      var(--color-gold-400),
+      var(--color-gold-300)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -483,44 +550,49 @@
   .animate-scroll     { animation: scrollPulse 2s ease-in-out infinite; }
   .animate-rotate-slow{ animation: rotateSlow 20s linear infinite; }
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.4) 50%, transparent 80%);
+    background: linear-gradient(
+      90deg,
+      transparent 20%,
+      rgba(255,255,255,0.4) 50%,
+      transparent 80%
+    );
     background-size: 200% 100%;
     animation: shimmer 2.5s infinite;
   }
 
-  /* Blur glass */
+  /* Стекло светлое */
   .glass {
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
+  /* Стекло тёмное — полночный сапфир */
   .glass-dark {
-    background: rgba(15, 13, 11, 0.65);
+    background: rgba(7, 15, 31, 0.70);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
 
-  /* Decorative dot grid */
+  /* Dot grid */
   .dot-grid {
-    background-image: radial-gradient(circle, var(--color-ink-200) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      var(--color-ink-200) 1px,
+      transparent 1px
+    );
     background-size: 28px 28px;
   }
 
-  /* Clamp text balance */
-  .text-balance { text-wrap: balance; }
-
-  /* Aspect ratio helpers (for older Tailwind compat) */
-  .aspect-portrait { aspect-ratio: 3/4; }
+  .text-balance    { text-wrap: balance; }
+  .aspect-portrait  { aspect-ratio: 3/4; }
   .aspect-landscape { aspect-ratio: 4/3; }
-  .aspect-square { aspect-ratio: 1; }
+  .aspect-square    { aspect-ratio: 1; }
+  .leading-prose    { line-height: 1.85; }
 
-  /* Prose improvements */
-  .leading-prose { line-height: 1.85; }
-
-  /* Ink colors */
+  /* Ink */
   .text-ink-900 { color: var(--color-ink-900); }
   .text-ink-800 { color: var(--color-ink-800); }
   .text-ink-700 { color: var(--color-ink-700); }
@@ -531,12 +603,12 @@
   .text-gold-400 { color: var(--color-gold-400); }
   .text-gold-300 { color: var(--color-gold-300); }
 
-  /* Brand color utilities (not provided by tailwind @theme inline) */
+  /* Brand */
   .text-brand-400 { color: var(--color-brand-400); }
   .text-brand-500 { color: var(--color-brand-500); }
   .text-brand-600 { color: var(--color-brand-600); }
   .text-brand-700 { color: var(--color-brand-700); }
-  .bg-brand-50 { background-color: var(--color-brand-50); }
+  .bg-brand-50  { background-color: var(--color-brand-50); }
   .bg-brand-100 { background-color: var(--color-brand-100); }
   .bg-brand-600 { background-color: var(--color-brand-600); }
   .bg-brand-700 { background-color: var(--color-brand-700); }
@@ -546,18 +618,41 @@
   .border-brand-400 { border-color: var(--color-brand-400); }
   .ring-brand-400 { --tw-ring-color: var(--color-brand-400); }
   .ring-brand-100 { --tw-ring-color: var(--color-brand-100); }
+
+  /* ── Sapphire ── */
+  .bg-sapphire-950   { background-color: var(--color-sapphire-950); }
+  .bg-sapphire-900   { background-color: var(--color-sapphire-900); }
+  .bg-sapphire-800   { background-color: var(--color-sapphire-800); }
+  .bg-sapphire-700   { background-color: var(--color-sapphire-700); }
+  .bg-sapphire-50    { background-color: var(--color-sapphire-50); }
+  .text-sapphire-900  { color: var(--color-sapphire-900); }
+  .text-sapphire-800  { color: var(--color-sapphire-800); }
+  .text-sapphire-600  { color: var(--color-sapphire-600); }
+  .border-sapphire-200 { border-color: var(--color-sapphire-200); }
+
+  /* ── Sage ── */
+  .bg-sage-50    { background-color: var(--color-sage-50); }
+  .bg-sage-100   { background-color: var(--color-sage-100); }
+  .bg-sage-500   { background-color: var(--color-sage-500); }
+  .text-sage-700  { color: var(--color-sage-700); }
+  .text-sage-600  { color: var(--color-sage-600); }
+  .border-sage-100 { border-color: var(--color-sage-100); }
 }
 
+/* ============================================================
+   MISC
+   ============================================================ */
 .loader {
   transition: opacity 0.6s ease;
 }
 
 .hero-video {
-  object-position: center center; /* десктоп */
+  object-position: center center;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-video {
-    object-position: 85.5% center; /* планшет — подберите % */
+    object-position: 85.5% center;
   }
 }
+

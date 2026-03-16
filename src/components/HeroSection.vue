@@ -103,7 +103,7 @@ function scrollTo(id: string) {
         <!-- Decorative gold line -->
         <div
           class="delay-200 animate-fade-in mt-7 mb-8 h-px w-24 origin-left"
-          style="background: linear-gradient(90deg, #c9a94e, transparent);"
+          style="background: linear-gradient(90deg, #DAA532, transparent);"
         />
 
         <!-- Subheadline -->

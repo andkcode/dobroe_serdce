@@ -48,7 +48,7 @@ function scrollToTop() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: var(--color-gold-400, #c9a94e);
+          color: var(--color-gold-400, #DAA532);
           white-space: nowrap;
           pointer-events: none;
         ">Астана</div>
@@ -169,7 +169,7 @@ function scrollToTop() {
   opacity: var(--s);
   background: linear-gradient(
     90deg,
-    transparent 0%, #c9a94e 25%, #d4956b 50%, #b33628 75%, transparent 100%
+    transparent 0%, #DAA532 25%, #d4956b 50%, #b86840 75%, transparent 100%
   );
   transition: height var(--dur) var(--ease), opacity var(--dur) var(--ease);
   pointer-events: none;
@@ -274,13 +274,13 @@ function scrollToTop() {
   outline: none;
 }
 .ds-nav__link:hover,
-.ds-nav__link--active { color: #b33628; }
+.ds-nav__link--active { color: #b86840; }
 
 .ds-nav__underline {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #b33628, #c9a94e);
+  background: linear-gradient(90deg, #b86840, #DAA532);
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left;
@@ -311,8 +311,8 @@ function scrollToTop() {
   background: rgba(255,255,255, calc(0.14 - var(--s) * 0.14));
   border: 1px solid rgba(255,255,255, calc(0.28 - var(--s) * 0.28));
   box-shadow:
-    inset 0 0 0 9999px rgba(179,54,40, var(--s)),
-    0 4px 20px rgba(179,54,40, calc(var(--s) * 0.18));
+    inset 0 0 0 9999px rgba(184, 104, 64, var(--s)),
+    0 4px 20px rgba(184, 104, 64, calc(var(--s) * 0.18));
   backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   -webkit-backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   transition:
@@ -328,7 +328,7 @@ function scrollToTop() {
   transform: translateY(-2px);
   box-shadow:
     inset 0 0 0 9999px rgba(146,42,31, calc(var(--s) * 0.9 + 0.1)),
-    0 8px 32px rgba(179,54,40, calc(0.12 + var(--s) * 0.22));
+    0 8px 32px rgba(184, 104, 64, calc(0.12 + var(--s) * 0.22));
 }
 .ds-cta:active { transform: translateY(0); }
 
@@ -465,15 +465,15 @@ function scrollToTop() {
   transition: background 0.2s, color 0.2s, padding-left 0.28s cubic-bezier(0.16,1,0.3,1);
 }
 .ds-drawer__link:hover {
-  background: rgba(179,54,40,0.055);
-  color: #b33628;
+  background: rgba(184, 104, 64,0.055);
+  color: #b86840;
   padding-left: 1.125rem;
 }
 
 .ds-drawer__dot {
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: #b33628;
+  background: #b86840;
   flex-shrink: 0;
   opacity: 0;
   transform: scale(0);
@@ -492,7 +492,7 @@ function scrollToTop() {
   margin-top: 0.875rem;
   padding: 0.85rem 1.5rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #b33628, #922a1f);
+  background: linear-gradient(135deg, #b86840, #922a1f);
   color: white;
   font-family: var(--font-family-body, system-ui, sans-serif);
   font-size: 0.75rem;
@@ -500,14 +500,14 @@ function scrollToTop() {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(179,54,40,0.28);
+  box-shadow: 0 4px 20px rgba(184, 104, 64,0.28);
   transition: transform 0.22s, box-shadow 0.22s;
   opacity: 0;
   animation: drawerIn 0.42s cubic-bezier(0.16,1,0.3,1) calc(50ms + 6 * 40ms) forwards;
 }
 .ds-drawer__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(179,54,40,0.38);
+  box-shadow: 0 8px 32px rgba(184, 104, 64,0.38);
 }
 .ds-drawer__cta-icon { width: 15px; height: 15px; flex-shrink: 0; }
 

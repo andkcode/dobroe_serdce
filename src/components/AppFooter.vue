@@ -16,7 +16,7 @@ function scrollTo(href: string) {
 </script>
 
 <template>
-  <footer style="background: #1a2744;" class="relative overflow-hidden">
+  <footer style="background: var(--color-sapphire-800)" class="relative overflow-hidden">
     <div
       class="absolute left-0 right-0 top-0 h-px"
       style="background: linear-gradient(90deg, transparent 0%, var(--color-gold-400) 30%, var(--color-brand-500) 70%, transparent 100%);"
@@ -40,7 +40,7 @@ function scrollTo(href: string) {
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--color-gold-400, #c9a94e);
+            color: var(--color-gold-400, #DAA532);
             white-space: nowrap;
             pointer-events: none;
           ">Астана</div>

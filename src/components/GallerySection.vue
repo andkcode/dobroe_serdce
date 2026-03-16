@@ -87,7 +87,7 @@ function nextImage() {
 </script>
 
 <template>
-  <section id="gallery" class="relative overflow-hidden py-28 lg:py-36" style="background: #1a2744;">
+  <section id="gallery" class="relative overflow-hidden py-28 lg:py-36" style="background: var(--color-sapphire-800);">
     <!-- Background pattern -->
     <div
       class="pointer-events-none absolute inset-0 opacity-[0.03]"

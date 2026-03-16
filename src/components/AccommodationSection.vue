@@ -116,14 +116,14 @@ const notAccepted = [
 
         <div
           class="rounded-3xl border p-8 transition-all duration-300 hover:shadow-card"
-          style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #bbf7d0;"
+          style="background: linear-gradient(135deg, var(--color-sage-50), var(--color-sage-100)); border-color: #bbf7d0;"
         >
           <div class="mb-6 flex items-center gap-3">
             <div
               class="flex h-11 w-11 items-center justify-center rounded-2xl"
-              style="background: #dcfce7;"
+              style="background: var(--color-sage-100);"
             >
-              <svg class="h-6 w-6" style="color: #16a34a;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="h-6 w-6" style="color: #4e8060;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
@@ -140,7 +140,7 @@ const notAccepted = [
             >
               <svg
                 class="mt-0.5 h-4 w-4 flex-shrink-0"
-                style="color: #22c55e;"
+                style="color: #62966e;"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

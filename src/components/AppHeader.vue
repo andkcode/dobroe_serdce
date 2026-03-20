@@ -71,7 +71,37 @@ function scrollToTop() {
           </button>
         </li>
       </ul>
-
+      <div class="flex gap-6">
+        <div class="hidden lg:flex items-center gap-4">
+          <a
+            href="https://instagram.com/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="group  relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg"
+            :class="isScrolled
+              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
+              : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
+          >
+            <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style="background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);"
+            />
+            <Icon icon="mdi:instagram" class="relative z-10 w-[17px] h-[17px] text-white/70 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
+          </a>
+          <a
+            href="https://wa.me/380961462910"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="group relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg hover:shadow-green-500/30"
+            :class="isScrolled
+              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
+              : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
+          >
+            <div class="absolute inset-0 rounded-full bg-[#25d366] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <Icon icon="mdi:whatsapp" class="relative z-10 w-[17px] h-[17px] text-white/70 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
+          </a>
+        </div>
       <a href="tel:+380961462910" class="ds-cta" aria-label="Позвонить">
         <span class="ds-cta__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -81,6 +111,7 @@ function scrollToTop() {
         <span class="ds-cta__label">+38 096 146 29 10</span>
         <span class="ds-cta__shimmer" aria-hidden="true" />
       </a>
+    </div>
 
       <button
         class="ds-burger"
@@ -133,8 +164,6 @@ function scrollToTop() {
 .ds-header {
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur: 650ms;
-
-  /* scrolled = 1, transparent = 0 — used in calc() below */
   --s: 0;
 
   position: fixed;
@@ -161,7 +190,7 @@ function scrollToTop() {
   pointer-events: none;
 }
 
-/* ─── Gold–garnet accent streak ──────────────────────────── */
+/* ─── Teal accent streak ──────────────────────────────────── */
 .ds-header__streak {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -169,7 +198,7 @@ function scrollToTop() {
   opacity: var(--s);
   background: linear-gradient(
     90deg,
-    transparent 0%, #DAA532 25%, #d4956b 50%, #b86840 75%, transparent 100%
+    transparent 0%, #DAA532 25%, #2dd4c4 50%, #00c4b4 75%, transparent 100%
   );
   transition: height var(--dur) var(--ease), opacity var(--dur) var(--ease);
   pointer-events: none;
@@ -193,54 +222,12 @@ function scrollToTop() {
 }
 
 /* ─── Logo ───────────────────────────────────────────────── */
-.ds-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  transform: scale(calc(1 - var(--s) * 0.05));
-  transform-origin: left center;
-  transition: transform var(--dur) var(--ease);
-}
-
 .ds-logo__img-wrap { position: relative; flex-shrink: 0; }
 
 .ds-logo__img {
   height: 40px;
   width: auto;
   object-fit: contain;
-}
-
-.ds-logo__text { display: flex; flex-direction: column; gap: 1px; }
-
-.ds-logo__name {
-  font-family: var(--font-family-display, Georgia, serif);
-  font-size: 1.2rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  /* Interpolates white → #0f0d0b */
-  color: rgb(
-    calc(255 - var(--s) * 240),
-    calc(255 - var(--s) * 242),
-    calc(255 - var(--s) * 244)
-  );
-  transition: color var(--dur) var(--ease);
-}
-
-.ds-logo__tagline {
-  font-family: var(--font-family-body, system-ui, sans-serif);
-  font-size: 0.58rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(
-    calc(255 - var(--s) * 112),
-    calc(255 - var(--s) * 117),
-    calc(255 - var(--s) * 122),
-    calc(0.55 + var(--s) * 0.45)
-  );
-  transition: color var(--dur) var(--ease);
 }
 
 /* ─── Nav links (desktop) ────────────────────────────────── */
@@ -274,13 +261,13 @@ function scrollToTop() {
   outline: none;
 }
 .ds-nav__link:hover,
-.ds-nav__link--active { color: #b86840; }
+.ds-nav__link--active { color: #00c4b4; }
 
 .ds-nav__underline {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #b86840, #DAA532);
+  background: linear-gradient(90deg, #00c4b4, #DAA532);
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left;
@@ -307,12 +294,11 @@ function scrollToTop() {
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  /* Ghost → solid brand via box-shadow inset trick */
   background: rgba(255,255,255, calc(0.14 - var(--s) * 0.14));
   border: 1px solid rgba(255,255,255, calc(0.28 - var(--s) * 0.28));
   box-shadow:
-    inset 0 0 0 9999px rgba(184, 104, 64, var(--s)),
-    0 4px 20px rgba(184, 104, 64, calc(var(--s) * 0.18));
+    inset 0 0 0 9999px rgba(0, 196, 180, var(--s)),
+    0 4px 20px rgba(0, 196, 180, calc(var(--s) * 0.18));
   backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   -webkit-backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   transition:
@@ -327,8 +313,8 @@ function scrollToTop() {
 .ds-cta:hover {
   transform: translateY(-2px);
   box-shadow:
-    inset 0 0 0 9999px rgba(146,42,31, calc(var(--s) * 0.9 + 0.1)),
-    0 8px 32px rgba(184, 104, 64, calc(0.12 + var(--s) * 0.22));
+    inset 0 0 0 9999px rgba(0, 137, 123, calc(var(--s) * 0.9 + 0.1)),
+    0 8px 32px rgba(0, 196, 180, calc(0.12 + var(--s) * 0.22));
 }
 .ds-cta:active { transform: translateY(0); }
 
@@ -339,7 +325,6 @@ function scrollToTop() {
 }
 .ds-cta__icon svg { width: 100%; height: 100%; }
 
-/* Shimmer sweep */
 .ds-cta__shimmer {
   position: absolute;
   top: 0; bottom: 0;
@@ -369,7 +354,6 @@ function scrollToTop() {
   background: transparent;
   cursor: pointer;
   border-radius: 8px;
-
   transition: background 0.2s;
 }
 .ds-burger:hover {
@@ -465,15 +449,15 @@ function scrollToTop() {
   transition: background 0.2s, color 0.2s, padding-left 0.28s cubic-bezier(0.16,1,0.3,1);
 }
 .ds-drawer__link:hover {
-  background: rgba(184, 104, 64,0.055);
-  color: #b86840;
+  background: rgba(0, 196, 180, 0.055);
+  color: #00c4b4;
   padding-left: 1.125rem;
 }
 
 .ds-drawer__dot {
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: #b86840;
+  background: #00c4b4;
   flex-shrink: 0;
   opacity: 0;
   transform: scale(0);
@@ -492,7 +476,7 @@ function scrollToTop() {
   margin-top: 0.875rem;
   padding: 0.85rem 1.5rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #b86840, #922a1f);
+  background: linear-gradient(135deg, #00c4b4, #00897b);
   color: white;
   font-family: var(--font-family-body, system-ui, sans-serif);
   font-size: 0.75rem;
@@ -500,14 +484,14 @@ function scrollToTop() {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(184, 104, 64,0.28);
+  box-shadow: 0 4px 20px rgba(0, 196, 180, 0.28);
   transition: transform 0.22s, box-shadow 0.22s;
   opacity: 0;
   animation: drawerIn 0.42s cubic-bezier(0.16,1,0.3,1) calc(50ms + 6 * 40ms) forwards;
 }
 .ds-drawer__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(184, 104, 64,0.38);
+  box-shadow: 0 8px 32px rgba(0, 196, 180, 0.38);
 }
 .ds-drawer__cta-icon { width: 15px; height: 15px; flex-shrink: 0; }
 

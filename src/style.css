@@ -4,29 +4,26 @@
 
 @theme {
   /* ═══════════════════════════════════════════════════════════
-     BRAND — Абрикосовая терракота  ★ ПОДПИСЬ БРЕНДА
-     Теплее предыдущей версии, ни капли красного.
-     #b86840 — абрикос обожжённой глины, незабываемый.
+     BRAND — Бирюзовый  ★ ПОДПИСЬ БРЕНДА
+     #00C4B4 — насыщенный бирюзово-морской акцент.
      ═══════════════════════════════════════════════════════════ */
-  --color-brand-50:  #fdf6f0;
-  --color-brand-100: #fae9d8;
-  --color-brand-200: #f5cfac;
-  --color-brand-300: #eaaa78;
-  --color-brand-400: #d4895e;
-  --color-brand-500: #c07448;
-  --color-brand-600: #b86840;   /* главный акцент — абрикос-терракота */
-  --color-brand-700: #8a4824;
-  --color-brand-800: #6b3519;
-  --color-brand-900: #4c240f;
+  --color-brand-50:  #f0fdfb;
+  --color-brand-100: #ccfaf4;
+  --color-brand-200: #99f3ea;
+  --color-brand-300: #5ce8d8;
+  --color-brand-400: #2dd4c4;
+  --color-brand-500: #0fb8a8;
+  --color-brand-600: #00c4b4;   /* главный акцент — насыщенный бирюзовый */
+  --color-brand-700: #00897b;
+  --color-brand-800: #00695c;
+  --color-brand-900: #004d40;
 
   /* ═══════════════════════════════════════════════════════════
      SAPPHIRE — «Ночное море»  ★ ПОДПИСЬ БРЕНДА
-     Глубже и богаче предыдущей версии.
-     #0e2040 / #1a3a5c — ощущение надёжного якоря.
      ═══════════════════════════════════════════════════════════ */
   --color-sapphire-950: #070f1f;
   --color-sapphire-900: #0e2040;
-  --color-sapphire-800: #1a3a5c;   /* основной тёмный фон */
+  --color-sapphire-800: #1a3a5c;
   --color-sapphire-700: #2a5580;
   --color-sapphire-600: #3a6fa0;
   --color-sapphire-500: #5088bc;
@@ -37,18 +34,15 @@
 
   /* ═══════════════════════════════════════════════════════════
      GOLD — Медовый янтарь  ★ ПОДПИСЬ БРЕНДА
-     #DAA532 — горит на тёмном фоне как настоящее золото.
-     Не жёлтый, не оранжевый — именно янтарно-медовый.
      ═══════════════════════════════════════════════════════════ */
   --color-gold-500:  #c8901e;
-  --color-gold-400:  #DAA532;   /* главный золотой акцент */
+  --color-gold-400:  #DAA532;
   --color-gold-300:  #e8c060;
   --color-gold-200:  #f0d49a;
   --color-gold-100:  #f8ecd0;
 
   /* ═══════════════════════════════════════════════════════════
      IVORY — Слоновая кость
-     Не белый, не бежевый — именно тёплый кремовый.
      ═══════════════════════════════════════════════════════════ */
   --color-ivory-50:  #fdfcf8;
   --color-ivory-100: #f9f6ee;
@@ -70,7 +64,6 @@
 
   /* ═══════════════════════════════════════════════════════════
      SAGE — Шалфейный зелёный
-     Здоровье, природа, успех. Тише стандартного зелёного.
      ═══════════════════════════════════════════════════════════ */
   --color-sage-700: #3a6048;
   --color-sage-600: #4e8060;
@@ -78,22 +71,20 @@
   --color-sage-100: #ddf0e6;
   --color-sage-50:  #f0f8f3;
 
-  /* Typography — без изменений */
   --font-family-display:  "Playfair Display", Georgia, "Times New Roman", serif;
   --font-family-subhead:  "Cormorant", Georgia, serif;
   --font-family-body:     "Jost", system-ui, sans-serif;
 
   /* ═══════════════════════════════════════════════════════════
-     SHADOWS — тени под новую палитру
+     SHADOWS
      ═══════════════════════════════════════════════════════════ */
-  --shadow-brand:     0 4px 40px rgba(184, 104, 64, 0.20);
-  --shadow-brand-lg:  0 12px 64px rgba(184, 104, 64, 0.32);
+  --shadow-brand:     0 4px 40px rgba(0, 196, 180, 0.20);
+  --shadow-brand-lg:  0 12px 64px rgba(0, 196, 180, 0.32);
   --shadow-card:      0 2px 24px rgba(15, 13, 11, 0.07);
   --shadow-card-hover:0 12px 56px rgba(15, 13, 11, 0.14);
   --shadow-gold:      0 4px 32px rgba(218, 165, 50, 0.32);
   --shadow-lift:      0 20px 80px rgba(14, 32, 64, 0.22);
 
-  /* Animations — без изменений */
   --animate-float:     float 7s ease-in-out infinite;
   --animate-drift:     drift 9s ease-in-out infinite;
   --animate-fade-up:   fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -102,9 +93,6 @@
   --animate-scale-in:  scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-/* ============================================================
-   KEYFRAMES — без изменений
-   ============================================================ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -189,7 +177,7 @@
     color: var(--color-brand-900);
   }
 
-  /* Скроллбар — терракота */
+  /* Скроллбар — бирюзовый */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--color-ivory-100); }
   ::-webkit-scrollbar-thumb {
@@ -393,7 +381,7 @@
     box-shadow: var(--shadow-card-hover);
   }
 
-  /* ── Stat counter: сапфир → терракота градиент ── */
+  /* ── Stat counter: сапфир → бирюза градиент ── */
   .stat-value {
     font-family: var(--font-family-display);
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -433,7 +421,7 @@
   .form-input::placeholder { color: var(--color-ink-300); }
   .form-input:focus {
     border-color: var(--color-brand-400);
-    box-shadow: 0 0 0 3px rgba(184, 104, 64, 0.12);
+    box-shadow: 0 0 0 3px rgba(0, 196, 180, 0.12);
   }
 
   /* ── Section dividers ── */
@@ -454,7 +442,6 @@
    UTILITIES
    ============================================================ */
 @layer utilities {
-  /* Animation delays */
   .delay-75   { animation-delay:  75ms; }
   .delay-100  { animation-delay: 100ms; }
   .delay-150  { animation-delay: 150ms; }
@@ -473,19 +460,16 @@
   .animation-delay-500 { animation-delay: 500ms; }
   .animation-delay-600 { animation-delay: 600ms; }
 
-  /* Fonts */
   .font-display  { font-family: var(--font-family-display); }
   .font-subhead  { font-family: var(--font-family-subhead); }
   .font-body     { font-family: var(--font-family-body); }
 
-  /* Shadows */
   .shadow-brand     { box-shadow: var(--shadow-brand); }
   .shadow-brand-lg  { box-shadow: var(--shadow-brand-lg); }
   .shadow-card      { box-shadow: var(--shadow-card); }
   .shadow-gold      { box-shadow: var(--shadow-gold); }
   .shadow-lift      { box-shadow: var(--shadow-lift); }
 
-  /* Backgrounds */
   .bg-ivory       { background-color: var(--color-ivory-50); }
   .bg-ivory-100   { background-color: var(--color-ivory-100); }
   .bg-ivory-200   { background-color: var(--color-ivory-200); }
@@ -497,18 +481,17 @@
     );
   }
 
-  /* Hero: полночный сапфир + абрикосовое свечение снизу */
+  /* Hero: полночный сапфир + бирюзовое свечение снизу */
   .bg-hero-gradient {
     background: linear-gradient(
       160deg,
-      rgba(7,   15,  31,  0.82) 0%,    /* sapphire-950 */
-      rgba(14,  32,  64,  0.68) 35%,   /* sapphire-900 */
-      rgba(26,  58,  92,  0.50) 65%,   /* sapphire-800 */
-      rgba(184, 104, 64,  0.20) 100%   /* brand-600    */
+      rgba(7,   15,  31,  0.82) 0%,
+      rgba(14,  32,  64,  0.68) 35%,
+      rgba(26,  58,  92,  0.50) 65%,
+      rgba(0,  196, 180,  0.20) 100%
     );
   }
 
-  /* Тёмные секции = ночной сапфир */
   .bg-section-dark {
     background: linear-gradient(
       160deg,
@@ -517,7 +500,6 @@
     );
   }
 
-  /* Text gradients */
   .text-brand-gradient {
     background: linear-gradient(
       135deg,
@@ -539,7 +521,6 @@
     background-clip: text;
   }
 
-  /* Animations */
   .animate-float      { animation: var(--animate-float); }
   .animate-drift      { animation: var(--animate-drift); }
   .animate-fade-up    { animation: var(--animate-fade-up); }
@@ -560,7 +541,6 @@
     animation: shimmer 2.5s infinite;
   }
 
-  /* Стекло светлое */
   .glass {
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(20px);
@@ -568,7 +548,6 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  /* Стекло тёмное — полночный сапфир */
   .glass-dark {
     background: rgba(7, 15, 31, 0.70);
     backdrop-filter: blur(24px);
@@ -576,7 +555,6 @@
     border: 1px solid rgba(255, 255, 255, 0.10);
   }
 
-  /* Dot grid */
   .dot-grid {
     background-image: radial-gradient(
       circle,
@@ -592,7 +570,6 @@
   .aspect-square    { aspect-ratio: 1; }
   .leading-prose    { line-height: 1.85; }
 
-  /* Ink */
   .text-ink-900 { color: var(--color-ink-900); }
   .text-ink-800 { color: var(--color-ink-800); }
   .text-ink-700 { color: var(--color-ink-700); }
@@ -603,7 +580,6 @@
   .text-gold-400 { color: var(--color-gold-400); }
   .text-gold-300 { color: var(--color-gold-300); }
 
-  /* Brand */
   .text-brand-400 { color: var(--color-brand-400); }
   .text-brand-500 { color: var(--color-brand-500); }
   .text-brand-600 { color: var(--color-brand-600); }
@@ -619,7 +595,6 @@
   .ring-brand-400 { --tw-ring-color: var(--color-brand-400); }
   .ring-brand-100 { --tw-ring-color: var(--color-brand-100); }
 
-  /* ── Sapphire ── */
   .bg-sapphire-950   { background-color: var(--color-sapphire-950); }
   .bg-sapphire-900   { background-color: var(--color-sapphire-900); }
   .bg-sapphire-800   { background-color: var(--color-sapphire-800); }
@@ -630,7 +605,6 @@
   .text-sapphire-600  { color: var(--color-sapphire-600); }
   .border-sapphire-200 { border-color: var(--color-sapphire-200); }
 
-  /* ── Sage ── */
   .bg-sage-50    { background-color: var(--color-sage-50); }
   .bg-sage-100   { background-color: var(--color-sage-100); }
   .bg-sage-500   { background-color: var(--color-sage-500); }
@@ -655,4 +629,3 @@
     object-position: 85.5% center;
   }
 }
-

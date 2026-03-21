@@ -166,7 +166,7 @@ function scrollToSection(href: string) {
           <a
             href="https://instagram.com/pansionat_dobroe_serdce"
             target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-            class="group relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+            class="group relative flex items-center justify-center bg-sapphire-700 w-13 h-13 rounded-full border border-white/20 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
           >
             <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style="background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);"
@@ -176,7 +176,7 @@ function scrollToSection(href: string) {
           <a
             href="https://wa.me/380961462910"
             target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
-            class="group relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+            class="group relative flex items-center justify-center w-13 h-13 bg-sapphire-700 rounded-full border border-white/20 bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
           >
             <div class="absolute inset-0 rounded-full bg-[#25d366] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Icon icon="mdi:whatsapp" class="relative z-10 w-[24px] h-[24px] text-white/70 group-hover:text-white transition-all duration-300 group-hover:scale-110" />

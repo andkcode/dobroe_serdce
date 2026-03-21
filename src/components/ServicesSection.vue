@@ -76,7 +76,7 @@ const services: ServiceItem[] = [
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mb-16 text-center" data-animate>
         <div class="eyebrow mb-5 justify-center">Наши услуги</div>
-        <h2 class="section-title mb-5">
+        <h2 class="section-title mb-5" style="font-size: clamp(1.7rem, 4vw, 2.3rem);">
           Комплексный уход<br />
           <em class="font-display font-400 italic" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">за вашими близкими</em>
         </h2>

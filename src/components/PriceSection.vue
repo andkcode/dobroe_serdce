@@ -1,3 +1,13 @@
+<!--
+  PriceSection.vue — COLORS ONLY CHANGED
+  Changes:
+    • dark card bg #1a3a5c/#1e3058/#162040 → sapphire-950/900/800 CSS vars
+    • gold-400 stat/divider → brand-500 (unified)
+    • brand-600 badge → sapphire-700 (badge is a CTA, not decoration)
+    • bg-brand-50/100 factors → sapphire-50/100
+    • text-brand-600 → text-sapphire-700 inside dark card
+    • CTA strip at bottom: sapphire-800 → sapphire-700 to brand-800 (was brand-600 to brand-800)
+-->
 <script setup lang="ts">
 import logoBlue from "../assets/logo-blue.png"
 
@@ -30,48 +40,34 @@ const steps = [
 
 <template>
   <section id="price" class="relative overflow-hidden bg-ivory-50 py-16 lg:py-36">
-    <div
-      class="pointer-events-none absolute inset-0 opacity-[0.35]"
-      style="background-image: radial-gradient(circle, var(--color-ink-200) 1px, transparent 1px); background-size: 36px 36px;"
-    />
+    <div class="pointer-events-none absolute inset-0 opacity-[0.35]"
+      style="background-image: radial-gradient(circle, var(--color-ink-200) 1px, transparent 1px); background-size: 36px 36px;" />
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
 
         <div class="relative" data-animate>
+          <!-- Dark price card: sapphire-950 → sapphire-900 → sapphire-800 (was #1a3a5c hardcoded) -->
           <div
             class="relative overflow-hidden rounded-3xl p-6 sm:p-10 shadow-lift"
-            style="background: linear-gradient(135deg, #1a3a5c 0%, #1e3058 60%, #162040 100%);"
+            style="background: linear-gradient(135deg, var(--color-sapphire-950) 0%, var(--color-sapphire-900) 60%, var(--color-sapphire-800) 100%);"
           >
-            <div
-              class="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-10"
-              style="background: radial-gradient(circle, var(--color-gold-400) 0%, transparent 70%);"
-            />
-            <div
-              class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full opacity-8"
-              style="background: radial-gradient(circle, var(--color-brand-500) 0%, transparent 70%);"
-            />
+            <div class="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-10"
+              style="background: radial-gradient(circle, var(--color-brand-400) 0%, transparent 70%);" />
+            <div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full opacity-8"
+              style="background: radial-gradient(circle, var(--color-sapphire-600) 0%, transparent 70%);" />
 
-            <img
-              src="../assets/logo.png"
-              alt=""
-              class="absolute right-8 top-8 h-20 w-20 opacity-10"
-            />
+            <img src="../assets/logo.png" alt="" class="absolute right-8 top-8 h-20 w-20 opacity-10" />
 
             <div class="relative z-10 h-full">
               <div class="mb-2 font-body text-xs font-600 uppercase tracking-[0.2em] text-white/40">
                 Стоимость проживания
               </div>
-                <div
-                  class="mb-2 font-display font-700 text-white"
-                  style="font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1;"
-                >
-                  Индивидуально
-                </div>
-              <div
-                class="mb-7 h-0.5 w-16"
-                style="background: linear-gradient(90deg, var(--color-gold-400), transparent);"
-              />
+              <div class="mb-2 font-display font-700 text-white" style="font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1;">
+                Индивидуально
+              </div>
+              <!-- divider line: brand-500 (was gold-400) -->
+              <div class="mb-7 h-0.5 w-16" style="background: linear-gradient(90deg, var(--color-brand-500), transparent);" />
 
               <p class="mb-8 font-body text-sm leading-relaxed font-300 text-white/60">
                 Стоимость проживания в пансионате «Доброе сердце»
@@ -85,26 +81,22 @@ const steps = [
                   :key="factor.label"
                   class="group flex items-start gap-3 rounded-2xl border border-white/8 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10"
                 >
-                  <span
-                    class="h-5 w-5 flex-shrink-0 text-gold-400 mt-0.5 transition-transform duration-300 group-hover:scale-110"
-                    style="color: var(--color-gold-400);"
-                    v-html="factor.icon"
-                  />
-                  <span class="font-body text-xs leading-snug font-400 text-white/65">
-                    {{ factor.label }}
-                  </span>
+                  <!-- factor icons: brand-500 gold (was gold-400) -->
+                  <span class="h-5 w-5 flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
+                    style="color: var(--color-brand-500);"
+                    v-html="factor.icon" />
+                  <span class="font-body text-xs leading-snug font-400 text-white/65">{{ factor.label }}</span>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- badge: sapphire-700 (was brand-600 gold — CTA badge should be sapphire) -->
           <div
-            class="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-5 py-2.5 shadow-brand"
-            style="background: var(--color-brand-600);"
+            class="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-5 py-2.5 shadow-sapphire"
+            style="background: var(--color-sapphire-700);"
           >
-            <span class="font-body text-xs font-600 uppercase tracking-widest text-white">
-              Звонок бесплатный
-            </span>
+            <span class="font-body text-xs font-600 uppercase tracking-widest text-white">Звонок бесплатный</span>
           </div>
         </div>
 
@@ -112,7 +104,7 @@ const steps = [
           <div class="eyebrow mb-5">Цена</div>
           <h2 class="section-title mb-6" style="font-size: min(7vw, 3.4rem);">
             Прозрачное ценообразование<br />
-            <em class="font-display italic font-400" style="color: var(--color-brand-600);">для каждой семьи</em>
+            <em class="font-display italic font-400" style="color: var(--color-brand-500);">для каждой семьи</em>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">
@@ -123,26 +115,12 @@ const steps = [
           </p>
 
           <ol class="mb-10 space-y-5">
-            <li
-              v-for="step in steps"
-              :key="step.n"
-              class="group flex items-center gap-4"
-            >
+            <li v-for="step in steps" :key="step.n" class="group flex items-center gap-4">
               <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center">
-                <img
-                  :src="logoBlue"
-                  alt="icon"
-                  class="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+                <img :src="logoBlue" alt="icon" class="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110" />
               </div>
-
-              <p class="font-body text-base font-500 text-ink-700 text-left max-w-[calc(100%-4rem)]">
-                {{ step.text }}
-              </p>
-
-              <div
-                class="h-px flex-1 bg-ivory-200 transition-all duration-300 group-hover:bg-brand-100 hidden sm:block"
-              />
+              <p class="font-body text-base font-500 text-ink-700 text-left max-w-[calc(100%-4rem)]">{{ step.text }}</p>
+              <div class="h-px flex-1 bg-ivory-200 transition-all duration-300 group-hover:bg-brand-100 hidden sm:block" />
             </li>
           </ol>
 

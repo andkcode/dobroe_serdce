@@ -4,7 +4,7 @@ import logoBlue from "../assets/logo-blue.png"
 const missions = [
   'Обеспечить качественный квалифицированный уход за каждым проживающим',
   'Создать благоприятную атмосферу для проживания и досуга',
-  'Уделить каждому человеку внимание, выслушать его, окружить заботой',
+  'Уделить каждому человеку внимание, выслухать его, окружить заботой',
 ]
 </script>
 
@@ -12,11 +12,11 @@ const missions = [
   <section id="about" class="relative overflow-hidden bg-ivory-50 py-28 lg:py-36">
     <div
       class="pointer-events-none absolute right-0 top-0 h-96 w-96 translate-x-1/2 -translate-y-1/3 rounded-full opacity-40"
-      style="background: radial-gradient(circle, var(--color-brand-50) 0%, transparent 70%);"
+      style="background: radial-gradient(circle, var(--color-sapphire-50) 0%, transparent 70%);"
     />
     <div
       class="pointer-events-none absolute bottom-0 left-0 h-64 w-64 -translate-x-1/3 translate-y-1/3 rounded-full opacity-30"
-      style="background: radial-gradient(circle, var(--color-ivory-200) 0%, transparent 70%);"
+      style="background: radial-gradient(circle, var(--color-ivory-300) 0%, transparent 70%);"
     />
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -57,9 +57,10 @@ const missions = [
             />
           </div>
 
+          <!-- Badge: sapphire-700 → sapphire-800 gradient (was brand-700→brand-600 gold) -->
           <div
-            class="absolute -bottom-10 left-6 flex items-center gap-3 rounded-2xl px-5 py-4 shadow-brand-lg lg:-left-6"
-            style="background: linear-gradient(135deg, var(--color-brand-700) 0%, var(--color-brand-600) 100%);"
+            class="absolute -bottom-10 left-6 flex items-center gap-3 rounded-2xl px-5 py-4 shadow-lift lg:-left-6"
+            style="background: linear-gradient(135deg, var(--color-sapphire-800) 0%, var(--color-sapphire-700) 100%);"
           >
             <div class="relative">
               <img
@@ -77,9 +78,10 @@ const missions = [
           <div
             class="glass absolute left-6 top-8 rounded-xl px-4 py-3 shadow-card lg:-left-8"
           >
+            <!-- Stat value: gold brand-500 (warm accent on light glass) -->
             <div
               class="font-display text-3xl font-700 leading-none"
-              style="color: var(--color-brand-600);"
+              style="color: var(--color-brand-500);"
             >
               10+
             </div>
@@ -94,7 +96,8 @@ const missions = [
 
           <h2 class="section-title mb-6 text-balance">
             Наша миссия —<br />
-            <em class="font-display italic font-400 whitespace-nowrap" style="color: var(--color-brand-600); font-size: clamp(1.7rem, 4vw, 2.3rem);">
+            <!-- Italic accent: brand-500 gold (warm, joyful) -->
+            <em class="font-display italic font-400 whitespace-nowrap" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">
               ваш покой и благополучие
             </em>
           </h2>
@@ -117,10 +120,10 @@ const missions = [
                 class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110"
                 style="background: linear-gradient(135deg, var(--color-brand-100), var(--color-brand-50));"
               >
-                <img 
-                  :src="logoBlue" 
-                  alt="icon" 
-                  class="h-4.5 w-4.5 object-contain" 
+                <img
+                  :src="logoBlue"
+                  alt="icon"
+                  class="h-4.5 w-4.5 object-contain"
                 />
               </div>
               <span class="font-body text-base leading-relaxed text-ink-700">{{ mission }}</span>

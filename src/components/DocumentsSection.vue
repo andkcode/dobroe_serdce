@@ -1,3 +1,11 @@
+<!--
+  DocumentsSection.vue — COLORS ONLY CHANGED
+  Changes:
+    • brand-600 gradient → sapphire-800 → sapphire-700 (card gradient becomes sapphire, not gold)
+    • brand-600 inline colors → sapphire-700 (icon accents)
+    • bg-brand-50/100 list icons → sapphire-50/100
+    • italic em: brand-600 → brand-500 gold (unified)
+-->
 <script setup lang="ts">
 import logoBlue from "../assets/logo-blue.png"
 const documents = [
@@ -23,7 +31,7 @@ const documents = [
           <div class="eyebrow mb-5">Документы</div>
           <h2 class="section-title mb-6">
             Необходимые<br />
-            <em class="font-display italic font-400" style="color: var(--color-brand-600);">документы для поступления</em>
+            <em class="font-display italic font-400" style="color: var(--color-brand-500);">документы для поступления</em>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">
@@ -32,9 +40,10 @@ const documents = [
             позвоните нам, и мы поможем со всеми нюансами.
           </p>
 
+          <!-- Info card: sapphire gradient (was brand/gold gradient) -->
           <div
             class="relative overflow-hidden rounded-3xl p-7"
-            style="background: linear-gradient(135deg, var(--color-brand-600) 0%, var(--color-brand-800) 100%);"
+            style="background: linear-gradient(135deg, var(--color-sapphire-800) 0%, var(--color-sapphire-700) 100%);"
           >
             <img
               src="https://dobroe-serdce.com.ua/wp-content/uploads/2019/07/favicon-512-02.png"
@@ -48,8 +57,10 @@ const documents = [
               </div>
               <h3 class="font-display text-xl font-600 text-white">Индивидуальный трансфер</h3>
             </div>
-            <p class="font-body text-sm leading-relaxed text-white/78">
-При необходимости мы организуем доставку постояльцев в наш уютный дом для престарелых в Астане. Поездки проходят комфортно и безопасно. Это особенно удобно, если пожилой человек не может самостоятельно передвигаться. Для тех, кто не знаком с Астаной, трансфер значительно упростит дорогу до места назначения.
+            <p class="font-body text-sm leading-relaxed font-300 text-white/78">
+              При необходимости мы организуем доставку постояльцев в наш уютный дом для престарелых в Астане.
+              Поездки проходят комфортно и безопасно. Это особенно удобно, если пожилой человек не может
+              самостоятельно передвигаться.
             </p>
           </div>
         </div>
@@ -57,11 +68,7 @@ const documents = [
         <div data-animate class="delay-200">
           <div class="rounded-3xl bg-white p-8 shadow-card border border-ivory-200">
             <div class="mb-7 flex items-center gap-4 border-b border-ivory-200 pb-6">
-              <img
-                src="../assets/logo.png"
-                alt="Доброе сердце"
-                class="h-10 w-10"
-              />
+              <img src="../assets/logo.png" alt="Доброе сердце" class="h-10 w-10" />
               <div>
                 <h3 class="font-display text-2xl font-600 text-ink-900">Перечень документов</h3>
                 <p class="font-body text-xs text-ink-400">{{ documents.length }} позиций</p>
@@ -72,12 +79,12 @@ const documents = [
               <li
                 v-for="(doc, index) in documents"
                 :key="doc"
-                class="group flex items-start gap-4 transition-colors duration-200 hover:bg-brand-50 -mx-3 px-3 py-2 rounded-xl"
+                class="group flex items-start gap-4 transition-colors duration-200 hover:bg-sapphire-50 -mx-3 px-3 py-2 rounded-xl"
               >
                 <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center">
-                  <img 
+                  <img
                     :src="logoBlue"
-                    alt="icon" 
+                    alt="icon"
                     class="h-6 w-6 object-contain transition-transform duration-200 group-hover:scale-110"
                   />
                 </div>

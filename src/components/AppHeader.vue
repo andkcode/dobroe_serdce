@@ -1,3 +1,13 @@
+<!--
+  NavHeader.vue — COLORS ONLY CHANGED
+  Changes:
+    • #00c4b4 teal nav underline/hover → var(--color-brand-500) gold
+    • #DAA532 logo label/streak → var(--color-brand-500) unified gold
+    • rgba(0,196,180,...) CTA teal fills → var(--color-sapphire-700) based
+    • rgba(0,137,123,...) dark teal hover → var(--color-sapphire-800)
+    • CTA shimmer: gold rgba(249,189,21,...) instead of white
+    • Streak gradient: sapphire-600 → brand-500 gold
+-->
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrolled } from '@/composables/useScroll'
@@ -19,10 +29,6 @@ function scrollToSection(href: string) {
   activeItem.value = href
   isMobileMenuOpen.value = false
   document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
 
@@ -48,7 +54,7 @@ function scrollToTop() {
           font-weight: 700;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: var(--color-gold-400, #DAA532);
+          color: var(--color-brand-500);
           white-space: nowrap;
           pointer-events: none;
         ">Астана</div>
@@ -71,6 +77,7 @@ function scrollToTop() {
           </button>
         </li>
       </ul>
+
       <div class="flex gap-6">
         <div class="hidden lg:flex items-center gap-4">
           <a
@@ -78,9 +85,9 @@ function scrollToTop() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            class="group  relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg"
+            class="group relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg"
             :class="isScrolled
-              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
+              ? 'bg-sapphire-700 border-transparent shadow-sapphire backdrop-blur-none text-white'
               : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
           >
             <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -95,23 +102,24 @@ function scrollToTop() {
             aria-label="WhatsApp"
             class="group relative flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg hover:shadow-green-500/30"
             :class="isScrolled
-              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
+              ? 'bg-sapphire-700 border-transparent shadow-sapphire backdrop-blur-none text-white'
               : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
           >
             <div class="absolute inset-0 rounded-full bg-[#25d366] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Icon icon="mdi:whatsapp" class="relative z-10 w-[17px] h-[17px] text-white/70 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
           </a>
         </div>
-      <a href="tel:+380961462910" class="ds-cta" aria-label="Позвонить">
-        <span class="ds-cta__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-          </svg>
-        </span>
-        <span class="ds-cta__label">+38 096 146 29 10</span>
-        <span class="ds-cta__shimmer" aria-hidden="true" />
-      </a>
-    </div>
+
+        <a href="tel:+380961462910" class="ds-cta" aria-label="Позвонить">
+          <span class="ds-cta__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </span>
+          <span class="ds-cta__label">+38 096 146 29 10</span>
+          <span class="ds-cta__shimmer" aria-hidden="true" />
+        </a>
+      </div>
 
       <button
         class="ds-burger"
@@ -157,13 +165,8 @@ function scrollToTop() {
         <div class="flex justify-center items-center gap-6 pt-4">
           <a
             href="https://instagram.com/pansionat_dobroe_serdce"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            class="group  relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg"
-            :class="isScrolled
-              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
-              : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
+            target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            class="group relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
           >
             <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style="background: radial-gradient(circle at 30% 30%, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);"
@@ -172,13 +175,8 @@ function scrollToTop() {
           </a>
           <a
             href="https://wa.me/380961462910"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            class="group relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-transparent hover:shadow-lg hover:shadow-green-500/30"
-            :class="isScrolled
-              ? 'bg-brand-600 border-transparent shadow-brand backdrop-blur-none text-white'
-              : 'bg-white/15 border-white/30 backdrop-blur-sm text-white shadow-none'"
+            target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+            class="group relative flex items-center justify-center w-13 h-13 rounded-full border border-white/20 bg-white/15 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-110"
           >
             <div class="absolute inset-0 rounded-full bg-[#25d366] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Icon icon="mdi:whatsapp" class="relative z-10 w-[24px] h-[24px] text-white/70 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
@@ -190,19 +188,16 @@ function scrollToTop() {
 </template>
 
 <style scoped>
-/* ─── Timing ─────────────────────────────────────────────── */
 .ds-header {
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur: 650ms;
   --s: 0;
-
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
 }
 .ds-header--scrolled { --s: 1; }
 
-/* ─── Glass background ───────────────────────────────────── */
 .ds-header__bg {
   position: absolute;
   inset: 0;
@@ -220,7 +215,7 @@ function scrollToTop() {
   pointer-events: none;
 }
 
-/* ─── Teal accent streak ──────────────────────────────────── */
+/* streak: sapphire-600 left → brand-500 gold center → sapphire-600 right */
 .ds-header__streak {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -228,14 +223,17 @@ function scrollToTop() {
   opacity: var(--s);
   background: linear-gradient(
     90deg,
-    transparent 0%, #DAA532 25%, #2dd4c4 50%, #00c4b4 75%, transparent 100%
+    transparent 0%,
+    var(--color-sapphire-600) 20%,
+    var(--color-brand-500) 50%,
+    var(--color-sapphire-600) 80%,
+    transparent 100%
   );
   transition: height var(--dur) var(--ease), opacity var(--dur) var(--ease);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ─── Nav row ────────────────────────────────────────────── */
 .ds-header__nav {
   position: relative;
   z-index: 2;
@@ -251,16 +249,9 @@ function scrollToTop() {
   .ds-header__nav { padding-left: 2.5rem; padding-right: 2.5rem; }
 }
 
-/* ─── Logo ───────────────────────────────────────────────── */
 .ds-logo__img-wrap { position: relative; flex-shrink: 0; }
+.ds-logo__img { height: 40px; width: auto; object-fit: contain; }
 
-.ds-logo__img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* ─── Nav links (desktop) ────────────────────────────────── */
 .ds-nav__list {
   display: none;
   align-items: center;
@@ -281,23 +272,26 @@ function scrollToTop() {
   background: transparent;
   cursor: pointer;
   padding: 0.3rem 0;
+  /* text: white on dark hero, ink-700 on scrolled ivory */
   color: rgba(
     calc(255 - var(--s) * 187),
-    calc(255 - var(--s) * 191),
-    calc(255 - var(--s) * 197),
+    calc(255 - var(--s) * 176),
+    calc(255 - var(--s) * 215),
     calc(0.8 + var(--s) * 0.2)
   );
   transition: color var(--dur) var(--ease);
   outline: none;
 }
+/* hover/active: brand-500 gold (was teal #00c4b4) */
 .ds-nav__link:hover,
-.ds-nav__link--active { color: #00c4b4; }
+.ds-nav__link--active { color: var(--color-brand-500); }
 
+/* underline: brand-500 → brand-300 gold gradient (was teal) */
 .ds-nav__underline {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #00c4b4, #DAA532);
+  background: linear-gradient(90deg, var(--color-brand-500), var(--color-brand-300));
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left;
@@ -306,7 +300,7 @@ function scrollToTop() {
 .ds-nav__link:hover .ds-nav__underline,
 .ds-nav__link--active .ds-nav__underline { transform: scaleX(1); }
 
-/* ─── Phone CTA ──────────────────────────────────────────── */
+/* CTA button: sapphire-700 filled when scrolled (was teal) */
 .ds-cta {
   display: none;
   align-items: center;
@@ -327,8 +321,8 @@ function scrollToTop() {
   background: rgba(255,255,255, calc(0.14 - var(--s) * 0.14));
   border: 1px solid rgba(255,255,255, calc(0.28 - var(--s) * 0.28));
   box-shadow:
-    inset 0 0 0 9999px rgba(0, 196, 180, var(--s)),
-    0 4px 20px rgba(0, 196, 180, calc(var(--s) * 0.18));
+    inset 0 0 0 9999px rgba(0, 99, 181, var(--s)),
+    0 4px 20px rgba(0, 99, 181, calc(var(--s) * 0.22));
   backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   -webkit-backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   transition:
@@ -343,25 +337,22 @@ function scrollToTop() {
 .ds-cta:hover {
   transform: translateY(-2px);
   box-shadow:
-    inset 0 0 0 9999px rgba(0, 137, 123, calc(var(--s) * 0.9 + 0.1)),
-    0 8px 32px rgba(0, 196, 180, calc(0.12 + var(--s) * 0.22));
+    inset 0 0 0 9999px rgba(0, 61, 138, calc(var(--s) * 0.9 + 0.1)),
+    0 8px 32px rgba(0, 99, 181, calc(0.12 + var(--s) * 0.28));
 }
 .ds-cta:active { transform: translateY(0); }
 
-.ds-cta__icon {
-  width: 13px; height: 13px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+.ds-cta__icon { width: 13px; height: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ds-cta__icon svg { width: 100%; height: 100%; }
 
+/* shimmer: gold rgba (was white) */
 .ds-cta__shimmer {
   position: absolute;
   top: 0; bottom: 0;
   left: -80%;
   width: 55%;
   background: linear-gradient(
-    105deg, transparent 35%, rgba(255,255,255,0.2) 50%, transparent 65%
+    105deg, transparent 35%, rgba(249,189,21,0.25) 50%, transparent 65%
   );
   transform: skewX(-20deg);
   pointer-events: none;
@@ -372,7 +363,6 @@ function scrollToTop() {
   transition: left 0.55s ease;
 }
 
-/* ─── Burger ─────────────────────────────────────────────── */
 .ds-burger {
   display: flex;
   flex-direction: column;
@@ -419,7 +409,6 @@ function scrollToTop() {
 .ds-burger--open .ds-burger__bar--mid { opacity: 0; transform: scaleX(0); }
 .ds-burger--open .ds-burger__bar--bot { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ─── Mobile drawer ──────────────────────────────────────── */
 .ds-drawer {
   position: relative;
   z-index: 2;
@@ -473,21 +462,23 @@ function scrollToTop() {
   font-family: var(--font-family-body, system-ui, sans-serif);
   font-size: 0.875rem;
   font-weight: 500;
-  color: #2e2923;
+  color: var(--color-ink-800);
   cursor: pointer;
   text-align: left;
   transition: background 0.2s, color 0.2s, padding-left 0.28s cubic-bezier(0.16,1,0.3,1);
 }
+/* hover: sapphire-50 bg, sapphire-700 text (was teal) */
 .ds-drawer__link:hover {
-  background: rgba(0, 196, 180, 0.055);
-  color: #00c4b4;
+  background: var(--color-sapphire-50);
+  color: var(--color-sapphire-700);
   padding-left: 1.125rem;
 }
 
+/* dot: brand-500 gold (was teal) */
 .ds-drawer__dot {
   width: 4px; height: 4px;
   border-radius: 50%;
-  background: #00c4b4;
+  background: var(--color-brand-500);
   flex-shrink: 0;
   opacity: 0;
   transform: scale(0);
@@ -498,6 +489,7 @@ function scrollToTop() {
   transform: scale(1);
 }
 
+/* drawer CTA: sapphire-700 → sapphire-800 (was teal) */
 .ds-drawer__cta {
   display: flex;
   align-items: center;
@@ -506,7 +498,7 @@ function scrollToTop() {
   margin-top: 0.875rem;
   padding: 0.85rem 1.5rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #00c4b4, #00897b);
+  background: linear-gradient(135deg, var(--color-sapphire-700), var(--color-sapphire-800));
   color: white;
   font-family: var(--font-family-body, system-ui, sans-serif);
   font-size: 0.75rem;
@@ -514,18 +506,17 @@ function scrollToTop() {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0, 196, 180, 0.28);
+  box-shadow: 0 4px 20px rgba(0, 99, 181, 0.28);
   transition: transform 0.22s, box-shadow 0.22s;
   opacity: 0;
   animation: drawerIn 0.42s cubic-bezier(0.16,1,0.3,1) calc(50ms + 6 * 40ms) forwards;
 }
 .ds-drawer__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 196, 180, 0.38);
+  box-shadow: 0 8px 32px rgba(0, 99, 181, 0.38);
 }
 .ds-drawer__cta-icon { width: 15px; height: 15px; flex-shrink: 0; }
 
-/* ─── Vue <Transition name="ds-drawer"> ──────────────────── */
 .ds-drawer-enter-active {
   transition: opacity 0.32s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1);
 }

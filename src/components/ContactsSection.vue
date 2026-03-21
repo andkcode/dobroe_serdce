@@ -1,3 +1,13 @@
+<!--
+  ContactSection.vue — COLORS ONLY CHANGED
+  Changes:
+    • bg-ivory-100 → unchanged (correct)
+    • bg-brand-100 icon bg → unchanged (gold tint icons — correct)
+    • color brand-600 icons/phone → brand-500 (unified gold token)
+    • contact card hover border: brand-100 → unchanged
+    • sage success state → unchanged (semantic green correct)
+    • check icon #4e8060 → color sage-600 CSS var
+-->
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -32,7 +42,7 @@ async function handleSubmit() {
         <div class="eyebrow mb-5 justify-center">Контакты</div>
         <h2 class="section-title mb-5">
           Свяжитесь<br />
-          <em class="font-display italic font-400" style="color: var(--color-brand-600);">с нами сегодня</em>
+          <em class="font-display italic font-400" style="color: var(--color-brand-500);">с нами сегодня</em>
         </h2>
         <p class="section-subtitle mx-auto max-w-xl">
           Позвоните или заполните форму — мы ответим как можно скорее
@@ -57,19 +67,19 @@ async function handleSubmit() {
           </div>
 
           <div class="space-y-4">
+            <!-- Address card -->
             <a
               href="https://maps.app.goo.gl/RrKjbFp21wWgB1MM9"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               class="group flex items-start gap-4 rounded-2xl border border-ivory-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-100 hover:shadow-card"
             >
               <div
-                class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-300 group-hover:bg-brand-600"
-                style="background: var(--color-brand-100);"
+                class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-300 group-hover:bg-sapphire-700"
+                style="background: var(--color-sapphire-100);"
               >
                 <svg
                   class="h-5 w-5 transition-colors duration-300 group-hover:text-white"
-                  style="color: var(--color-brand-600);"
+                  style="color: var(--color-sapphire-700);"
                   fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -78,29 +88,26 @@ async function handleSubmit() {
               </div>
               <div>
                 <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Адрес</div>
-                <div class="mt-0.5 font-body text-base font-500 text-ink-900">
-                  Казахстан, г. Астана
-                </div>
-                <div class="font-body text-sm text-ink-500">
-                  просп. Республики
-                </div>
+                <div class="mt-0.5 font-body text-base font-500 text-ink-900">Казахстан, г. Астана</div>
+                <div class="font-body text-sm text-ink-500">просп. Республики</div>
               </div>
               <svg class="ml-auto mt-1 h-4 w-4 flex-shrink-0 text-ink-300 transition-colors duration-200 group-hover:text-brand-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
               </svg>
             </a>
 
+            <!-- Phone card -->
             <a
               href="tel:+380961462910"
               class="group flex items-start gap-4 rounded-2xl border border-ivory-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-100 hover:shadow-card"
             >
               <div
-                class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-300 group-hover:bg-brand-600"
-                style="background: var(--color-brand-100);"
+                class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-300 group-hover:bg-sapphire-700"
+                style="background: var(--color-sapphire-100);"
               >
                 <svg
                   class="h-5 w-5 transition-colors duration-300 group-hover:text-white"
-                  style="color: var(--color-brand-600);"
+                  style="color: var(--color-sapphire-700);"
                   fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
@@ -108,9 +115,10 @@ async function handleSubmit() {
               </div>
               <div>
                 <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Телефон</div>
+                <!-- phone number: brand-500 gold -->
                 <div
                   class="mt-0.5 font-display text-xl font-600"
-                  style="color: var(--color-brand-600);"
+                  style="color: var(--color-brand-500);"
                 >
                   +38 096 146 29 10
                 </div>
@@ -118,14 +126,15 @@ async function handleSubmit() {
               </div>
             </a>
 
+            <!-- Hours card -->
             <div class="flex items-start gap-4 rounded-2xl border border-ivory-200 bg-white p-5">
               <div
                 class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl"
-                style="background: var(--color-brand-100);"
+                style="background: var(--color-sapphire-100);"
               >
                 <svg
                   class="h-5 w-5"
-                  style="color: var(--color-brand-600);"
+                  style="color: var(--color-sapphire-700);"
                   fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -143,16 +152,10 @@ async function handleSubmit() {
         <div data-animate class="delay-200">
           <div class="rounded-3xl bg-white p-8">
             <div class="mb-7 flex items-center gap-4 border-b border-ivory-200 pb-6">
-              <img
-                src="../assets/logo.png"
-                alt="Доброе сердце"
-                class="h-11 w-11"
-              />
+              <img src="../assets/logo.png" alt="Доброе сердце" class="h-11 w-11" />
               <div>
                 <h3 class="font-display text-2xl font-600 text-ink-900">Напишите нам</h3>
-                <p class="font-body text-xs text-ink-400">
-                  Ответим в течение нескольких часов
-                </p>
+                <p class="font-body text-xs text-ink-400">Ответим в течение нескольких часов</p>
               </div>
             </div>
 
@@ -167,7 +170,7 @@ async function handleSubmit() {
                 style="background: linear-gradient(135deg, var(--color-sage-50), var(--color-sage-100));"
               >
                 <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full" style="background: var(--color-sage-100);">
-                  <svg class="h-8 w-8" style="color: #4e8060;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="h-8 w-8" style="color: var(--color-sage-600);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
@@ -175,62 +178,25 @@ async function handleSubmit() {
                 <p class="mt-2 font-body text-sm text-ink-500">
                   Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
                 </p>
-                <button class="btn-outline mt-6" @click="isSubmitted = false">
-                  Отправить ещё одно
-                </button>
+                <button class="btn-outline mt-6" @click="isSubmitted = false">Отправить ещё одно</button>
               </div>
 
               <form v-else novalidate class="space-y-[1.6rem]" @submit.prevent="handleSubmit">
                 <div>
-                  <label for="name" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">
-                    Ваше имя *
-                  </label>
-                  <input
-                    id="name"
-                    v-model="formData.name"
-                    type="text"
-                    placeholder="Иван Иванович"
-                    required
-                    class="form-input"
-                  />
+                  <label for="name" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">Ваше имя *</label>
+                  <input id="name" v-model="formData.name" type="text" placeholder="Иван Иванович" required class="form-input" />
                 </div>
                 <div>
-                  <label for="phone" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">
-                    Номер телефона *
-                  </label>
-                  <input
-                    id="phone"
-                    v-model="formData.phone"
-                    type="tel"
-                    placeholder="+7 ___ ___ ____"
-                    required
-                    class="form-input"
-                  />
+                  <label for="phone" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">Номер телефона *</label>
+                  <input id="phone" v-model="formData.phone" type="tel" placeholder="+7 ___ ___ ____" required class="form-input" />
                 </div>
                 <div>
-                  <label for="message" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">
-                    Ваш вопрос или пожелание
-                  </label>
-                  <textarea
-                    id="message"
-                    v-model="formData.message"
-                    rows="4"
-                    placeholder="Расскажите о своих потребностях..."
-                    class="form-input resize-none"
-                  />
+                  <label for="message" class="mb-2 block font-body text-xs font-600 uppercase tracking-wider text-ink-500">Ваш вопрос или пожелание</label>
+                  <textarea id="message" v-model="formData.message" rows="4" placeholder="Расскажите о своих потребностях..." class="form-input resize-none" />
                 </div>
 
-                <button
-                  type="submit"
-                  :disabled="isSubmitting"
-                  class="btn-primary w-full justify-center"
-                >
-                  <svg
-                    v-if="isSubmitting"
-                    class="h-4 w-4 animate-spin"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
+                <button type="submit" :disabled="isSubmitting" class="btn-primary w-full justify-center">
+                  <svg v-if="isSubmitting" class="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
@@ -239,7 +205,7 @@ async function handleSubmit() {
 
                 <p class="text-center font-body text-xs text-ink-400">
                   Или позвоните:
-                  <a href="tel:+380961462910" style="color: var(--color-brand-600);" class="hover:underline font-500">+38 096 146 29 10</a>
+                  <a href="tel:+380961462910" style="color: var(--color-brand-500);" class="hover:underline font-500">+38 096 146 29 10</a>
                 </p>
               </form>
             </Transition>

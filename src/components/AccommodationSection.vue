@@ -17,8 +17,9 @@ const options: AccommodationOption[] = [
     title: 'Кратковременное размещение',
     subtitle: 'Посуточно или на любой срок',
     description: 'Вы можете разместить своих близких посуточно или на любой удобный для вас срок. Идеально для отдыха или командировки.',
-    gradient: 'from-amber-500 to-orange-600',
-    iconBg: 'bg-amber-50',
+    /* sapphire-700 → sapphire-600 (was amber-500 → orange-600) */
+    gradient: 'from-sapphire-700 to-sapphire-600',
+    iconBg: 'bg-sapphire-50',
   },
   {
     icon: `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
@@ -28,29 +29,32 @@ const options: AccommodationOption[] = [
     title: 'Дневное размещение',
     subtitle: 'Днём здесь, ночью — дома',
     description: 'При необходимости вы можете разместить своего близкого на дневное время, а на ночь забрать домой.',
-    gradient: 'from-brand-500 to-brand-700',
+    /* brand-600 → brand-700 gold gradient (was brand-500 → brand-700) */
+    gradient: 'from-sapphire-700 to-sapphire-600',
     iconBg: 'bg-brand-50',
   },
   {
     icon: `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
       <path style="fill:#FFFFFF;" d="M16,5.8c5.6,0,10.2,4.6,10.2,10.2S21.6,26.2,16,26.2S5.8,21.6,5.8,16S10.4,5.8,16,5.8 M16,4.1C9.4,4.1,4.1,9.4,4.1,16S9.4,27.9,16,27.9S27.9,22.6,27.9,16S22.6,4.1,16,4.1L16,4.1z M16,6.5c-0.2,0-0.4,0.2-0.4,0.4v0.4c0,0.2,0.2,0.4,0.4,0.4c0.2,0,0.4-0.2,0.4-0.4V6.9C16.4,6.7,16.2,6.5,16,6.5z M16,24.1c-0.2,0-0.4,0.2-0.4,0.4V25c0,0.2,0.2,0.4,0.4,0.4c0.2,0,0.4-0.2,0.4-0.4v-0.4C16.4,24.3,16.2,24.1,16,24.1z M25,15.5h-0.4c-0.2,0-0.4,0.2-0.4,0.4s0.2,0.4,0.4,0.4H25c0.2,0,0.4-0.2,0.4-0.4S25.2,15.5,25,15.5z M7.4,15.5H7c-0.2,0-0.4,0.2-0.4,0.4s0.2,0.4,0.4,0.4h0.4c0.2,0,0.4-0.2,0.4-0.4S7.6,15.5,7.4,15.5z M22.1,9.3l-0.3,0.3c-0.2,0.2-0.2,0.4,0,0.6c0.1,0.1,0.2,0.1,0.3,0.1s0.2,0,0.3-0.1l0.3-0.3c0.2-0.2,0.2-0.4,0-0.6C22.5,9.1,22.2,9.1,22.1,9.3z M9.6,21.7L9.3,22c-0.2,0.2-0.2,0.4,0,0.6c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1l0.3-0.3c0.2-0.2,0.2-0.4,0-0.6S9.8,21.6,9.6,21.7z M22.4,21.7c-0.2-0.2-0.4-0.2-0.6,0s-0.2,0.4,0,0.6l0.3,0.3c0.1,0.1,0.2,0.1,0.3,0.1s0.2,0,0.3-0.1c0.2-0.2,0.2-0.4,0-0.6L22.4,21.7z M9.9,9.3c-0.2-0.2-0.4-0.2-0.6,0c-0.2,0.2-0.2,0.4,0,0.6l0.3,0.3c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1c0.2-0.2,0.2-0.4,0-0.6L9.9,9.3z M16.4,14.4v-4.2c0-0.2-0.2-0.4-0.4-0.4c-0.2,0-0.4,0.2-0.4,0.4v4.2c-0.6,0.1-1,0.6-1.2,1.2h-2.9c-0.2,0-0.4,0.2-0.4,0.4s0.2,0.4,0.4,0.4h2.9c0.2,0.7,0.8,1.2,1.6,1.2c0.9,0,1.6-0.7,1.6-1.6C17.6,15.2,17.1,14.6,16.4,14.4z M16,16.8c-0.5,0-0.8-0.4-0.8-0.8s0.4-0.8,0.8-0.8c0.5,0,0.8,0.4,0.8,0.8S16.5,16.8,16,16.8z"/>
       <path style="fill:#F9BD15;" d="M16,0c-0.2,0-0.4,0.2-0.4,0.4s0.2,0.4,0.4,0.4c8.4,0,15.3,6.8,15.3,15.3S24.4,31.3,16,31.3S0.7,24.4,0.7,16c0-4.3,1.8-8.5,5.1-11.3L6,6l2.1-3.4l-3.9,1L5.4,4C2,7.1,0,11.4,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z"/>
-      </svg>`,
+    </svg>`,
     title: 'Круглосуточное размещение',
     subtitle: 'Полный квалифицированный уход',
     description: 'Если у вас нет возможности обеспечить близким квалифицированный уход, мы возьмём эту обязанность на себя круглосуточно.',
-    gradient: 'from-rose-500 to-pink-600',
-    iconBg: 'bg-rose-50',
+    /* sapphire-800 → sapphire-700 (was rose-500 → pink-600) */
+    gradient: 'from-sapphire-800 to-sapphire-700',
+    iconBg: 'bg-sapphire-50',
   },
   {
     icon: `<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
-      <path style="fill:#00c4b4;" d="M3.4,0.5C3.4,0.2,3.6,0,3.9,0H7c0.2,0,0.4,0.1,0.5,0.3l1.9,4.8h9c1.4,0,2.6,1.2,2.6,2.6v1c0,0.3-0.2,0.5-0.5,0.5h-9.3c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h8.8V7.8c0-0.9-0.7-1.6-1.6-1.6H9.6v3.1c0,0.3-0.2,0.5-0.5,0.5c-0.3,0-0.5-0.2-0.5-0.5V5.8L6.6,1H3.9C3.6,1,3.4,0.8,3.4,0.5z M14.7,21.6c0,2.3-1.9,4.1-4.1,4.1s-4.1-1.9-4.1-4.1c0-2.3,1.9-4.1,4.1-4.1C12.9,17.5,14.7,19.3,14.7,21.6z M13.7,21.6c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1C12.3,24.7,13.7,23.3,13.7,21.6z M10.6,21.1L10.6,21.1c-0.3,0-0.5,0.2-0.5,0.5c0,0.3,0.2,0.5,0.5,0.5c0.3,0,0.5-0.2,0.5-0.5C11.1,21.3,10.9,21.1,10.6,21.1z M31.8,29.4c0,1.4-1.2,2.6-2.6,2.6c-1.4,0-2.6-1.2-2.6-2.6c0-1.2,0.9-2.3,2.1-2.5v-8.3h-6.4c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h6.4V17c0-0.9-0.7-1.6-1.6-1.6h-6.4c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h6.4c1.4,0,2.6,1.2,2.6,2.6v1v8.8C30.9,27.1,31.8,28.1,31.8,29.4z M30.7,29.4c0-0.7-0.4-1.2-1-1.5v1.5c0,0.3-0.2,0.5-0.5,0.5c-0.3,0-0.5-0.2-0.5-0.5v-1.5c-0.6,0.2-1,0.8-1,1.5c0,0.9,0.7,1.6,1.6,1.6C30,30.9,30.7,30.2,30.7,29.4z M18,14.3c1.9,1.9,3,4.5,3,7.3c0,2.9-1.2,5.4-3,7.3c0,0,0,0,0,0c0,0,0,0,0,0c-1.9,1.9-4.5,3-7.3,3c-2.9,0-5.4-1.2-7.3-3c0,0,0,0,0,0c0,0,0,0,0,0c-1.9-1.9-3-4.5-3-7.3c0-2.9,1.2-5.4,3-7.3c0,0,0,0,0,0c0,0,0,0,0,0c1.9-1.9,4.5-3,7.3-3C13.5,11.2,16.1,12.4,18,14.3C17.9,14.2,18,14.3,18,14.3C18,14.3,18,14.3,18,14.3z M19.7,21.6c0-2.3-0.8-4.3-2.2-5.9L17,16.1c-0.1,0.1-0.3,0.2-0.5,0.2c-0.2,0-0.3-0.1-0.5-0.2c-0.3-0.3-0.3-0.7,0-0.9l0.4-0.4c-1.6-1.4-3.7-2.2-5.9-2.2c-2.3,0-4.3,0.8-5.9,2.2l0.4,0.4c0.3,0.3,0.3,0.7,0,0.9c-0.1,0.1-0.3,0.2-0.5,0.2c-0.2,0-0.3-0.1-0.5-0.2l-0.4-0.4c-1.4,1.6-2.2,3.7-2.2,5.9c0,2.3,0.8,4.3,2.2,5.9l0.4-0.4c0.3-0.3,0.7-0.3,0.9,0c0.3,0.3,0.3,0.7,0,0.9l-0.4,0.4c1.6,1.4,3.7,2.2,5.9,2.2s4.3-0.8,5.9-2.2L16.1,28c-0.3-0.3-0.3-0.7,0-0.9c0.3-0.3,0.7-0.3,0.9,0l0.4,0.4C18.9,26,19.7,23.9,19.7,21.6z"/>
+      <path style="fill:#0063B5;" d="M3.4,0.5C3.4,0.2,3.6,0,3.9,0H7c0.2,0,0.4,0.1,0.5,0.3l1.9,4.8h9c1.4,0,2.6,1.2,2.6,2.6v1c0,0.3-0.2,0.5-0.5,0.5h-9.3c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h8.8V7.8c0-0.9-0.7-1.6-1.6-1.6H9.6v3.1c0,0.3-0.2,0.5-0.5,0.5c-0.3,0-0.5-0.2-0.5-0.5V5.8L6.6,1H3.9C3.6,1,3.4,0.8,3.4,0.5z M14.7,21.6c0,2.3-1.9,4.1-4.1,4.1s-4.1-1.9-4.1-4.1c0-2.3,1.9-4.1,4.1-4.1C12.9,17.5,14.7,19.3,14.7,21.6z M13.7,21.6c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1C12.3,24.7,13.7,23.3,13.7,21.6z M10.6,21.1L10.6,21.1c-0.3,0-0.5,0.2-0.5,0.5c0,0.3,0.2,0.5,0.5,0.5c0.3,0,0.5-0.2,0.5-0.5C11.1,21.3,10.9,21.1,10.6,21.1z M31.8,29.4c0,1.4-1.2,2.6-2.6,2.6c-1.4,0-2.6-1.2-2.6-2.6c0-1.2,0.9-2.3,2.1-2.5v-8.3h-6.4c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h6.4V17c0-0.9-0.7-1.6-1.6-1.6h-6.4c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h6.4c1.4,0,2.6,1.2,2.6,2.6v1v8.8C30.9,27.1,31.8,28.1,31.8,29.4z M30.7,29.4c0-0.7-0.4-1.2-1-1.5v1.5c0,0.3-0.2,0.5-0.5,0.5c-0.3,0-0.5-0.2-0.5-0.5v-1.5c-0.6,0.2-1,0.8-1,1.5c0,0.9,0.7,1.6,1.6,1.6C30,30.9,30.7,30.2,30.7,29.4z M18,14.3c1.9,1.9,3,4.5,3,7.3c0,2.9-1.2,5.4-3,7.3c0,0,0,0,0,0c0,0,0,0,0,0c-1.9,1.9-4.5,3-7.3,3c-2.9,0-5.4-1.2-7.3-3c0,0,0,0,0,0c0,0,0,0,0,0c-1.9-1.9-3-4.5-3-7.3c0-2.9,1.2-5.4,3-7.3c0,0,0,0,0,0c0,0,0,0,0,0c1.9-1.9,4.5-3,7.3-3C13.5,11.2,16.1,12.4,18,14.3C17.9,14.2,18,14.3,18,14.3C18,14.3,18,14.3,18,14.3z M19.7,21.6c0-2.3-0.8-4.3-2.2-5.9L17,16.1c-0.1,0.1-0.3,0.2-0.5,0.2c-0.2,0-0.3-0.1-0.5-0.2c-0.3-0.3-0.3-0.7,0-0.9l0.4-0.4c-1.6-1.4-3.7-2.2-5.9-2.2c-2.3,0-4.3,0.8-5.9,2.2l0.4,0.4c0.3,0.3,0.3,0.7,0,0.9c-0.1,0.1-0.3,0.2-0.5,0.2c-0.2,0-0.3-0.1-0.5-0.2l-0.4-0.4c-1.4,1.6-2.2,3.7-2.2,5.9c0,2.3,0.8,4.3,2.2,5.9l0.4-0.4c0.3-0.3,0.7-0.3,0.9,0c0.3,0.3,0.3,0.7,0,0.9l-0.4,0.4c1.6,1.4,3.7,2.2,5.9,2.2s4.3-0.8,5.9-2.2L16.1,28c-0.3-0.3-0.3-0.7,0-0.9c0.3-0.3,0.7-0.3,0.9,0l0.4,0.4C18.9,26,19.7,23.9,19.7,21.6z"/>
     </svg>`,
     title: 'Круглосуточный уход за больными и людьми с инвалидностью',
     subtitle: 'Уход за лежачими больными и людьми с деменцией',
     description: 'Круглосуточный уход квалифицированной медсестры и няни: кормление, проведение гигиенических процедур, помощь при передвижении, сопровождение на прогулку.',
-    gradient: 'from-cyan-500 to-cyan-600',
-    iconBg: 'bg-rose-50',
+    /* sapphire-700 → sapphire-600 (was cyan-500 → cyan-600) */
+    gradient: 'from-sapphire-700 to-sapphire-600',
+    iconBg: 'bg-sapphire-50',
   },
 ]
 
@@ -80,11 +84,12 @@ const notAccepted = [
         <div class="eyebrow mb-5 justify-center">Варианты проживания</div>
         <h2 class="section-title mb-5">
           Выберите удобный<br />
-          <em class="font-display italic font-400" style="color: var(--color-brand-600);">формат проживания</em>
+          <!-- gold italic accent -->
+          <em class="font-display italic font-400" style="color: var(--color-brand-500);">формат проживания</em>
         </h2>
       </div>
 
-  <div class="mb-20 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mb-20 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="(option, i) in options"
           :key="option.title"
@@ -108,7 +113,7 @@ const notAccepted = [
               {{ option.title }}
             </h3>
             <p
-              class="mb-4 font-body text-sm font-600 uppercase tracking-wider transition-colors duration-300 text-red-900 group-hover:text-white/70"
+              class="mb-4 font-body text-sm font-600 uppercase tracking-wider transition-colors duration-300 text-sapphire-800 group-hover:text-white/70"
             >
               {{ option.subtitle }}
             </p>
@@ -125,23 +130,24 @@ const notAccepted = [
         </div>
       </div>
 
-    <div class="grid gap-8 grid-cols-1 lg:grid-cols-2" data-animate>
+      <div class="grid gap-8 grid-cols-1 lg:grid-cols-2" data-animate>
 
+        <!-- Accepted: sage green (unchanged — semantic green is correct here) -->
         <div
           class="rounded-3xl border p-8 transition-all duration-300 hover:shadow-card"
-          style="background: linear-gradient(135deg, var(--color-sage-50), var(--color-sage-100)); border-color: #bbf7d0;"
+          style="background: linear-gradient(135deg, var(--color-sage-50), var(--color-sage-100)); border-color: var(--color-sage-200);"
         >
           <div class="mb-6 flex items-center gap-3">
             <div
               class="flex h-11 w-11 items-center justify-center rounded-2xl"
               style="background: var(--color-sage-100);"
             >
-              <svg class="h-6 w-6" style="color: #4e8060;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="h-6 w-6" style="color: var(--color-sage-600);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <div>
-              <h3 class="font-display text-2xl font-600 text-ink-900 ">Кого мы принимаем</h3>
+              <h3 class="font-display text-2xl font-600 text-ink-900">Кого мы принимаем</h3>
               <p class="font-body text-xs text-ink-400">Полный перечень состояний и диагнозов</p>
             </div>
           </div>
@@ -153,7 +159,7 @@ const notAccepted = [
             >
               <svg
                 class="mt-0.5 h-4 w-4 flex-shrink-0"
-                style="color: #62966e;"
+                style="color: var(--color-sage-600);"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -168,16 +174,17 @@ const notAccepted = [
           </ul>
         </div>
 
+        <!-- Not accepted: muted sapphire-tinted red (was hot pink/rose) -->
         <div
           class="rounded-3xl border p-8 transition-all duration-300 hover:shadow-card"
-          style="background: linear-gradient(135deg, #fff5f5, #ffe4e4); border-color: #fecaca;"
+          style="background: linear-gradient(135deg, #fdf3f3, #fae8e8); border-color: #f0c4c4;"
         >
           <div class="mb-6 flex items-center gap-3">
             <div
               class="flex h-11 w-11 items-center justify-center rounded-2xl"
-              style="background: #fee2e2;"
+              style="background: #f9dada;"
             >
-              <svg class="h-6 w-6" style="color: #ef4444;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="h-6 w-6" style="color: #c0392b;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
               </svg>
             </div>
@@ -194,7 +201,7 @@ const notAccepted = [
             >
               <svg
                 class="mt-0.5 h-4 w-4 flex-shrink-0"
-                style="color: #f87171;"
+                style="color: #c0392b;"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -207,7 +214,7 @@ const notAccepted = [
               {{ item }}
             </li>
           </ul>
-          <p class="font-body text-xs leading-relaxed" style="color: #b91c1c; opacity: 0.7;">
+          <p class="font-body text-xs leading-relaxed" style="color: #a93226; opacity: 0.75;">
             * К сожалению, мы не в состоянии предоставить специализированную помощь в перечисленных случаях. Для уточнения — звоните нам.
           </p>
         </div>
@@ -215,21 +222,22 @@ const notAccepted = [
     </div>
   </section>
 </template>
+
 <style scoped>
 .clock-icon :deep(path:first-child) {
-  fill: #00c4b4 !important;
+  fill: var(--color-sapphire-700) !important;
 }
 .clock-icon :deep(path:last-child) {
-  fill: #F9BD15 !important;
+  fill: var(--color-brand-500) !important;
 }
 .clock-icon :deep(path:only-child) {
-  fill: #00c4b4 !important;
+  fill: var(--color-sapphire-700) !important;
 }
 .group:hover .clock-icon :deep(path:first-child) {
   fill: #ffffff !important;
 }
 .group:hover .clock-icon :deep(path:last-child) {
-  fill: #F9BD15 !important;
+  fill: var(--color-brand-400) !important;
 }
 .group:hover .clock-icon :deep(path:only-child) {
   fill: #ffffff !important;

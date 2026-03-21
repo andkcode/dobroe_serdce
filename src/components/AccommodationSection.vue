@@ -85,7 +85,7 @@ const notAccepted = [
         <h2 class="section-title mb-5">
           Выберите удобный<br />
           <!-- gold italic accent -->
-          <em class="font-display italic font-400" style="color: var(--color-brand-500);">формат проживания</em>
+          <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">формат проживания</em>
         </h2>
       </div>
 

@@ -60,7 +60,7 @@ const missions = [
           <!-- Badge: sapphire-700 → sapphire-800 gradient (was brand-700→brand-600 gold) -->
           <div
             class="absolute -bottom-10 left-6 flex items-center gap-3 rounded-2xl px-5 py-4 shadow-lift lg:-left-6"
-            style="background: linear-gradient(135deg, var(--color-yellow-800) 0%, var(--color-yellow-700) 100%);"
+            style="background: #E6A701"
           >
             <div class="relative">
               <img

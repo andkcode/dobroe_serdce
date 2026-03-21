@@ -78,7 +78,7 @@ const services: ServiceItem[] = [
         <div class="eyebrow mb-5 justify-center">Наши услуги</div>
         <h2 class="section-title mb-5">
           Комплексный уход<br />
-          <em class="font-display font-400 italic" style="color: var(--color-brand-500);">за вашими близкими</em>
+          <em class="font-display font-400 italic" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">за вашими близкими</em>
         </h2>
         <p class="section-subtitle mx-auto max-w-2xl font-medium">
           Наш пансионат обеспечивает благоприятные условия для проживания пожилых людей и ведения

@@ -31,7 +31,7 @@ const documents = [
           <div class="eyebrow mb-5">Документы</div>
           <h2 class="section-title mb-6">
             Необходимые<br />
-            <em class="font-display italic font-400" style="color: var(--color-brand-500);">документы для поступления</em>
+            <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">документы для поступления</em>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">

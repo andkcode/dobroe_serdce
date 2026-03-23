@@ -81,11 +81,11 @@ const missions = [
             <!-- Stat value: gold brand-500 (warm accent on light glass) -->
             <div
               class="font-display text-3xl font-700 leading-none"
-              style="color: var(--color-brand-500);"
+              style="color: var(--color-sapphire-500);"
             >
               10+
             </div>
-            <div class="mt-0.5 font-body text-xs font-500 uppercase tracking-wider text-ink-500">
+            <div class="mt-0.5 font-body text-xs font-500 uppercase tracking-wider text-sapphire-500">
               Лет опыта
             </div>
           </div>

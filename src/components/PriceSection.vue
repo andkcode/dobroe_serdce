@@ -39,64 +39,70 @@ const steps = [
 </script>
 
 <template>
-  <section id="price" class="relative overflow-hidden bg-ivory-50 py-16 lg:py-36">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.35]"
-      style="background-image: radial-gradient(circle, var(--color-ink-200) 1px, transparent 1px); background-size: 36px 36px;" />
+  <section id="price" class="relative overflow-hidden bg-ivory-50 py-20 lg:py-32">
 
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
 
         <div class="relative" data-animate>
-          <!-- Dark price card: sapphire-950 → sapphire-900 → sapphire-800 (was #1a3a5c hardcoded) -->
           <div
-            class="relative overflow-hidden rounded-3xl p-6 sm:p-10 shadow-lift"
-            style="background: linear-gradient(135deg, var(--color-sapphire-950) 0%, var(--color-sapphire-900) 60%, var(--color-sapphire-800) 100%);"
+            class="group relative overflow-hidden rounded-3xl border border-ivory-200 p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(0,36,85,0.18)] sm:p-10"
+            style="background: linear-gradient(160deg, rgba(255,255,255,0.98) 0%, var(--color-sapphire-50) 62%, rgba(255,255,255,0.95) 100%);"
           >
-            <div class="absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-10"
-              style="background: radial-gradient(circle, var(--color-brand-400) 0%, transparent 70%);" />
-            <div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full opacity-8"
-              style="background: radial-gradient(circle, var(--color-sapphire-600) 0%, transparent 70%);" />
+            <div
+              class="pointer-events-none absolute -right-20 -top-16 h-48 w-48 rounded-full blur-2xl"
+              style="background: radial-gradient(circle, rgba(0,99,181,0.22) 0%, rgba(0,99,181,0) 70%);"
+            />
+            <div
+              class="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full blur-2xl"
+              style="background: radial-gradient(circle, rgba(249,189,21,0.2) 0%, rgba(249,189,21,0) 72%);"
+            />
 
-            <img src="../assets/logo.png" alt="" class="absolute right-8 top-8 h-20 w-20 opacity-10" />
+            <img src="../assets/logo.png" alt="" class="pointer-events-none absolute right-8 top-8 h-20 w-20 opacity-[0.09] transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105" />
 
             <div class="relative z-10 h-full">
-              <div class="mb-2 font-body text-xs font-600 uppercase tracking-[0.2em] text-white/40">
-                Стоимость проживания
+              <div class="mb-4 flex flex-wrap items-center gap-2">
+                <div class="flex-1 font-body text-xs font-600 uppercase tracking-[0.2em] text-ink-500">
+                  Стоимость проживания
+                </div>
+                <span
+                  class="inline-flex items-center rounded-full px-3 py-1 font-body text-[11px] font-500 uppercase tracking-[0.12em]"
+                  style="background: var(--color-brand-100); color: var(--color-gold-600);"
+                >
+                  Индивидуальный расчёт
+                </span>
               </div>
-              <div class="mb-2 font-display font-700 text-white" style="font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1;">
+
+              <div class="mb-2 font-display font-700 text-ink-900" style="font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1;">
                 Индивидуально
               </div>
-              <!-- divider line: brand-500 (was gold-400) -->
-              <div class="mb-7 h-0.5 w-16" style="background: linear-gradient(90deg, var(--color-brand-500), transparent);" />
+              <div class="mb-7 h-0.5 w-20" style="background: linear-gradient(90deg, var(--color-sapphire-700), transparent);" />
 
-              <p class="mb-8 font-body text-sm leading-relaxed font-300 text-white/60">
-                Стоимость проживания в пансионате «Доброе сердце»
-                устанавливается индивидуально для каждого проживающего
-                с учётом их потребностей и выбранного формата.
+              <p class="mb-8 font-body text-sm leading-relaxed font-400 text-ink-700/95">
+                Стоимость проживания в пансионате «Доброе сердце» рассчитывается персонально для каждого
+                проживающего с учётом состояния здоровья, формата размещения и объёма необходимого ухода.
               </p>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div
                   v-for="factor in factors"
                   :key="factor.label"
-                  class="group flex items-start gap-3 rounded-2xl border border-white/8 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10"
+                  class="group/factor flex items-start gap-3 rounded-2xl border p-4 transition-all duration-300 hover:-translate-y-0.5"
+                  style="border-color: var(--color-sapphire-200); background: rgba(232, 244, 253, 0.85);"
                 >
-                  <!-- factor icons: brand-500 gold (was gold-400) -->
-                  <span class="h-5 w-5 flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
-                    style="color: var(--color-brand-500);"
-                    v-html="factor.icon" />
-                  <span class="font-body text-xs leading-snug font-400 text-white/65">{{ factor.label }}</span>
+                  <span
+                    class="mt-0.5 h-5 w-5 flex-shrink-0 transition-transform duration-300 group-hover/factor:scale-110"
+                    style="color: var(--color-sapphire-700);"
+                    v-html="factor.icon"
+                  />
+                  <span class="font-body text-xs leading-snug font-500 text-ink-700">{{ factor.label }}</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- badge: sapphire-700 (was brand-600 gold — CTA badge should be sapphire) -->
-          <div
-            class="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-5 py-2.5 shadow-sapphire bg-[#E6A701]"
-          >
-            <span class="font-body text-xs font-600 uppercase tracking-widest text-white ">Звонок бесплатный</span>
-          </div>
+  
         </div>
 
         <div data-animate class="delay-200 mt-8 lg:mt-0">

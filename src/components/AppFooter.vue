@@ -24,7 +24,7 @@ function scrollTo(href: string) {
 </script>
 
 <template>
-  <footer style="background: var(--color-sapphire-800)" class="relative overflow-hidden">
+  <footer style="" class="relative overflow-hidden">
     <!-- top accent line: brand-500 gold -->
     <div
       class="absolute left-0 right-0 top-0 h-px"
@@ -61,10 +61,10 @@ function scrollTo(href: string) {
             />
           </div>
           <div class="mt-3">
-            <div class="font-body text-xs font-400 tracking-widest text-white/35 uppercase">
+            <div class="font-body text-xs font-400 tracking-widest text-black/35 uppercase">
               Пансионат для пожилых людей
             </div>
-            <p class="mb-7 font-body text-sm font-300 leading-prose text-white/45">
+            <p class="mb-7 font-body text-sm font-300 leading-prose text-black/45">
               Частный комфортабельный пансионат «Доброе сердце» обеспечивает
               круглосуточный квалифицированный уход за пожилыми людьми в Астане
               с индивидуальным подходом к каждому проживающему.
@@ -84,13 +84,13 @@ function scrollTo(href: string) {
         </div>
 
         <div>
-          <h3 class="mb-5 font-body text-xs font-600 uppercase tracking-[0.2em] text-white/40">
+          <h3 class="mb-5 font-body text-xs font-600 uppercase tracking-[0.2em] text-black/40">
             Навигация
           </h3>
           <ul class="space-y-3">
             <li v-for="link in navLinks" :key="link.href">
               <button
-                class="group flex items-center gap-2 font-body text-sm text-white/45 transition-colors duration-200 hover:text-white/80"
+                class="group flex items-center gap-2 font-body text-sm text-black/45 transition-colors duration-200 hover:text-black/80"
                 @click="scrollTo(link.href)"
               >
                 <!-- hover line: brand-500 gold -->
@@ -105,17 +105,17 @@ function scrollTo(href: string) {
         </div>
 
         <div>
-          <h3 class="mb-5 font-body text-xs font-600 uppercase tracking-[0.2em] text-white/40">
+          <h3 class="mb-5 font-body text-xs font-600 uppercase tracking-[0.2em] text-black/40">
             Контакты
           </h3>
           <div class="space-y-4">
             <div>
-              <div class="font-body text-sm font-500 text-white/70">🇰🇿 Казахстан, г. Астана</div>
-              <div class="mt-0.5 font-body text-sm text-white/40">просп. Республики</div>
+              <div class="font-body text-sm font-500 text-black/70">🇰🇿 Казахстан, г. Астана</div>
+              <div class="mt-0.5 font-body text-sm text-black/40">просп. Республики</div>
             </div>
             <div>
-              <div class="font-body text-sm font-500 text-white/70">Режим работы:</div>
-              <div class="font-body text-sm text-white/40">Круглосуточно, 7 дней в неделю</div>
+              <div class="font-body text-sm font-500 text-black/70">Режим работы:</div>
+              <div class="font-body text-sm text-black/40">Круглосуточно, 7 дней в неделю</div>
             </div>
             <div class="mt-2">
               <!-- badge: brand-500 gold tinted (was rgba(201,169,78,...)) -->
@@ -125,7 +125,7 @@ function scrollTo(href: string) {
               >
                 <!-- pulse dot: brand-400 warm gold (was emerald-400 green) -->
                 <span class="h-1.5 w-1.5 rounded-full bg-brand-400 animate-pulse" />
-                <span class="font-body text-xs font-500 text-white/50">Сейчас принимаем заявки</span>
+                <span class="font-body text-xs font-500 text-black/50">Сейчас принимаем заявки</span>
               </div>
             </div>
           </div>
@@ -137,12 +137,12 @@ function scrollTo(href: string) {
         style="border-color: rgba(255,255,255,0.07);"
       >
         <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p class="font-body text-xs text-white/25">
+          <p class="font-body text-xs text-black/25">
             © {{ currentYear }} Пансионат «Доброе сердце». Все права защищены.
           </p>
           <div class="flex items-center gap-2">
             <img src="../assets/logo.png" alt="" class="h-4 w-4 rounded-full opacity-25" />
-            <span class="font-body text-xs text-white/20">Создано с заботой и любовью к людям</span>
+            <span class="font-body text-xs text-black/20">Создано с заботой и любовью к людям</span>
           </div>
         </div>
       </div>

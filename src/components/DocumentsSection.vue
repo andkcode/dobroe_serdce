@@ -30,8 +30,8 @@ const documents = [
         <div data-animate>
           <div class="eyebrow mb-5">Документы</div>
           <h2 class="section-title mb-6">
-            Необходимые<br />
-            <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">документы для поступления</em>
+            <span class="text-sapphire-800">Необходимые документы</span><br>
+            <span class="text-brand-500">для поступления</span>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">

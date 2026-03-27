@@ -89,17 +89,14 @@ const missions = [
               Лет опыта
             </div>
           </div>
-        </div>
+        </div> 
 
         <div data-animate class="delay-200 lg:pl-4">
           <div class="eyebrow mb-5">О нас</div>
 
           <h2 class="section-title mb-6 text-balance">
-            Наша миссия —<br />
-            <!-- Italic accent: brand-500 gold (warm, joyful) -->
-            <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.6rem, 4vw, 2.3rem);">
-              ваш покой и благополучие
-            </em>
+            <span class="text-sapphire-800">Наша миссия<br></span>
+            <span class="text-brand-500"> — ваш покой и благополучие</span>
           </h2>
 
           <div class="gold-divider mb-8" />

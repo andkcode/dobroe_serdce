@@ -62,9 +62,8 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.leng
           <div class="h-px w-8" style="background: var(--color-brand-500);" />
         </div>
         <h2 class="section-title">
-          Взгляните на наш<br />
-          <!-- italic em: brand-400 (was gold-300) -->
-          <em class="font-display italic font-400" style="color: var(--color-brand-400);">уютный пансионат</em>
+          <span class="text-sapphire-800">Взгляните на наш</span><br>
+          <span class="text-brand-500">уютный пансионат</span>
         </h2>
       </div>
 

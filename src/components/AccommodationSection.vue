@@ -83,9 +83,8 @@ const notAccepted = [
       <div class="mb-16 text-center" data-animate>
         <div class="eyebrow mb-5 justify-center">Варианты проживания</div>
         <h2 class="section-title mb-5">
-          Выберите удобный<br />
-          <!-- gold italic accent -->
-          <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.6rem, 4vw, 2.3rem);">формат проживания</em>
+          <span class="text-sapphire-800">Выберите удобный</span><br>
+          <span class="text-brand-500">формат проживания</span>
         </h2>
       </div>
 

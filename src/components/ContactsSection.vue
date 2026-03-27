@@ -20,8 +20,8 @@
       <div class="mb-16 text-center" data-animate>
         <div class="eyebrow mb-5 justify-center">Контакты</div>
         <h2 class="section-title mb-5">
-          Свяжитесь<br />
-          <em class="font-display italic font-400" style="color: var(--color-brand-500);">с нами сегодня</em>
+          <span class="text-sapphire-800">Свяжитесь с нами</span><br>
+          <span class="text-brand-500">сегодня</span>
         </h2>
         <p class="section-subtitle mx-auto max-w-xl">
           Позвоните или заполните форму — мы ответим как можно скорее

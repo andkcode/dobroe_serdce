@@ -73,11 +73,11 @@ function scrollTo(id: string) {
       <div class="lg:max-w-3xl">
 
         <h1 class="delay-100 animate-fade-up font-display leading-none tracking-tight text-white text-center lg:text-left w-full"
-          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 700; line-height: 1.05;"
+          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05;"
         >
           Комфорт и забота<br />
           <!-- italic gold: brand-500 (was #dcc07e) -->
-          <em class="font-display italic" style="font-weight: 400; color: var(--color-brand-500);">для ваших близких</em>
+          <span style="font-weight: 400; color: var(--color-brand-500);">для ваших близких</span>
         </h1>
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->

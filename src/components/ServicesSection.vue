@@ -75,8 +75,8 @@ const services: ServiceItem[] = [
       <div class="mb-16 text-center" data-animate>
         <div class="eyebrow mb-5 justify-center">Наши услуги</div>
         <h2 class="section-title mb-5">
-          Комплексный уход<br />
-          <em class="font-display font-400 italic" style="color: var(--color-brand-500); font-size: clamp(1.6rem, 4vw, 2.3rem);">за вашими близкими</em>
+          <span class="text-sapphire-800">Комплексный уход<br></span>
+          <span class="text-brand-500">за вашими близкими</span>
         </h2>
         <p class="section-subtitle mx-auto max-w-2xl font-medium">
           Наш пансионат обеспечивает благоприятные условия для проживания пожилых людей и ведения
@@ -178,8 +178,7 @@ const services: ServiceItem[] = [
         <!-- чипы внизу -->
         <div class="relative z-10 mt-5 flex flex-wrap gap-2">
           <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">Круглосуточная поддержка</span>
-          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">Индивидуальный подбор</span>
-          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-brand-200); background: var(--color-brand-50); color: var(--color-gold-600);">Без навязывания</span>
+          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">Индивидуальный подход</span>
         </div>
       </div>
     </div>

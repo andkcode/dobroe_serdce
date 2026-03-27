@@ -107,9 +107,9 @@ const steps = [
 
         <div data-animate class="delay-200 mt-8 lg:mt-0">
           <div class="eyebrow mb-5">Цена</div>
-          <h2 class="section-title mb-6" style="font-size: min(7vw, 3.4rem);">
-            Прозрачное ценообразование<br />
-            <em class="font-display italic font-400" style="color: var(--color-brand-500);">для каждой семьи</em>
+          <h2 class="section-title mb-6">
+            <span class="text-sapphire-800">Прозрачное ценообразование</span><br>
+            <span class="text-brand-500">для каждой семьи</span>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">

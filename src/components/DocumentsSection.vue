@@ -7,13 +7,65 @@
     • italic em: brand-600 → brand-500 gold (unified)
 -->
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useLocale } from '@/composables/useLocale'
 import logoBlue from "../assets/logo-blue.png"
-const documents = [
-  'Ксерокопии паспортов (родственника, заключающего договор, и будущего проживающего)',
-  'Письменное согласие будущего проживающего на размещение',
-  'Медицинская карта с имеющимися справками и заключениями врачей',
-  'Справка от психиатра (при необходимости)',
-]
+
+const { lang } = useLocale()
+
+const documents = computed(() => {
+  if (lang.value === 'kk') {
+    return [
+      'Паспорт көшірмелері (келісімшарт жасаушы туыс және болашақ тұрғын)',
+      'Болашақ тұрғынның жазбаша келісімі',
+      'Медициналық карта және дәрігер қорытындылары',
+      'Психиатр анықтамасы (қажет болған жағдайда)',
+    ]
+  }
+
+  return [
+    'Ксерокопии паспортов (родственника, заключающего договор, и будущего проживающего)',
+    'Письменное согласие будущего проживающего на размещение',
+    'Медицинская карта с имеющимися справками и заключениями врачей',
+    'Справка от психиатра (при необходимости)',
+  ]
+})
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Құжаттар',
+      titleBlue: 'Қажетті құжаттар',
+      titleGold: 'қабылдау үшін',
+      subtitle: 'Пансионатқа қабылдау үшін төмендегі құжаттар қажет. Сұрақ туындаса, бізге қоңырау шалыңыз.',
+      transferTitle: 'Жеке трансфер',
+      transferBadge: '24/7 қолдау',
+      transferText: 'Қажет болса, тұрғынды пансионатқа қауіпсіз әрі жайлы жеткізуді ұйымдастырамыз.',
+      chip1: 'Мұқият алып жүру',
+      chip2: 'Жайлы көлік',
+      chip3: 'Астана және облыс',
+      listTitle: 'Құжаттар тізімі',
+      positions: 'позиция',
+      clarify: 'Нақтылау',
+    }
+  }
+
+  return {
+    eyebrow: 'Документы',
+    titleBlue: 'Необходимые документы',
+    titleGold: 'для поступления',
+    subtitle: 'Для того чтобы поступить в пансионат, необходимо подготовить следующий перечень документов. Если у вас возникнут вопросы — позвоните нам, и мы поможем со всеми нюансами.',
+    transferTitle: 'Индивидуальный трансфер',
+    transferBadge: '24/7 поддержка',
+    transferText: 'При необходимости организуем безопасную и комфортную доставку постояльца прямо в пансионат. Учитываем состояние здоровья, подбираем удобный маршрут и сопровождаем на каждом этапе поездки.',
+    chip1: 'Бережное сопровождение',
+    chip2: 'Комфортный транспорт',
+    chip3: 'По Астане и области',
+    listTitle: 'Перечень документов',
+    positions: 'позиций',
+    clarify: 'Уточнить',
+  }
+})
 </script>
 
 <template>
@@ -28,16 +80,14 @@ const documents = [
       <div class="grid items-start gap-16 lg:grid-cols-2 xl:gap-24">
 
         <div data-animate>
-          <div class="eyebrow mb-5">Документы</div>
+          <div class="eyebrow mb-5">{{ ui.eyebrow }}</div>
           <h2 class="section-title mb-6">
-            <span class="text-sapphire-800">Необходимые документы</span><br>
-            <span class="text-brand-500">для поступления</span>
+            <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
+            <span class="text-brand-500">{{ ui.titleGold }}</span>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">
-            Для того чтобы поступить в пансионат, необходимо подготовить
-            следующий перечень документов. Если у вас возникнут вопросы —
-            позвоните нам, и мы поможем со всеми нюансами.
+            {{ ui.subtitle }}
           </p>
 
           <div
@@ -62,30 +112,29 @@ const documents = [
                 >
                   <Icon icon="streamline:ambulance" class="h-6 w-6 text-white" />
                 </div>
-                <h3 class="font-display text-[1.15rem] leading-tight font-600 text-ink-900 sm:text-[1.3rem]">Индивидуальный трансфер</h3>
+                <h3 class="font-display text-[1.15rem] leading-tight font-600 text-ink-900 sm:text-[1.3rem]">{{ ui.transferTitle }}</h3>
               </div>
               <span
                 class="self-start inline-flex items-center rounded-full px-3 py-1 font-body text-[11px] font-500 uppercase tracking-[0.12em]"
                 style="background: var(--color-brand-100); color: var(--color-gold-600);"
               >
-                24/7 поддержка
+                {{ ui.transferBadge }}
               </span>
             </div>
 
             <p class="font-body text-sm leading-relaxed font-400 text-ink-700/95">
-              При необходимости организуем безопасную и комфортную доставку постояльца прямо в пансионат.
-              Учитываем состояние здоровья, подбираем удобный маршрут и сопровождаем на каждом этапе поездки.
+              {{ ui.transferText }}
             </p>
 
             <div class="mt-5 flex flex-wrap gap-2">
               <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
-                Бережное сопровождение
+                {{ ui.chip1 }}
               </span>
               <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
-                Комфортный транспорт
+                {{ ui.chip2 }}
               </span>
               <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
-                По Астане и области
+                {{ ui.chip3 }}
               </span>
             </div>
           </div>
@@ -96,8 +145,8 @@ const documents = [
             <div class="mb-7 flex items-center gap-4 border-b border-ivory-200 pb-6">
               <img src="../assets/logo.png" alt="Доброе сердце" class="h-10 w-10" />
               <div>
-                <h3 class="font-display text-2xl font-600 text-ink-900">Перечень документов</h3>
-                <p class="font-body text-xs text-ink-400">{{ documents.length }} позиций</p>
+                <h3 class="font-display text-2xl font-600 text-ink-900">{{ ui.listTitle }}</h3>
+                <p class="font-body text-xs text-ink-400">{{ documents.length }} {{ ui.positions }}</p>
               </div>
             </div>
 
@@ -122,7 +171,7 @@ const documents = [
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              Уточнить
+              {{ ui.clarify }}
             </a>
           </div>
         </div>

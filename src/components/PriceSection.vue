@@ -9,7 +9,11 @@
     • CTA strip at bottom: sapphire-800 → sapphire-700 to brand-800 (was brand-600 to brand-800)
 -->
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useLocale } from '@/composables/useLocale'
 import logoBlue from "../assets/logo-blue.png"
+
+const { lang } = useLocale()
 
 const factors = [
   {
@@ -36,6 +40,65 @@ const steps = [
   { n: 3, text: 'Обсудите индивидуальные условия проживания' },
   { n: 4, text: 'Подпишите договор и оформите документы' },
 ]
+
+const factorsView = computed(() => {
+  if (lang.value !== 'kk') {
+    return factors
+  }
+
+  const labels = [
+    'Тұру ұзақтығы',
+    'Тұрғынның денсаулық жағдайы',
+    'Тұру бөлмесінің санаты',
+    'Қажетті күтім көлемі',
+  ]
+
+  return factors.map((factor, index) => ({
+    ...factor,
+    label: labels[index] ?? factor.label,
+  }))
+})
+
+const stepsView = computed(() => {
+  if (lang.value !== 'kk') {
+    return steps
+  }
+
+  return [
+    { n: 1, text: 'Бізге қоңырау шалыңыз' },
+    { n: 2, text: 'Бос орындардың бар-жоғын біліңіз' },
+    { n: 3, text: 'Жеке тұру шарттарын талқылаңыз' },
+    { n: 4, text: 'Келісімшартқа қол қойып, құжаттарды рәсімдеңіз' },
+  ]
+})
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Баға',
+      titleBlue: 'Мөлдір баға саясаты',
+      titleGold: 'әр отбасы үшін',
+      subtitle: 'Баға тұру ұзақтығын, денсаулық жағдайын және бөлме санатын ескере отырып жеке есептеледі.',
+      cardTitle: 'Тұру құны',
+      cardBadge: 'Жеке есеп',
+      cardBig: 'Жекелей',
+      cardText: '«Доброе сердце» пансионатындағы тұру құны әр тұрғын үшін жеке есептеледі.',
+      cta: 'Бағаны білу',
+    }
+  }
+
+  return {
+    eyebrow: 'Цена',
+    titleBlue: 'Прозрачное ценообразование',
+    titleGold: 'для каждой семьи',
+    subtitle: 'Стоимость определяется индивидуально с учётом продолжительности проживания, состояния здоровья проживающего и категории номера. Чтобы записаться, необходимо позвонить и узнать о наличии свободных мест.',
+    cardTitle: 'Стоимость проживания',
+    cardBadge: 'Индивидуальный расчёт',
+    cardBig: 'Индивидуально',
+    cardText: 'Стоимость проживания в пансионате «Доброе сердце» рассчитывается персонально для каждого проживающего с учётом состояния здоровья, формата размещения и объёма необходимого ухода.',
+    cta: 'Узнать цену',
+  }
+})
 </script>
 
 <template>
@@ -63,29 +126,28 @@ const steps = [
             <div class="relative z-10 h-full">
               <div class="mb-4 flex flex-wrap items-center gap-2">
                 <div class="flex-1 font-body text-xs font-600 uppercase tracking-[0.2em] text-ink-500">
-                  Стоимость проживания
+                  {{ ui.cardTitle }}
                 </div>
                 <span
                   class="inline-flex items-center rounded-full px-3 py-1 font-body text-[11px] font-500 uppercase tracking-[0.12em]"
                   style="background: var(--color-brand-100); color: var(--color-gold-600);"
                 >
-                  Индивидуальный расчёт
+                  {{ ui.cardBadge }}
                 </span>
               </div>
 
               <div class="mb-2 font-display font-700 text-ink-900" style="font-size: clamp(1.8rem, 8vw, 4rem); line-height: 1;">
-                Индивидуально
+                {{ ui.cardBig }}
               </div>
               <div class="mb-7 h-0.5 w-20" style="background: linear-gradient(90deg, var(--color-sapphire-700), transparent);" />
 
               <p class="mb-8 font-body text-sm leading-relaxed font-400 text-ink-700/95">
-                Стоимость проживания в пансионате «Доброе сердце» рассчитывается персонально для каждого
-                проживающего с учётом состояния здоровья, формата размещения и объёма необходимого ухода.
+                {{ ui.cardText }}
               </p>
 
               <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div
-                  v-for="factor in factors"
+                  v-for="factor in factorsView"
                   :key="factor.label"
                   class="group/factor flex items-start gap-3 rounded-2xl border p-4 transition-all duration-300 hover:-translate-y-0.5"
                   style="border-color: var(--color-sapphire-200); background: rgba(232, 244, 253, 0.85);"
@@ -106,21 +168,18 @@ const steps = [
         </div>
 
         <div data-animate class="delay-200 mt-8 lg:mt-0">
-          <div class="eyebrow mb-5">Цена</div>
+          <div class="eyebrow mb-5">{{ ui.eyebrow }}</div>
           <h2 class="section-title mb-6">
-            <span class="text-sapphire-800">Прозрачное ценообразование</span><br>
-            <span class="text-brand-500">для каждой семьи</span>
+            <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
+            <span class="text-brand-500">{{ ui.titleGold }}</span>
           </h2>
           <div class="gold-divider mb-8" />
           <p class="section-subtitle mb-10 leading-prose">
-            Стоимость определяется индивидуально с учётом продолжительности
-            проживания, состояния здоровья проживающего и категории номера.
-            Чтобы записаться, необходимо позвонить и
-            узнать о наличии свободных мест.
+            {{ ui.subtitle }}
           </p>
 
           <ol class="mb-10 space-y-5">
-            <li v-for="step in steps" :key="step.n" class="group flex items-center gap-4">
+            <li v-for="step in stepsView" :key="step.n" class="group flex items-center gap-4">
               <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center">
                 <img :src="logoBlue" alt="icon" class="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110" />
               </div>
@@ -134,7 +193,7 @@ const steps = [
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              Узнать цену
+              {{ ui.cta }}
             </a>
             <div class="font-body text-sm text-ink-400">+38 096 146 29 10</div>
           </div>

@@ -9,21 +9,52 @@
     • Streak gradient: sapphire-600 → brand-500 gold
 -->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useScrolled } from '@/composables/useScroll'
+import { useLocale } from '@/composables/useLocale'
 
 const { isScrolled } = useScrolled()
+const { lang, setLang } = useLocale()
 const isMobileMenuOpen = ref(false)
 const activeItem = ref<string | null>(null)
 
-const navItems = [
-  { label: 'О нас',       href: '#about' },
-  { label: 'Услуги',      href: '#services' },
-  { label: 'Проживание',  href: '#accommodation' },
-  { label: 'Документы',   href: '#documents' },
-  { label: 'Цена',        href: '#price' },
-  { label: 'Контакты',    href: '#contacts' },
-]
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      navAria: 'Басты навигация',
+      callAria: 'Қоңырау шалу',
+      openMenuAria: 'Мәзірді ашу',
+      mobileMenuAria: 'Мобильді мәзір',
+      callButton: 'Қоңырау шалу',
+      navItems: [
+        { label: 'Біз туралы', href: '#about' },
+        { label: 'Қызметтер', href: '#services' },
+        { label: 'Тұру', href: '#accommodation' },
+        { label: 'Құжаттар', href: '#documents' },
+        { label: 'Баға', href: '#price' },
+        { label: 'Байланыс', href: '#contacts' },
+      ],
+    }
+  }
+
+  return {
+    navAria: 'Главная навигация',
+    callAria: 'Позвонить',
+    openMenuAria: 'Открыть меню',
+    mobileMenuAria: 'Мобильное меню',
+    callButton: 'Позвонить',
+    navItems: [
+      { label: 'О нас', href: '#about' },
+      { label: 'Услуги', href: '#services' },
+      { label: 'Проживание', href: '#accommodation' },
+      { label: 'Документы', href: '#documents' },
+      { label: 'Цена', href: '#price' },
+      { label: 'Контакты', href: '#contacts' },
+    ],
+  }
+})
+
+const navItems = computed(() => ui.value.navItems)
 
 function scrollToSection(href: string) {
   activeItem.value = href
@@ -41,7 +72,7 @@ function scrollToSection(href: string) {
 
     <div class="ds-header__bg" aria-hidden="true" />
 
-    <nav class="ds-header__nav" aria-label="Главная навигация">
+    <nav class="ds-header__nav" :aria-label="ui.navAria">
 
       <div class="ds-logo__img-wrap" style="position: relative; display: inline-block;">
         <div style="
@@ -100,7 +131,24 @@ function scrollToSection(href: string) {
           </a>
         </div>
 
-        <a href="tel:+380961462910" class="ds-cta" aria-label="Позвонить">
+        <div class="hidden items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur-sm md:flex">
+          <button
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
+            :class="lang === 'ru' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
+            @click="setLang('ru')"
+          >
+            RU
+          </button>
+          <button
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
+            :class="lang === 'kk' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
+            @click="setLang('kk')"
+          >
+            KZ
+          </button>
+        </div>
+
+        <a href="tel:+380961462910" class="ds-cta" :aria-label="ui.callAria">
           <span class="ds-cta__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
@@ -114,7 +162,7 @@ function scrollToSection(href: string) {
       <button
         class="ds-burger"
         :class="{ 'ds-burger--open': isMobileMenuOpen }"
-        aria-label="Открыть меню"
+        :aria-label="ui.openMenuAria"
         :aria-expanded="isMobileMenuOpen"
         @click="isMobileMenuOpen = !isMobileMenuOpen"
       >
@@ -130,7 +178,7 @@ function scrollToSection(href: string) {
         class="ds-drawer"
         role="dialog"
         aria-modal="true"
-        aria-label="Мобильное меню"
+        :aria-label="ui.mobileMenuAria"
       >
         <div class="ds-drawer__sep" aria-hidden="true" />
         <ul class="ds-drawer__list" role="list">
@@ -150,8 +198,24 @@ function scrollToSection(href: string) {
           <svg class="ds-drawer__cta-icon" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
-          Позвонить
+          {{ ui.callButton }}
         </a>
+          <div class="mt-3 flex justify-center gap-2">
+            <button
+              class="rounded-full border px-4 py-1.5 font-body text-xs font-600 tracking-wider"
+              :class="lang === 'ru' ? 'border-sapphire-700 bg-sapphire-700 text-white' : 'border-ink-200 text-ink-600'"
+              @click="setLang('ru')"
+            >
+              RU
+            </button>
+            <button
+              class="rounded-full border px-4 py-1.5 font-body text-xs font-600 tracking-wider"
+              :class="lang === 'kk' ? 'border-sapphire-700 bg-sapphire-700 text-white' : 'border-ink-200 text-ink-600'"
+              @click="setLang('kk')"
+            >
+              KZ
+            </button>
+          </div>
           <div class="flex justify-center items-center gap-6 pt-4">
             <a
               href="https://instagram.com/pansionat_dobroe_serdce"

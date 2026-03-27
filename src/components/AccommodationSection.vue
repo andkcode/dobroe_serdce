@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useLocale } from '@/composables/useLocale'
+
 interface AccommodationOption {
   icon: string
   title: string
@@ -7,6 +10,8 @@ interface AccommodationOption {
   gradient: string
   iconBg: string
 }
+
+const { lang } = useLocale()
 
 const options: AccommodationOption[] = [
   {
@@ -74,6 +79,97 @@ const notAccepted = [
   'Инфекционные заболевания',
   'Выраженное агрессивное поведение',
 ]
+
+const kkOptions = [
+  {
+    title: 'Қысқа мерзімді орналастыру',
+    subtitle: 'Тәуліктік немесе кез келген мерзімге',
+    description: 'Жақыныңызды тәуліктік немесе өзіңізге ыңғайлы кез келген мерзімге орналастыра аласыз.',
+  },
+  {
+    title: 'Күндізгі орналастыру',
+    subtitle: 'Күндіз бізде, түнде үйде',
+    description: 'Қажет болса, жақыныңызды күндізге қалдырып, кешке үйге алып кете аласыз.',
+  },
+  {
+    title: 'Тәулік бойы орналастыру',
+    subtitle: 'Толық кәсіби күтім',
+    description: 'Егер жақыныңызға тұрақты күтім қажет болса, оны тәулік бойы өз мойнымызға аламыз.',
+  },
+  {
+    title: 'Науқастар мен мүгедектігі бар адамдарға 24/7 күтім',
+    subtitle: 'Төсек тартып жатқан және деменциясы бар адамдарға күтім',
+    description: 'Білікті медбике мен күтуші тәулік бойы күтім көрсетеді: тамақтандыру, гигиена, қозғалысқа көмек.',
+  },
+]
+
+const optionsView = computed(() => {
+  if (lang.value !== 'kk') {
+    return options
+  }
+
+  return options.map((option, index) => ({
+    ...option,
+    title: kkOptions[index]?.title ?? option.title,
+    subtitle: kkOptions[index]?.subtitle ?? option.subtitle,
+    description: kkOptions[index]?.description ?? option.description,
+  }))
+})
+
+const acceptedView = computed(() => {
+  if (lang.value !== 'kk') {
+    return accepted
+  }
+
+  return [
+    'Дені сау егде жастағы адамдар',
+    'Төсек тартып жатқан егде жастағы науқастар',
+    'Жарақаттан және сынықтан кейінгі адамдар',
+    'Инсульт немесе инфаркттан кейінгі адамдар',
+    'Альцгеймер ауруы бар адамдар',
+    'Қарттық деменциясы бар егде жастағы адамдар',
+    'Операциядан кейінгі егде жастағы адамдар',
+  ]
+})
+
+const notAcceptedView = computed(() => {
+  if (lang.value !== 'kk') {
+    return notAccepted
+  }
+
+  return [
+    'Онкологиялық аурудың 4-сатысы',
+    'Гепатит B немесе C',
+    'Жұқпалы аурулар',
+    'Айқын агрессивті мінез-құлық',
+  ]
+})
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Тұру нұсқалары',
+      titleBlue: 'Ыңғайлы',
+      titleGold: 'тұру форматын таңдаңыз',
+      acceptedTitle: 'Біз кімдерді қабылдаймыз',
+      acceptedSubtitle: 'Жағдайлар мен диагноздардың толық тізімі',
+      blockedTitle: 'Қарсы көрсетілімдер',
+      blockedSubtitle: 'Мамандандырылған көмекті қажет ететін жағдайлар',
+      blockedNote: '* Өкінішке қарай, аталған жағдайларда мамандандырылған көмек көрсете алмаймыз. Нақтылау үшін қоңырау шалыңыз.',
+    }
+  }
+
+  return {
+    eyebrow: 'Варианты проживания',
+    titleBlue: 'Выберите удобный',
+    titleGold: 'формат проживания',
+    acceptedTitle: 'Кого мы принимаем',
+    acceptedSubtitle: 'Полный перечень состояний и диагнозов',
+    blockedTitle: 'Противопоказания',
+    blockedSubtitle: 'Случаи, требующие специализированной помощи',
+    blockedNote: '* К сожалению, мы не в состоянии предоставить специализированную помощь в перечисленных случаях. Для уточнения — звоните нам.',
+  }
+})
 </script>
 
 <template>
@@ -81,16 +177,16 @@ const notAccepted = [
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
       <div class="mb-16 text-center" data-animate>
-        <div class="eyebrow mb-5 justify-center">Варианты проживания</div>
+        <div class="eyebrow mb-5 justify-center">{{ ui.eyebrow }}</div>
         <h2 class="section-title mb-5">
-          <span class="text-sapphire-800">Выберите удобный</span><br>
-          <span class="text-brand-500">формат проживания</span>
+          <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
+          <span class="text-brand-500">{{ ui.titleGold }}</span>
         </h2>
       </div>
 
       <div class="mb-20 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <div
-          v-for="(option, i) in options"
+          v-for="(option, i) in optionsView"
           :key="option.title"
           class="group relative overflow-hidden rounded-3xl border border-ivory-200 bg-white p-6 shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-lift sm:p-8"
           :class="`animation-delay-${i * 100}`"
@@ -146,13 +242,13 @@ const notAccepted = [
               </svg>
             </div>
             <div>
-              <h3 class="font-display text-2xl font-600 text-ink-900">Кого мы принимаем</h3>
-              <p class="font-body text-xs text-ink-400">Полный перечень состояний и диагнозов</p>
+              <h3 class="font-display text-2xl font-600 text-ink-900">{{ ui.acceptedTitle }}</h3>
+              <p class="font-body text-xs text-ink-400">{{ ui.acceptedSubtitle }}</p>
             </div>
           </div>
           <ul class="space-y-3">
             <li
-              v-for="item in accepted"
+              v-for="item in acceptedView"
               :key="item"
               class="flex items-start gap-3 font-body text-sm text-ink-700"
             >
@@ -188,13 +284,13 @@ const notAccepted = [
               </svg>
             </div>
             <div>
-              <h3 class="font-display text-2xl font-600 text-ink-900">Противопоказания</h3>
-              <p class="font-body text-xs text-ink-400">Случаи, требующие специализированной помощи</p>
+              <h3 class="font-display text-2xl font-600 text-ink-900">{{ ui.blockedTitle }}</h3>
+              <p class="font-body text-xs text-ink-400">{{ ui.blockedSubtitle }}</p>
             </div>
           </div>
           <ul class="mb-6 space-y-3">
             <li
-              v-for="item in notAccepted"
+              v-for="item in notAcceptedView"
               :key="item"
               class="flex items-start gap-3 font-body text-sm text-ink-700"
             >
@@ -214,7 +310,7 @@ const notAccepted = [
             </li>
           </ul>
           <p class="font-body text-xs leading-relaxed" style="color: #a93226; opacity: 0.75;">
-            * К сожалению, мы не в состоянии предоставить специализированную помощь в перечисленных случаях. Для уточнения — звоните нам.
+            {{ ui.blockedNote }}
           </p>
         </div>
       </div>

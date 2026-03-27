@@ -8,19 +8,60 @@
     • bg-hero-gradient → unchanged (uses CSS var already correct)
 -->
 <script setup lang="ts">
+import { computed } from 'vue'
 import garden from "../assets/hero/garden.mp4"
 import gardenMobile from "../assets/hero/garden-mobile.mp4"
+import { useLocale } from '@/composables/useLocale'
+
+const { lang } = useLocale()
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      aria: 'Басты баннер',
+      titleLine1: 'Жақындарыңызға жайлылық пен қамқорлық',
+      subtitle:
+        'Біздің пансионат - әрбір тұрғын өзін үйдегідей сезінетін орын: жылы атмосфера, білікті мамандар және белсенді өмір.',
+      statLabel: 'Тәулік бойы күтім',
+      mealLabel: 'Күніне 4 рет тамақтану',
+      ctaPrimary: 'Пансионатқа жазылу',
+      ctaSecondary: 'Толығырақ білу',
+      scrollHint: 'Төмен сырғытыңыз',
+      scrollButtonAria: 'Төменге сырғыту',
+    }
+  }
+
+  return {
+    aria: 'Главный баннер',
+    titleLine1: 'Комфорт и забота для ваших близких',
+    subtitle:
+      'Наш пансионат — место, где каждый проживающий чувствует себя дома: тёплая атмосфера, специалисты рядом и полноценная активная жизнь под заботливым присмотром.',
+    statLabel: 'Круглосуточный уход',
+    mealLabel: 'Питание в день',
+    ctaPrimary: 'Записаться в пансионат',
+    ctaSecondary: 'Узнать больше',
+    scrollHint: 'Листайте',
+    scrollButtonAria: 'Прокрутить вниз',
+  }
+})
 
 function scrollTo(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
 }
+
+const stats = computed(() => [
+  {
+    value: '24/7',
+    label: ui.value.statLabel,
+  },
+])
 </script>
 
 <template>
 
   <section
     class="relative flex min-h-screen items-center overflow-hidden"
-    aria-label="Главный баннер"
+    :aria-label="ui.aria"
   >
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
@@ -75,9 +116,7 @@ function scrollTo(id: string) {
         <h1 class="delay-100 animate-fade-up font-display leading-none tracking-tight text-white text-center lg:text-left w-full"
           style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05;"
         >
-          Комфорт и забота<br />
-          <!-- italic gold: brand-500 (was #dcc07e) -->
-          <span style="font-weight: 400; color: var(--color-brand-500);">для ваших близких</span>
+          {{ ui.titleLine1 }}
         </h1>
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->
@@ -87,9 +126,7 @@ function scrollTo(id: string) {
         />
 
         <p class="delay-200 animate-fade-up max-w-xl font-body text-lg font-300 leading-relaxed md:text-xl" style="color: rgba(255,255,255,0.72);">
-          Наш пансионат — место, где каждый проживающий чувствует себя
-          дома: тёплая атмосфера, специалисты рядом и полноценная
-          активная жизнь под заботливым присмотром.
+          {{ ui.subtitle }}
         </p>
 
         <div class="delay-300 animate-fade-up mt-10 flex flex-wrap items-start gap-5 sm:mt-12 sm:gap-8">
@@ -100,13 +137,13 @@ function scrollTo(id: string) {
           <div class="w-px self-stretch bg-white/15 mx-2 hidden sm:block" />
           <div class="flex flex-col gap-1">
             <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">4×</div>
-            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">Питание в день</div>
+            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">{{ ui.mealLabel }}</div>
           </div>
         </div>
 
         <div class="delay-400 animate-fade-up mt-9 flex flex-wrap items-center gap-3 sm:mt-11 sm:gap-4">
           <button class="btn-primary" @click="scrollTo('#contacts')">
-            Записаться в пансионат
+            {{ ui.ctaPrimary }}
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -116,15 +153,15 @@ function scrollTo(id: string) {
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
             </svg>
-            Узнать больше
+            {{ ui.ctaSecondary }}
           </button>
         </div>
       </div>
     </div>
 
     <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
-      <span class="font-body text-[10px] uppercase tracking-[0.2em] text-white/40">Листайте</span>
-      <button class="animate-scroll flex flex-col items-center" aria-label="Прокрутить вниз" @click="scrollTo('#about')">
+      <span class="font-body text-[10px] uppercase tracking-[0.2em] text-white/40">{{ ui.scrollHint }}</span>
+      <button class="animate-scroll flex flex-col items-center" :aria-label="ui.scrollButtonAria" @click="scrollTo('#about')">
         <div class="h-8 w-5 rounded-full border border-white/25 flex items-start justify-center pt-1.5">
           <div class="h-1.5 w-1 rounded-full bg-white/60" />
         </div>
@@ -138,15 +175,3 @@ function scrollTo(id: string) {
     />
   </section>
 </template>
-
-<script lang="ts">
-export default {
-  data() {
-    return {
-      stats: [
-        { value: '24/7', label: 'Круглосуточный уход' },
-      ]
-    }
-  }
-}
-</script>

@@ -7,7 +7,7 @@
     • All other white/black overlays unchanged (semantic)
 -->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import img from '../assets/gallery/img.jpg'
 import img1 from '../assets/gallery/img1.jpg'
 import img2 from '../assets/gallery/img2.jpg'
@@ -16,10 +16,13 @@ import img4 from '../assets/gallery/img4.jpg'
 import img5 from '../assets/gallery/img5.jpg'
 import img6 from '../assets/gallery/img6.jpg'
 import img7 from '../assets/gallery/img7.jpg'
+import { useLocale } from '@/composables/useLocale'
 
 interface GalleryImage {
   id: number; src: string; alt: string; span?: string
 }
+
+const { lang } = useLocale()
 
 const images: GalleryImage[] = [
   { id: 1, src: img,  alt: "Зелёный двор и фасад пансионата с колоннами", span: 'col-span-2 row-span-2' },
@@ -32,6 +35,52 @@ const images: GalleryImage[] = [
   { id: 8, src: img7, alt: "Санузел с мраморной плиткой и джакузи" },
 ]
 
+const imagesKk = [
+  'Бағаналы пансионаттың жасыл ауласы мен қасбеті',
+  'Ашық террасасы бар пансионат ғимараты',
+  'Хрусталь шамы бар кең жатын бөлме',
+  'Шам мен диваны бар кіреберіс холл',
+  'Камині және жайлы креслолары бар бөлме',
+  'Үлкен ас үстелі бар ас үй',
+  'Жарық бөлме, паркет және ақ жиһаз',
+  'Мәрмәр плиткасы бар жуыну бөлмесі',
+]
+
+const imagesView = computed(() => {
+  if (lang.value !== 'kk') {
+    return images
+  }
+
+  return images.map((image, index) => ({
+    ...image,
+    alt: imagesKk[index] ?? image.alt,
+  }))
+})
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Фотогалерея',
+      titleBlue: 'Біздің',
+      titleGold: 'жайлы пансионатқа көз жүгіртіңіз',
+      openPhoto: 'Фотосуретті ашу:',
+      close: 'Жабу',
+      prev: 'Алдыңғы фото',
+      next: 'Келесі фото',
+    }
+  }
+
+  return {
+    eyebrow: 'Фотогалерея',
+    titleBlue: 'Взгляните на наш',
+    titleGold: 'уютный пансионат',
+    openPhoto: 'Просмотреть фото:',
+    close: 'Закрыть',
+    prev: 'Предыдущее фото',
+    next: 'Следующее фото',
+  }
+})
+
 const activeImage = ref<GalleryImage | null>(null)
 const activeIndex = ref<number>(0)
 
@@ -39,8 +88,8 @@ function openLightbox(img: GalleryImage, idx: number) {
   activeImage.value = img; activeIndex.value = idx; document.body.style.overflow = 'hidden'
 }
 function closeLightbox() { activeImage.value = null; document.body.style.overflow = '' }
-function prevImage() { activeIndex.value = (activeIndex.value - 1 + images.length) % images.length; activeImage.value = images[activeIndex.value] }
-function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.length; activeImage.value = images[activeIndex.value] }
+function prevImage() { activeIndex.value = (activeIndex.value - 1 + imagesView.value.length) % imagesView.value.length; activeImage.value = imagesView.value[activeIndex.value] }
+function nextImage() { activeIndex.value = (activeIndex.value + 1) % imagesView.value.length; activeImage.value = imagesView.value[activeIndex.value] }
 </script>
 
 <template>
@@ -57,19 +106,19 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.leng
           <!-- eyebrow lines: brand-500 (was gold-400) -->
           <div class="h-px w-8" style="background: var(--color-brand-500);" />
           <span class="font-body text-xs font-600 uppercase tracking-[0.2em]" style="color: var(--color-brand-500);">
-            Фотогалерея
+            {{ ui.eyebrow }}
           </span>
           <div class="h-px w-8" style="background: var(--color-brand-500);" />
         </div>
         <h2 class="section-title">
-          <span class="text-sapphire-800">Взгляните на наш</span><br>
-          <span class="text-brand-500">уютный пансионат</span>
+          <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
+          <span class="text-brand-500">{{ ui.titleGold }}</span>
         </h2>
       </div>
 
       <div class="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-3 md:auto-rows-[220px]" data-animate>
         <button
-          v-for="(image, i) in images"
+          v-for="(image, i) in imagesView"
           :key="image.id"
           :class="[
             'group relative overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-offset-2',
@@ -77,7 +126,7 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.leng
             `animation-delay-${Math.min(i * 100, 500)}`,
           ]"
           style="--tw-ring-color: var(--color-brand-400); --tw-ring-offset-color: var(--color-sapphire-800);"
-          :aria-label="`Просмотреть фото: ${image.alt}`"
+          :aria-label="`${ui.openPhoto} ${image.alt}`"
           @click="openLightbox(image, i)"
         >
           <img :src="image.src" :alt="image.alt" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
@@ -98,13 +147,13 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.leng
     <Teleport to="body">
       <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <div v-if="activeImage" class="fixed inset-0 z-[100] flex items-center justify-center p-4" style="background: rgba(0,19,46,0.96); backdrop-filter: blur(16px);" role="dialog" aria-modal="true" :aria-label="activeImage.alt" @click.self="closeLightbox" @keydown.esc="closeLightbox" @keydown.left="prevImage" @keydown.right="nextImage">
-          <button class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20" aria-label="Закрыть" @click="closeLightbox">
+          <button class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20" :aria-label="ui.close" @click="closeLightbox">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:left-8" aria-label="Предыдущее фото" @click="prevImage">
+          <button class="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:left-8" :aria-label="ui.prev" @click="prevImage">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
           </button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:right-8" aria-label="Следующее фото" @click="nextImage">
+          <button class="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:right-8" :aria-label="ui.next" @click="nextImage">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
           </button>
           <Transition enter-active-class="transition duration-250 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" mode="out-in">
@@ -112,7 +161,7 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % images.leng
           </Transition>
           <div class="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5">
             <p class="font-body text-sm text-white/55">{{ activeImage.alt }}</p>
-            <p class="font-body text-xs text-white/30">{{ activeIndex + 1 }} / {{ images.length }}</p>
+            <p class="font-body text-xs text-white/30">{{ activeIndex + 1 }} / {{ imagesView.length }}</p>
           </div>
         </div>
       </Transition>

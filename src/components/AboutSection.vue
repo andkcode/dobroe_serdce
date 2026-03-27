@@ -1,11 +1,51 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import logoBlue from "../assets/logo-blue.png"
+import { useLocale } from '@/composables/useLocale'
 
-const missions = [
-  'Обеспечить качественный квалифицированный уход за каждым проживающим',
-  'Создать благоприятную атмосферу для проживания и досуга',
-  'Уделить каждому человеку внимание, выслухать его, окружить заботой',
-]
+const { lang } = useLocale()
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Біз туралы',
+      titleBlue: 'Біздің миссиямыз',
+      titleGold: '— сіздің тыныштығыңыз бен амандығыңыз',
+      intro:
+        'Қарттар пансионатын таңдағанда шынайы қамқорлық бар орынды табу маңызды. «Доброе сердце» пансионатында әр адам әрқашан бірінші орында.',
+      outro:
+        'Қарттар үйі туралы көзқарасыңызды өзгерту үшін пансионатқа келіп, тұрғындармен және қызметкерлермен жеке сөйлесуге шақырамыз.',
+      ctaCall: 'Бізбен байланысу',
+      ctaServices: 'Біздің қызметтер',
+      yearsLabel: 'Жыл тәжірибесі',
+      badgeSubtitle: 'қамқорлық пен сүйіспеншілікпен',
+      missions: [
+        'Әрбір тұрғынға сапалы кәсіби күтім көрсету',
+        'Тұру мен демалысқа қолайлы орта қалыптастыру',
+        'Әр адамға көңіл бөліп, қамқорлық таныту',
+      ],
+    }
+  }
+
+  return {
+    eyebrow: 'О нас',
+    titleBlue: 'Наша миссия',
+    titleGold: '— ваш покой и благополучие',
+    intro:
+      'Выбирая пансионат для пожилых людей, важно найти место, где царит настоящая забота. В «Добром сердце» мы ставим человека на первое место.',
+    outro:
+      'Чтобы изменить своё восприятие дома для пожилых людей, мы приглашаем посетить пансионат лично и пообщаться с проживающими и персоналом.',
+    ctaCall: 'Связаться с нами',
+    ctaServices: 'Наши услуги',
+    yearsLabel: 'Лет опыта',
+    badgeSubtitle: 'с заботой и любовью',
+    missions: [
+      'Обеспечить качественный квалифицированный уход за каждым проживающим',
+      'Создать благоприятную атмосферу для проживания и досуга',
+      'Уделить каждому человеку внимание, выслухать его, окружить заботой',
+    ],
+  }
+})
 </script>
 
 <template>
@@ -71,7 +111,7 @@ const missions = [
             </div>
             <div>
               <div class="font-display text-lg font-600 leading-none text-white">Доброе сердце</div>
-              <div class="mt-0.5 font-body text-xs font-400 text-white/65">с заботой и любовью</div>
+              <div class="mt-0.5 font-body text-xs font-400 text-white/65">{{ ui.badgeSubtitle }}</div>
             </div>
           </div>
 
@@ -86,30 +126,28 @@ const missions = [
               10+
             </div>
             <div class="mt-0.5 font-body text-xs font-500 uppercase tracking-wider text-sapphire-500">
-              Лет опыта
+              {{ ui.yearsLabel }}
             </div>
           </div>
         </div> 
 
         <div data-animate class="delay-200 lg:pl-4">
-          <div class="eyebrow mb-5">О нас</div>
+          <div class="eyebrow mb-5">{{ ui.eyebrow }}</div>
 
           <h2 class="section-title mb-6 text-balance">
-            <span class="text-sapphire-800">Наша миссия<br></span>
-            <span class="text-brand-500"> — ваш покой и благополучие</span>
+            <span class="text-sapphire-800">{{ ui.titleBlue }}<br></span>
+            <span class="text-brand-500">{{ ui.titleGold }}</span>
           </h2>
 
           <div class="gold-divider mb-8" />
 
           <p class="section-subtitle mb-8 leading-prose">
-            Выбирая пансионат для пожилых людей, важно найти место,
-            где царит настоящая забота. В «Добром сердце» мы ставим
-            человека на первое место — перед нами стоят чёткие и важные цели:
+            {{ ui.intro }}
           </p>
 
           <ul class="mb-10 space-y-5">
             <li
-              v-for="(mission, i) in missions"
+              v-for="(mission, i) in ui.missions"
               :key="i"
               class="flex items-start gap-4 group"
             >
@@ -128,10 +166,7 @@ const missions = [
           </ul>
 
           <p class="mb-10 font-body text-sm leading-loose text-ink-500">
-            Чтобы изменить своё восприятие дома для пожилых людей,
-            мы приглашаем посетить пансионат лично и пообщаться
-            с проживающими и персоналом. У нас дедушки и бабушки продолжают
-            жить полноценной активной жизнью.
+            {{ ui.outro }}
           </p>
 
           <div class="flex flex-wrap items-center gap-4">
@@ -139,14 +174,14 @@ const missions = [
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              Связаться с нами
+              {{ ui.ctaCall }}
             </a>
             <a
               href="#services"
               class="btn-outline"
               @click.prevent="$el.ownerDocument.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })"
             >
-              Наши услуги
+              {{ ui.ctaServices }}
             </a>
           </div>
         </div>

@@ -10,12 +10,17 @@
     • CTA "Оставить заявку" btn: text-brand-700 hover:bg-ivory-50 → unchanged (correct)
 -->
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useLocale } from '@/composables/useLocale'
+
 interface ServiceItem {
   icon: string
   title: string
   description: string
   accent: string
 }
+
+const { lang } = useLocale()
 
 const services: ServiceItem[] = [
   {
@@ -67,26 +72,104 @@ const services: ServiceItem[] = [
     accent: 'from-brand-50 to-brand-100',
   },
 ]
+
+const kkTexts = [
+  {
+    title: 'Медициналық күтім',
+    description: 'Апта сайын медициналық тексеру жүргізіледі. Күн сайын әр тұрғынның қан қысымы, пульсі және дене температурасы бақыланады.',
+  },
+  {
+    title: 'Тәулік бойы медбике',
+    description: 'Қызметкерлер 24/7 бақылау жүргізеді. Шұғыл көмек көрсетуге арналған медициналық пост бар.',
+  },
+  {
+    title: 'Теңгерімді тамақтану',
+    description: 'Күніне бес рет тамақтану: диеталық талаптар мен әр тұрғынның жеке қалауына сай мәзір.',
+  },
+  {
+    title: 'Күнделікті серуен',
+    description: 'Жақсы көңіл-күй мен белсенділікті сақтау үшін персоналмен бірге таза ауада күнделікті серуен.',
+  },
+  {
+    title: 'Дәрі-дәрмек бақылауы',
+    description: 'Дәрігер тағайындаған дәрілерді уақтылы беру және қабылдауды күнделікті бақылау.',
+  },
+  {
+    title: 'Туыстармен онлайн кездесу',
+    description: 'Skype, Viber, Facebook Messenger арқылы туыстармен бейнеқоңыраулар ұйымдастырылады.',
+  },
+  {
+    title: 'Гигиеналық күтім',
+    description: 'Гигиеналық процедуралар, қозғалысқа көмек және жатын науқастарды кәсіби түрде тамақтандыру.',
+  },
+  {
+    title: 'Жеке назар',
+    description: 'Денсаулықты тұрақты бақылау, психологиялық қолдау және әр тұрғынға жеке тәсіл.',
+  },
+]
+
+const servicesView = computed(() => {
+  if (lang.value !== 'kk') {
+    return services
+  }
+
+  return services.map((service, index) => ({
+    ...service,
+    title: kkTexts[index]?.title ?? service.title,
+    description: kkTexts[index]?.description ?? service.description,
+  }))
+})
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Біздің қызметтер',
+      titleBlue: 'Кешенді күтім',
+      titleGold: 'жақындарыңыз үшін',
+      subtitle: 'Пансионатымыз қарт адамдарға жайлы тұру, белсенді өмір салты және толыққанды демалысқа жағдай жасайды.',
+      ctaTitle: 'Қызметтер бойынша сұрақтарыңыз бар ма?',
+      ctaBadge: 'Тегін',
+      ctaText: 'Қоңырау шалыңыз немесе өтінім қалдырыңыз - кеңесшіміз барлық сұрағыңызға жауап береді.',
+      call: 'Қоңырау шалу',
+      request: 'Өтінім қалдыру',
+      chip1: '24/7 қолдау',
+      chip2: 'Жеке тәсіл',
+    }
+  }
+
+  return {
+    eyebrow: 'Наши услуги',
+    titleBlue: 'Комплексный уход',
+    titleGold: 'за вашими близкими',
+    subtitle: 'Наш пансионат обеспечивает благоприятные условия для проживания пожилых людей и ведения ими активного образа жизни и полноценного отдыха.',
+    ctaTitle: 'Есть вопросы об услугах?',
+    ctaBadge: 'Бесплатно',
+    ctaText: 'Позвоните или оставьте заявку — наш консультант ответит на все ваши вопросы.',
+    call: 'Позвонить',
+    request: 'Оставить заявку',
+    chip1: 'Круглосуточная поддержка',
+    chip2: 'Индивидуальный подход',
+  }
+})
 </script>
 
 <template>
   <section id="services" class="relative overflow-hidden py-20 lg:py-32" style="background: var(--color-ivory-100)">
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mb-16 text-center" data-animate>
-        <div class="eyebrow mb-5 justify-center">Наши услуги</div>
+        <div class="eyebrow mb-5 justify-center">{{ ui.eyebrow }}</div>
         <h2 class="section-title mb-5">
-          <span class="text-sapphire-800">Комплексный уход<br></span>
-          <span class="text-brand-500">за вашими близкими</span>
+          <span class="text-sapphire-800">{{ ui.titleBlue }}<br></span>
+          <span class="text-brand-500">{{ ui.titleGold }}</span>
         </h2>
         <p class="section-subtitle mx-auto max-w-2xl font-medium">
-          Наш пансионат обеспечивает благоприятные условия для проживания пожилых людей и ведения
-          ими активного образа жизни и полноценного отдыха.
+          {{ ui.subtitle }}
         </p>
       </div>
 
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <div
-          v-for="(service, index) in services"
+          v-for="(service, index) in servicesView"
           :key="service.title"
           class="group shadow-card border-ivory-200 hover:shadow-card-hover hover:border-sapphire-100 relative overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-400 hover:-translate-y-1.5"
           :class="`animation-delay-${Math.min(index * 75, 600)}`"
@@ -144,16 +227,16 @@ const services: ServiceItem[] = [
             </div>
             <div>
               <div class="mb-1 flex flex-wrap items-center gap-2">
-                <h3 class="font-display text-xl font-600 text-ink-900">Есть вопросы об услугах?</h3>
+                <h3 class="font-display text-xl font-600 text-ink-900">{{ ui.ctaTitle }}</h3>
                 <span
                   class="inline-flex items-center rounded-full px-3 py-1 font-body text-[11px] font-500 uppercase tracking-[0.12em]"
                   style="background: var(--color-brand-100); color: var(--color-gold-600);"
                 >
-                  Бесплатно
+                  {{ ui.ctaBadge }}
                 </span>
               </div>
               <p class="font-body text-sm leading-relaxed font-400 text-ink-700/90">
-                Позвоните или оставьте заявку — наш консультант ответит на все ваши вопросы.
+                {{ ui.ctaText }}
               </p>
             </div>
           </div>
@@ -164,21 +247,21 @@ const services: ServiceItem[] = [
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              Позвонить
+              {{ ui.call }}
             </a>
             <button
               class="btn-outline sm:whitespace-nowrap"
               @click="$el.ownerDocument.querySelector('#contacts')?.scrollIntoView({ behavior: 'smooth' })"
             >
-              Оставить заявку
+              {{ ui.request }}
             </button>
           </div>
         </div>
 
         <!-- чипы внизу -->
         <div class="relative z-10 mt-5 flex flex-wrap gap-2">
-          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">Круглосуточная поддержка</span>
-          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">Индивидуальный подход</span>
+          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">{{ ui.chip1 }}</span>
+          <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">{{ ui.chip2 }}</span>
         </div>
       </div>
     </div>

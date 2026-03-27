@@ -8,6 +8,49 @@
     • sage success state → unchanged (semantic green correct)
     • check icon #4e8060 → color sage-600 CSS var
 -->
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useLocale } from '@/composables/useLocale'
+
+const { lang } = useLocale()
+
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      eyebrow: 'Байланыс',
+      titleBlue: 'Бізбен',
+      titleGold: 'бүгін хабарласыңыз',
+      subtitle: 'Қоңырау шалыңыз немесе өтінім қалдырыңыз - біз сізге мүмкіндігінше жылдам жауап береміз.',
+      mapTitle: 'Доброе сердце пансионатының орналасуы',
+      address: 'Мекенжай',
+      addressCity: 'Қазақстан, Астана қ.',
+      addressStreet: 'Республика даңғылы',
+      phone: 'Телефон',
+      phoneHint: 'Тәулік бойы, демалыссыз',
+      hours: 'Жұмыс уақыты',
+      hoursMain: 'Күн сайын, 24 / 7',
+      hoursHint: 'Тәулік бойы жұмыс режимі',
+    }
+  }
+
+  return {
+    eyebrow: 'Контакты',
+    titleBlue: 'Свяжитесь с нами',
+    titleGold: 'сегодня',
+    subtitle: 'Позвоните или заполните форму — мы ответим как можно скорее и поможем подобрать лучший вариант для ваших близких.',
+    mapTitle: 'Расположение пансионата Доброе сердце',
+    address: 'Адрес',
+    addressCity: 'Казахстан, г. Астана',
+    addressStreet: 'просп. Республики',
+    phone: 'Телефон',
+    phoneHint: 'Круглосуточно, без выходных',
+    hours: 'Часы работы',
+    hoursMain: 'Ежедневно, 24 / 7',
+    hoursHint: 'Круглосуточный режим работы',
+  }
+})
+</script>
+
 <template>
   <section id="contacts" class="relative overflow-hidden py-20 lg:py-32" style="background: var(--color-ivory-100);">
     <div
@@ -18,14 +61,13 @@
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
 
       <div class="mb-16 text-center" data-animate>
-        <div class="eyebrow mb-5 justify-center">Контакты</div>
+        <div class="eyebrow mb-5 justify-center">{{ ui.eyebrow }}</div>
         <h2 class="section-title mb-5">
-          <span class="text-sapphire-800">Свяжитесь с нами</span><br>
-          <span class="text-brand-500">сегодня</span>
+          <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
+          <span class="text-brand-500">{{ ui.titleGold }}</span>
         </h2>
         <p class="section-subtitle mx-auto max-w-xl">
-          Позвоните или заполните форму — мы ответим как можно скорее
-          и поможем подобрать лучший вариант для ваших близких.
+          {{ ui.subtitle }}
         </p>
       </div>
 
@@ -41,7 +83,7 @@
               allowfullscreen="true"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Расположение пансионата Доброе сердце"
+              :title="ui.mapTitle"
             />
           </div>
 
@@ -66,9 +108,9 @@
                 </svg>
               </div>
               <div>
-                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Адрес</div>
-                <div class="mt-0.5 font-body text-base font-500 text-ink-900">Казахстан, г. Астана</div>
-                <div class="font-body text-sm text-ink-500">просп. Республики</div>
+                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">{{ ui.address }}</div>
+                <div class="mt-0.5 font-body text-base font-500 text-ink-900">{{ ui.addressCity }}</div>
+                <div class="font-body text-sm text-ink-500">{{ ui.addressStreet }}</div>
               </div>
               <svg class="ml-auto mt-1 h-4 w-4 flex-shrink-0 text-ink-300 transition-colors duration-200 group-hover:text-brand-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
@@ -93,12 +135,12 @@
                 </svg>
               </div>
               <div>
-                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Телефон</div>
+                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">{{ ui.phone }}</div>
                 <!-- phone number: brand-500 gold -->
                 <div class="mt-0.5 font-body text-base font-600 text-sapphire-700">
                   +38 096 146 29 10
                 </div>
-                <div class="font-body text-xs text-ink-400">Круглосуточно, без выходных</div>
+                <div class="font-body text-xs text-ink-400">{{ ui.phoneHint }}</div>
               </div>
             </a>
 
@@ -117,9 +159,9 @@
                 </svg>
               </div>
               <div>
-                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Часы работы</div>
-                <div class="mt-0.5 font-body text-base font-500 text-ink-900">Ежедневно, 24 / 7</div>
-                <div class="font-body text-xs text-ink-400">Круглосуточный режим работы</div>
+                <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">{{ ui.hours }}</div>
+                <div class="mt-0.5 font-body text-base font-500 text-ink-900">{{ ui.hoursMain }}</div>
+                <div class="font-body text-xs text-ink-400">{{ ui.hoursHint }}</div>
               </div>
             </div>
           </div>

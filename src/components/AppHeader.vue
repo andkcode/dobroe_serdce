@@ -133,15 +133,15 @@ function scrollToSection(href: string) {
 
         <div class="hidden items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur-sm md:flex">
           <button
-            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
-            :class="lang === 'ru' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors cursor-pointer"
+            :class="lang === 'ru' ? 'bg-white text-sapphire-700' : 'text-black/40 hover:text-black/40'"
             @click="setLang('ru')"
           >
             RU
           </button>
           <button
-            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
-            :class="lang === 'kk' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors cursor-pointer"
+            :class="lang === 'kk' ? 'bg-white text-sapphire-700' : 'text-black/40 hover:text-black/40'"
             @click="setLang('kk')"
           >
             KZ

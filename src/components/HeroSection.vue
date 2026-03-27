@@ -105,7 +105,7 @@ function scrollTo(id: string) {
         </div>
 
         <div class="delay-400 animate-fade-up mt-11 flex flex-wrap items-center gap-4">
-          <button class="btn-primary bg-[#E6A701]" @click="scrollTo('#contacts')">
+          <button class="btn-primary" @click="scrollTo('#contacts')">
             Записаться в пансионат
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

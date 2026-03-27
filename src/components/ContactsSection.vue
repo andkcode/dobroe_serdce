@@ -117,8 +117,7 @@ async function handleSubmit() {
                 <div class="font-body text-xs font-600 uppercase tracking-wider text-ink-400">Телефон</div>
                 <!-- phone number: brand-500 gold -->
                 <div
-                  class="mt-0.5 font-display text-xl font-600"
-                  style="color: var(--color-brand-500);"
+                  
                 >
                   +38 096 146 29 10
                 </div>

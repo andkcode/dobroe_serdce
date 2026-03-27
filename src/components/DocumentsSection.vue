@@ -29,7 +29,7 @@ const documents = [
 
         <div data-animate>
           <div class="eyebrow mb-5">Документы</div>
-          <h2 class="section-title mb-6">
+          <h2 class="text-black text-4xl mb-6">
             Необходимые<br />
             <em class="font-display italic font-400" style="color: var(--color-brand-500); font-size: clamp(1.7rem, 4vw, 2.3rem);">документы для поступления</em>
           </h2>
@@ -40,28 +40,54 @@ const documents = [
             позвоните нам, и мы поможем со всеми нюансами.
           </p>
 
-          <!-- Info card: sapphire gradient (was brand/gold gradient) -->
           <div
-            class="relative overflow-hidden rounded-3xl p-7"
-            style="background: linear-gradient(135deg, var(--color-sapphire-800) 0%, var(--color-sapphire-700) 100%);"
+            class="group relative overflow-hidden rounded-3xl border border-ivory-200 p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_44px_rgba(0,36,85,0.18)]"
+            style="background: linear-gradient(160deg, rgba(255,255,255,0.98) 0%, var(--color-sapphire-50) 62%, rgba(255,255,255,0.95) 100%);"
           >
+            <div
+              class="pointer-events-none absolute -right-20 -top-16 h-48 w-48 rounded-full blur-2xl"
+              style="background: radial-gradient(circle, rgba(0,99,181,0.22) 0%, rgba(0,99,181,0) 70%);"
+            />
             <img
               src="https://dobroe-serdce.com.ua/wp-content/uploads/2019/07/favicon-512-02.png"
               alt=""
-              class="absolute right-5 top-5 h-16 w-16 opacity-10"
+              class="pointer-events-none absolute right-5 top-5 h-16 w-16 opacity-[0.09] transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105"
             />
 
-            <div class="mb-4 flex items-center gap-3">
-              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/20">
-                <Icon icon="streamline:ambulance" class="h-6 w-6 self-center justify-self-center text-white" />
+            <div class="mb-4 flex items-start justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border"
+                  style="background: linear-gradient(145deg, var(--color-sapphire-700), var(--color-sapphire-800)); border-color: rgba(255, 255, 255, 0.35);"
+                >
+                  <Icon icon="streamline:ambulance" class="h-6 w-6 text-white" />
+                </div>
+                <h3 class="font-display text-[1.3rem] leading-tight font-600 text-ink-900">Индивидуальный трансфер</h3>
               </div>
-              <h3 class="font-display text-xl font-600 text-white">Индивидуальный трансфер</h3>
+              <span
+                class="inline-flex shrink-0 items-center rounded-full px-3 py-1 font-body text-[11px] font-500 uppercase tracking-[0.12em]"
+                style="background: var(--color-brand-100); color: var(--color-gold-600);"
+              >
+                24/7 поддержка
+              </span>
             </div>
-            <p class="font-body text-sm leading-relaxed font-300 text-white/78">
-              При необходимости мы организуем доставку постояльцев в наш уютный дом для престарелых в Астане.
-              Поездки проходят комфортно и безопасно. Это особенно удобно, если пожилой человек не может
-              самостоятельно передвигаться.
+
+            <p class="font-body text-sm leading-relaxed font-400 text-ink-700/95">
+              При необходимости организуем безопасную и комфортную доставку постояльца прямо в пансионат.
+              Учитываем состояние здоровья, подбираем удобный маршрут и сопровождаем на каждом этапе поездки.
             </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
+                Бережное сопровождение
+              </span>
+              <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
+                Комфортный транспорт
+              </span>
+              <span class="rounded-full border px-3 py-1 text-xs font-500" style="border-color: var(--color-sapphire-200); background: var(--color-sapphire-100); color: var(--color-sapphire-800);">
+                По Астане и области
+              </span>
+            </div>
           </div>
         </div>
 

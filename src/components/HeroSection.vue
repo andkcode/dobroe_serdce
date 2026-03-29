@@ -8,12 +8,16 @@
     • bg-hero-gradient → unchanged (uses CSS var already correct)
 -->
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import garden from "../assets/hero/garden.mp4"
 import gardenMobile from "../assets/hero/garden-mobile.mp4"
+import heroFallback from "../assets/gallery/img.jpg"
 import { useLocale } from '@/composables/useLocale'
 
 const { lang } = useLocale()
+const useVideo = ref(true)
+const heroVideoRef = ref<HTMLVideoElement | null>(null)
+let onVisibilityChange: (() => void) | null = null
 
 const ui = computed(() => {
   if (lang.value === 'kk') {
@@ -55,6 +59,33 @@ const stats = computed(() => [
     label: ui.value.statLabel,
   },
 ])
+
+onMounted(() => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isMobile = window.matchMedia('(max-width: 767px)').matches
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
+
+  // Disable heavy hero video on constrained devices to reduce jank and bandwidth.
+  useVideo.value = !(prefersReducedMotion || isMobile || saveData)
+
+  onVisibilityChange = () => {
+    const video = heroVideoRef.value
+    if (!video) return
+    if (document.hidden) {
+      video.pause()
+    } else if (useVideo.value) {
+      void video.play().catch(() => undefined)
+    }
+  }
+
+  document.addEventListener('visibilitychange', onVisibilityChange)
+})
+
+onUnmounted(() => {
+  if (onVisibilityChange) {
+    document.removeEventListener('visibilitychange', onVisibilityChange)
+  }
+})
 </script>
 
 <template>
@@ -66,12 +97,27 @@ const stats = computed(() => [
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
       <video
-        autoplay muted loop playsinline preload="auto"
+        v-if="useVideo"
+        ref="heroVideoRef"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        :poster="heroFallback"
         class="h-full w-full object-cover hero-video"
       >
         <source :src="gardenMobile" media="(max-width: 767px)" type="video/mp4" />
         <source :src="garden" type="video/mp4" />
       </video>
+      <img
+        v-else
+        :src="heroFallback"
+        alt=""
+        class="h-full w-full object-cover hero-video"
+        decoding="async"
+        fetchpriority="high"
+      />
       <!-- Multi-layer gradient for depth -->
       <div class="absolute inset-0 bg-hero-gradient" />
       <!-- Warm vignette bottom -->
@@ -81,7 +127,7 @@ const stats = computed(() => [
       />
       <!-- Subtle noise texture overlay -->
       <div
-        class="absolute inset-0 opacity-[0.03]"
+        class="absolute inset-0 hidden opacity-[0.03] md:block"
         style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22 numOctaves=%224%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22300%22 height=%22300%22 filter=%22url(%23n)%22 opacity=%221%22/></svg>')"
       />
     </div>

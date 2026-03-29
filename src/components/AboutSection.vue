@@ -68,6 +68,8 @@ const ui = computed(() => {
               src="../assets/about/care.jpg"
               alt="Персонал пансионата ухаживает за пожилым человеком"
               class="h-[380px] w-full object-cover transition-transform duration-700 hover:scale-105 sm:h-[460px]"
+              loading="lazy"
+              decoding="async"
             />
             <div
               class="absolute inset-0 rounded-3xl"
@@ -83,6 +85,8 @@ const ui = computed(() => {
               src="../assets/about/hugs.jpg"
               alt="Уютная комната пансионата"
               class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -94,6 +98,8 @@ const ui = computed(() => {
               src="../assets/about/heart.jpg"
               alt="Прогулка на свежем воздухе"
               class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

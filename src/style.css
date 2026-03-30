@@ -181,8 +181,6 @@
     font-family: var(--font-family-body);
     background-color: var(--color-ivory-50);
     color: var(--color-ink-700);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 

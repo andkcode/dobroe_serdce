@@ -75,7 +75,7 @@ onUnmounted(() => {
     <!-- ── Floating phone button (mobile) ── -->
     <a
       href="tel:+380961462910"
-      class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lift transition-all duration-300 hover:scale-110 lg:hidden"
+      class="app-fab fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lift transition-all duration-300 hover:scale-110 lg:hidden"
       style="background: linear-gradient(135deg, var(--color-sapphire-700), var(--color-sapphire-800));"
       :aria-label="t('app.callAria')"
     >
@@ -100,7 +100,7 @@ onUnmounted(() => {
     >
       <button
         v-if="showBackTop"
-        class="fixed bottom-6 left-6 z-40 flex h-10 w-10 items-center justify-center rounded-full border text-white/70 transition-all duration-200 hover:text-white lg:h-11 lg:w-11"
+        class="app-fab fixed bottom-6 left-6 z-40 flex h-10 w-10 items-center justify-center rounded-full border text-white/70 transition-all duration-200 hover:text-white lg:h-11 lg:w-11"
         style="background: rgba(0,36,85,0.75); border-color: rgba(249,189,21,0.20); backdrop-filter: blur(12px);"
           :aria-label="t('app.backToTopAria')"
         @click="scrollToTop"
@@ -112,3 +112,12 @@ onUnmounted(() => {
     </Transition>
   </div>
 </template>
+
+<style scoped>
+@media (hover: none) and (pointer: coarse) {
+  .app-fab {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+</style>

@@ -534,4 +534,13 @@ function scrollToSection(href: string) {
     transition-duration: 0.01ms !important;
   }
 }
+
+@media (hover: none) and (pointer: coarse) {
+  .ds-header__bg,
+  .ds-drawer,
+  .ds-cta {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
 </style>

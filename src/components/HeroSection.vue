@@ -68,7 +68,7 @@ onMounted(() => {
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
 
   // Disable heavy hero video on constrained devices to reduce jank and bandwidth.
-  useVideo.value = !(prefersReducedMotion || isMobile || saveData)
+  useVideo.value = !(prefersReducedMotion || saveData)
 
   onVisibilityChange = () => {
     const video = heroVideoRef.value

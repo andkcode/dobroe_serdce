@@ -8,48 +8,16 @@
     • bg-hero-gradient → unchanged (uses CSS var already correct)
 -->
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref  } from 'vue'
 import garden from "../assets/hero/garden.mp4"
 import gardenMobile from "../assets/hero/garden-mobile.mp4"
 import heroFallback from "../assets/gallery/img.jpg"
-import { useLocale } from '@/composables/useLocale'
+import { useI18n } from 'vue-i18n'
 
-const { lang } = useLocale()
+const { t } = useI18n()
 const useVideo = ref(true)
 const heroVideoRef = ref<HTMLVideoElement | null>(null)
 let onVisibilityChange: (() => void) | null = null
-
-const ui = computed(() => {
-  if (lang.value === 'kk') {
-    return {
-      aria: 'Басты баннер',
-      titleBlue: 'Жайлылық пен қамқорлық',
-      titleGold: 'жақындарыңыз үшін',
-      subtitle:
-        'Біздің пансионат - әрбір тұрғын өзін үйдегідей сезінетін орын: жылы атмосфера, білікті мамандар және белсенді өмір.',
-      statLabel: 'Тәулік бойы күтім',
-      mealLabel: 'Күніне 4 рет тамақтану',
-      ctaPrimary: 'Пансионатқа жазылу',
-      ctaSecondary: 'Толығырақ білу',
-      scrollHint: 'Төмен сырғытыңыз',
-      scrollButtonAria: 'Төменге сырғыту',
-    }
-  }
-
-  return {
-    aria: 'Главный баннер',
-    titleBlue: 'Комфорт и забота',
-    titleGold: 'для ваших близких',
-    subtitle:
-      'Наш пансионат — место, где каждый проживающий чувствует себя дома: тёплая атмосфера, специалисты рядом и полноценная активная жизнь под заботливым присмотром.',
-    statLabel: 'Круглосуточный уход',
-    mealLabel: 'Питание в день',
-    ctaPrimary: 'Записаться в пансионат',
-    ctaSecondary: 'Узнать больше',
-    scrollHint: 'Листайте',
-    scrollButtonAria: 'Прокрутить вниз',
-  }
-})
 
 function scrollTo(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -58,7 +26,7 @@ function scrollTo(id: string) {
 const stats = computed(() => [
   {
     value: '24/7',
-    label: ui.value.statLabel,
+    label: t('hero.statLabel'),
   },
 ])
 
@@ -94,7 +62,7 @@ onUnmounted(() => {
 
   <section
     class="relative flex min-h-screen items-center overflow-hidden"
-    :aria-label="ui.aria"
+    :aria-label="t('hero.aria')"
   >
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
@@ -136,17 +104,17 @@ onUnmounted(() => {
 
     <!-- Orb 1: brand-500 gold (was #dcc07e warm gold — unified) -->
     <div
-      class="animate-float absolute right-[8%] top-[15%] h-80 w-80 rounded-full opacity-[0.08]"
+      class="animate-float hidden md:block absolute right-[8%] top-[15%] h-80 w-80 rounded-full opacity-[0.08]"
       style="background: radial-gradient(circle, var(--color-brand-500) 0%, transparent 70%); animation-delay: 0s;"
     />
     <!-- Orb 2: sapphire-900 deep (was #b33628 red — replaced with on-brand calm dark) -->
     <div
-      class="animate-drift absolute bottom-[18%] left-[4%] h-56 w-56 rounded-full opacity-[0.06]"
+      class="animate-drift hidden md:block absolute bottom-[18%] left-[4%] h-56 w-56 rounded-full opacity-[0.06]"
       style="background: radial-gradient(circle, var(--color-sapphire-900) 0%, transparent 70%); animation-delay: 2s;"
     />
     <!-- Orb 3: white — unchanged -->
     <div
-      class="animate-float absolute left-[35%] top-[10%] h-40 w-40 rounded-full opacity-[0.04]"
+      class="animate-float hidden md:block absolute left-[35%] top-[10%] h-40 w-40 rounded-full opacity-[0.04]"
       style="background: radial-gradient(circle, #ffffff 0%, transparent 70%); animation-delay: 3.5s;"
     />
 
@@ -164,8 +132,8 @@ onUnmounted(() => {
         <h1 class="delay-100 animate-fade-up font-display leading-none tracking-tight text-white text-center lg:text-left w-full"
           style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05;"
         >
-          {{ ui.titleBlue }}<br />
-          <span style="color: var(--color-brand-500);">{{ ui.titleGold }}</span>
+          {{ t('hero.titleBlue') }}<br />
+            <span style="color: var(--color-brand-500);">{{ t('hero.titleGold') }}</span>
         </h1>
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->
@@ -175,7 +143,7 @@ onUnmounted(() => {
         />
 
         <p class="delay-200 animate-fade-up max-w-xl font-body text-lg font-300 leading-relaxed md:text-xl" style="color: rgba(255,255,255,0.72);">
-          {{ ui.subtitle }}
+          {{ t('hero.subtitle') }}
         </p>
 
         <div class="delay-300 animate-fade-up mt-10 flex flex-wrap items-start gap-5 sm:mt-12 sm:gap-8">
@@ -186,13 +154,13 @@ onUnmounted(() => {
           <div class="w-px self-stretch bg-white/15 mx-2 hidden sm:block" />
           <div class="flex flex-col gap-1">
             <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">4×</div>
-            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">{{ ui.mealLabel }}</div>
+              <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">{{ t('hero.mealLabel') }}</div>
           </div>
         </div>
 
         <div class="delay-400 animate-fade-up mt-9 flex flex-wrap items-center gap-3 sm:mt-11 sm:gap-4">
           <button class="btn-primary" @click="scrollTo('#contacts')">
-            {{ ui.ctaPrimary }}
+            {{ t('hero.ctaPrimary') }}
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -202,15 +170,15 @@ onUnmounted(() => {
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
             </svg>
-            {{ ui.ctaSecondary }}
+            {{ t('hero.ctaSecondary') }}
           </button>
         </div>
       </div>
     </div>
 
     <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
-      <span class="font-body text-[10px] uppercase tracking-[0.2em] text-white/40">{{ ui.scrollHint }}</span>
-      <button class="animate-scroll flex flex-col items-center" :aria-label="ui.scrollButtonAria" @click="scrollTo('#about')">
+      <span class="font-body text-[10px] uppercase tracking-[0.2em] text-white/40">{{ t('hero.scrollHint') }}</span>
+      <button class="animate-scroll flex flex-col items-center" :aria-label="t('hero.scrollButtonAria')" @click="scrollTo('#about')">
         <div class="h-8 w-5 rounded-full border border-white/25 flex items-start justify-center pt-1.5">
           <div class="h-1.5 w-1 rounded-full bg-white/60" />
         </div>

@@ -10,51 +10,17 @@
 -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrolled } from '@/composables/useScroll'
 import { useLocale } from '@/composables/useLocale'
 
 const { isScrolled } = useScrolled()
 const { lang, setLang } = useLocale()
+const { t, tm } = useI18n()
 const isMobileMenuOpen = ref(false)
 const activeItem = ref<string | null>(null)
 
-const ui = computed(() => {
-  if (lang.value === 'kk') {
-    return {
-      navAria: 'Басты навигация',
-      callAria: 'Қоңырау шалу',
-      openMenuAria: 'Мәзірді ашу',
-      mobileMenuAria: 'Мобильді мәзір',
-      callButton: 'Қоңырау шалу',
-      navItems: [
-        { label: 'Біз туралы', href: '#about' },
-        { label: 'Қызметтер', href: '#services' },
-        { label: 'Тұру', href: '#accommodation' },
-        { label: 'Құжаттар', href: '#documents' },
-        { label: 'Баға', href: '#price' },
-        { label: 'Байланыс', href: '#contacts' },
-      ],
-    }
-  }
-
-  return {
-    navAria: 'Главная навигация',
-    callAria: 'Позвонить',
-    openMenuAria: 'Открыть меню',
-    mobileMenuAria: 'Мобильное меню',
-    callButton: 'Позвонить',
-    navItems: [
-      { label: 'О нас', href: '#about' },
-      { label: 'Услуги', href: '#services' },
-      { label: 'Проживание', href: '#accommodation' },
-      { label: 'Документы', href: '#documents' },
-      { label: 'Цена', href: '#price' },
-      { label: 'Контакты', href: '#contacts' },
-    ],
-  }
-})
-
-const navItems = computed(() => ui.value.navItems)
+const navItems = computed(() => tm('header.nav') as { label: string; href: string }[])
 
 function scrollToSection(href: string) {
   activeItem.value = href
@@ -72,7 +38,7 @@ function scrollToSection(href: string) {
 
     <div class="ds-header__bg" aria-hidden="true" />
 
-    <nav class="ds-header__nav" :aria-label="ui.navAria">
+    <nav class="ds-header__nav" :aria-label="t('header.navAria')">
 
       <div class="ds-logo__img-wrap" style="position: relative; display: inline-block;">
         <div style="
@@ -148,7 +114,7 @@ function scrollToSection(href: string) {
           </button>
         </div>
 
-        <a href="tel:+380961462910" class="ds-cta" :aria-label="ui.callAria">
+        <a href="tel:+380961462910" class="ds-cta" :aria-label="t('header.callAria')">
           <span class="ds-cta__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
@@ -162,7 +128,7 @@ function scrollToSection(href: string) {
       <button
         class="ds-burger"
         :class="{ 'ds-burger--open': isMobileMenuOpen }"
-        :aria-label="ui.openMenuAria"
+        :aria-label="t('header.openMenuAria')"
         :aria-expanded="isMobileMenuOpen"
         @click="isMobileMenuOpen = !isMobileMenuOpen"
       >
@@ -178,7 +144,7 @@ function scrollToSection(href: string) {
         class="ds-drawer"
         role="dialog"
         aria-modal="true"
-        :aria-label="ui.mobileMenuAria"
+        :aria-label="t('header.mobileMenuAria')"
       >
         <div class="ds-drawer__sep" aria-hidden="true" />
         <ul class="ds-drawer__list" role="list">
@@ -198,7 +164,7 @@ function scrollToSection(href: string) {
           <svg class="ds-drawer__cta-icon" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
-          {{ ui.callButton }}
+          {{ t('header.callButton') }}
         </a>
           <div class="mt-3 flex justify-center gap-2">
             <button

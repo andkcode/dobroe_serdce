@@ -16,69 +16,31 @@ import img4 from '../assets/gallery/img4.jpg'
 import img5 from '../assets/gallery/img5.jpg'
 import img6 from '../assets/gallery/img6.jpg'
 import img7 from '../assets/gallery/img7.jpg'
-import { useLocale } from '@/composables/useLocale'
+import { useI18n } from 'vue-i18n'
 
 interface GalleryImage {
-  id: number; src: string; alt: string; span?: string
+  id: number; src: string; span?: string
 }
 
-const { lang } = useLocale()
+const { t, tm } = useI18n()
 
 const images: GalleryImage[] = [
-  { id: 1, src: img,  alt: "Зелёный двор и фасад пансионата с колоннами", span: 'col-span-2 row-span-2' },
-  { id: 2, src: img1, alt: 'Фасад здания пансионата с открытой террасой' },
-  { id: 3, src: img2, alt: 'Просторная спальня с хрустальной люстрой' },
-  { id: 4, src: img3, alt: 'Входной зал пансионата с люстрой и диваном', span: 'col-span-2' },
-  { id: 5, src: img4, alt: 'Уютная спальня с камином и кожаными креслами' },
-  { id: 6, src: img5, alt: 'Просторная кухня-столовая с большим обеденным столом' },
-  { id: 7, src: img6, alt: 'Светлая комната с паркетом и белой мебелью' },
-  { id: 8, src: img7, alt: "Санузел с мраморной плиткой и джакузи" },
-]
-
-const imagesKk = [
-  'Бағаналы пансионаттың жасыл ауласы мен қасбеті',
-  'Ашық террасасы бар пансионат ғимараты',
-  'Хрусталь шамы бар кең жатын бөлме',
-  'Шам мен диваны бар кіреберіс холл',
-  'Камині және жайлы креслолары бар бөлме',
-  'Үлкен ас үстелі бар ас үй',
-  'Жарық бөлме, паркет және ақ жиһаз',
-  'Мәрмәр плиткасы бар жуыну бөлмесі',
+  { id: 1, src: img, span: 'col-span-2 row-span-2' },
+  { id: 2, src: img1 },
+  { id: 3, src: img2 },
+  { id: 4, src: img3, span: 'col-span-2' },
+  { id: 5, src: img4 },
+  { id: 6, src: img5 },
+  { id: 7, src: img6 },
+  { id: 8, src: img7 },
 ]
 
 const imagesView = computed(() => {
-  if (lang.value !== 'kk') {
-    return images
-  }
-
+  const imageAlts = tm('gallery.imageAlts') as string[]
   return images.map((image, index) => ({
     ...image,
-    alt: imagesKk[index] ?? image.alt,
+    alt: imageAlts[index] ?? '',
   }))
-})
-
-const ui = computed(() => {
-  if (lang.value === 'kk') {
-    return {
-      eyebrow: 'Фотогалерея',
-      titleBlue: 'Біздің',
-      titleGold: 'жайлы пансионатқа көз жүгіртіңіз',
-      openPhoto: 'Фотосуретті ашу:',
-      close: 'Жабу',
-      prev: 'Алдыңғы фото',
-      next: 'Келесі фото',
-    }
-  }
-
-  return {
-    eyebrow: 'Фотогалерея',
-    titleBlue: 'Взгляните на наш',
-    titleGold: 'уютный пансионат',
-    openPhoto: 'Просмотреть фото:',
-    close: 'Закрыть',
-    prev: 'Предыдущее фото',
-    next: 'Следующее фото',
-  }
 })
 
 const activeImage = ref<GalleryImage | null>(null)
@@ -106,13 +68,13 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % imagesView.
           <!-- eyebrow lines: brand-500 (was gold-400) -->
           <div class="h-px w-8" style="background: var(--color-brand-500);" />
           <span class="font-body text-xs font-600 uppercase tracking-[0.2em]" style="color: var(--color-brand-500);">
-            {{ ui.eyebrow }}
+            {{ t('gallery.eyebrow') }}
           </span>
           <div class="h-px w-8" style="background: var(--color-brand-500);" />
         </div>
         <h2 class="section-title">
-          <span class="text-sapphire-800">{{ ui.titleBlue }}</span><br>
-          <span class="text-brand-500">{{ ui.titleGold }}</span>
+          <span class="text-sapphire-800">{{ t('gallery.titleBlue') }}</span><br>
+          <span class="text-brand-500">{{ t('gallery.titleGold') }}</span>
         </h2>
       </div>
 
@@ -126,7 +88,7 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % imagesView.
             `animation-delay-${Math.min(i * 100, 500)}`,
           ]"
           style="--tw-ring-color: var(--color-brand-400); --tw-ring-offset-color: var(--color-sapphire-800);"
-          :aria-label="`${ui.openPhoto} ${image.alt}`"
+          :aria-label="`${t('gallery.openPhoto')} ${image.alt}`"
           @click="openLightbox(image, i)"
         >
           <img :src="image.src" :alt="image.alt" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" />
@@ -147,13 +109,13 @@ function nextImage() { activeIndex.value = (activeIndex.value + 1) % imagesView.
     <Teleport to="body">
       <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <div v-if="activeImage" class="fixed inset-0 z-[100] flex items-center justify-center p-4" style="background: rgba(0,19,46,0.96); backdrop-filter: blur(16px);" role="dialog" aria-modal="true" :aria-label="activeImage.alt" @click.self="closeLightbox" @keydown.esc="closeLightbox" @keydown.left="prevImage" @keydown.right="nextImage">
-          <button class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20" :aria-label="ui.close" @click="closeLightbox">
+          <button class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20" :aria-label="t('gallery.close')" @click="closeLightbox">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
-          <button class="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:left-8" :aria-label="ui.prev" @click="prevImage">
+          <button class="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:left-8" :aria-label="t('gallery.prev')" @click="prevImage">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
           </button>
-          <button class="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:right-8" :aria-label="ui.next" @click="nextImage">
+          <button class="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 md:right-8" :aria-label="t('gallery.next')" @click="nextImage">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
           </button>
           <Transition enter-active-class="transition duration-250 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" mode="out-in">

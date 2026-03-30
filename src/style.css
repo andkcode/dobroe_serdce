@@ -870,3 +870,12 @@ rgba(0,   0,   0,   0.20) 100%
     backdrop-filter: none !important;
   }
 }
+
+/* Touch-only devices: hover effects never fire, transitions only waste GPU */
+@media (hover: none) and (pointer: coarse) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

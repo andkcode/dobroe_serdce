@@ -11,10 +11,8 @@ import DocumentsSection from '@/components/DocumentsSection.vue'
 import PriceSection from '@/components/PriceSection.vue'
 import ContactsSection from '@/components/ContactsSection.vue'
 import AppFooter from '@/components/AppFooter.vue'
-import { useScrollAnimation } from '@/composables/useScroll'
 import { useI18n } from 'vue-i18n'
 
-const { observeElements } = useScrollAnimation()
 const { t } = useI18n()
 const loading = ref(true)
 const showBackTop = ref(false)
@@ -29,8 +27,6 @@ function scrollToTop() {
 }
 
 onMounted(() => {
-  observeElements('[data-animate]')
-
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
 

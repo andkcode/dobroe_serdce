@@ -11,10 +11,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useScrolled } from '@/composables/useScroll'
 import { useLocale } from '@/composables/useLocale'
 
-const { isScrolled } = useScrolled()
 const { lang, setLang } = useLocale()
 const { t, tm } = useI18n()
 const isMobileMenuOpen = ref(false)
@@ -31,8 +29,7 @@ function scrollToSection(href: string) {
 
 <template>
   <header
-    class="ds-header"
-    :class="{ 'ds-header--scrolled': isScrolled }"
+    class="ds-header ds-header--scrolled"
     role="banner"
   >
 

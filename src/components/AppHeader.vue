@@ -540,11 +540,43 @@ function scrollToSection(href: string) {
 }
 
 @media (hover: none) and (pointer: coarse) {
+  .ds-header {
+    position: sticky;
+    top: 0;
+    inset: auto;
+  }
+
+  .ds-header__nav {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    transition: none !important;
+  }
+
   .ds-header__bg,
   .ds-drawer,
   .ds-cta {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
+  }
+
+  .ds-header__bg {
+    background: rgba(253, 252, 248, 0.98) !important;
+    transition: none !important;
+    box-shadow: 0 1px 0 rgba(15,13,11,0.08) !important;
+  }
+
+  .ds-burger,
+  .ds-burger__bar,
+  .ds-drawer,
+  .ds-drawer__item,
+  .ds-drawer__link,
+  .ds-drawer__dot,
+  .ds-drawer__cta,
+  .ds-nav__link,
+  .ds-nav__underline {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
   }
 }
 </style>

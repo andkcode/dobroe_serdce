@@ -684,7 +684,6 @@ rgba(0,   0,   0,   0.20) 100%
   .animate-slide-in   { animation: var(--animate-slide-in); }
   .animate-scale-in   { animation: var(--animate-scale-in); }
   .animate-heartbeat  { animation: heartbeat 2.4s ease-in-out infinite; }
-  .animate-scroll     { animation: scrollPulse 2s ease-in-out infinite; }
   .animate-rotate-slow { animation: rotateSlow 20s linear infinite; }
   .animate-shimmer {
     background: linear-gradient(

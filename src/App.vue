@@ -17,22 +17,9 @@ const { t } = useI18n()
 const loading = ref(true)
 const showBackTop = ref(false)
 
-const onScroll = () => {
-  showBackTop.value = window.scrollY > 400
-}
-
-function prefersInstantScroll() {
-  return window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)').matches
-}
-
-// FIX 1: scrollToTop was called in the template but never defined
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: prefersInstantScroll() ? 'auto' : 'smooth' })
-}
 
 onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
-  onScroll()
+
 
   // FIX 2: if the page already loaded before onMounted fires (common in Vite/HMR),
   // document.readyState will already be 'complete' and the 'load' event never fires —
@@ -47,9 +34,7 @@ onMounted(() => {
   }
 })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
-})
+
 </script>
 
 <template>
@@ -94,7 +79,7 @@ onUnmounted(() => {
     </a>
 
     <!-- ── Back to top button ── -->
-    <Transition
+    <!-- <Transition
       enter-active-class="transition duration-300 ease-out"
       enter-from-class="opacity-0 scale-75"
       enter-to-class="opacity-100 scale-100"
@@ -107,13 +92,12 @@ onUnmounted(() => {
         class="app-fab fixed bottom-6 left-6 z-40 flex h-10 w-10 items-center justify-center rounded-full border text-white/70 transition-all duration-200 hover:text-white lg:h-11 lg:w-11"
         style="background: rgba(0,36,85,0.75); border-color: rgba(249,189,21,0.20); backdrop-filter: blur(12px);"
           :aria-label="t('app.backToTopAria')"
-        @click="scrollToTop"
       >
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
         </svg>
       </button>
-    </Transition>
+    </Transition> -->
   </div>
 </template>
 

@@ -36,12 +36,9 @@ const stats = computed(() => [
 
 onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches
-  const isSmallViewport = window.matchMedia('(max-width: 1024px)').matches
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
 
-  // Disable heavy hero video on constrained devices to reduce jank and bandwidth.
-  useVideo.value = !(prefersReducedMotion || saveData || isTouchDevice || isSmallViewport)
+  useVideo.value = !(prefersReducedMotion || saveData)
 
   onVisibilityChange = () => {
     const video = heroVideoRef.value

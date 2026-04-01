@@ -170,14 +170,17 @@
   :root {
     /* scroll-behavior: smooth; */
     --header-h: 80px;
+    --app-stable-vh: 1vh;
   }
 
   html {
     overflow-x: hidden;
-    /* -webkit-text-size-adjust: 100%; */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
+    margin: 0;
     font-family: var(--font-family-body);
     background-color: var(--color-ivory-50);
     color: var(--color-ink-700);
@@ -201,7 +204,7 @@
 }
 
 .min-stable-screen {
-  min-height: 100vh;
+  min-height: calc(var(--app-stable-vh) * 100);
 }
 
 @supports (min-height: 100svh) {

@@ -36,9 +36,10 @@ const stats = computed(() => [
 
 onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isCoarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)').matches
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
 
-  useVideo.value = !(prefersReducedMotion || saveData)
+  useVideo.value = !(prefersReducedMotion || saveData || isCoarsePointer)
 
   onVisibilityChange = () => {
     const video = heroVideoRef.value

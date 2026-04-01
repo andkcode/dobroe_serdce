@@ -15,23 +15,72 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const loading = ref(true)
+const STABLE_VIEWPORT_DELTA = 160
+
+let stableViewportHeight = 0
+let onWindowLoad: (() => void) | null = null
+let onViewportResize: (() => void) | null = null
+let onOrientationChange: (() => void) | null = null
+let onPageShow: (() => void) | null = null
+
+function isCoarsePointer() {
+  return window.matchMedia('(hover: none) and (pointer: coarse)').matches
+}
+
+function syncStableViewportHeight(force = false) {
+  const nextHeight = window.innerHeight
+
+  if (
+    !force
+    && isCoarsePointer()
+    && stableViewportHeight !== 0
+    && Math.abs(nextHeight - stableViewportHeight) < STABLE_VIEWPORT_DELTA
+  ) {
+    return
+  }
+
+  stableViewportHeight = nextHeight
+  document.documentElement.style.setProperty('--app-stable-vh', `${nextHeight * 0.01}px`)
+}
 
 onMounted(() => {
-
-
   // FIX 2: if the page already loaded before onMounted fires (common in Vite/HMR),
   // document.readyState will already be 'complete' and the 'load' event never fires —
   // the loader would stay on screen forever.
   // Solution: check readyState first, fall back to the event only if still loading.
   const hide = () => setTimeout(() => { loading.value = false }, 1200)
+  syncStableViewportHeight(true)
+
+  onViewportResize = () => syncStableViewportHeight()
+  onOrientationChange = () => window.requestAnimationFrame(() => syncStableViewportHeight(true))
+  onPageShow = () => syncStableViewportHeight(true)
+
+  window.addEventListener('resize', onViewportResize)
+  window.addEventListener('orientationchange', onOrientationChange)
+  window.addEventListener('pageshow', onPageShow)
 
   if (document.readyState === 'complete') {
     hide()
   } else {
-    window.addEventListener('load', hide, { once: true })
+    onWindowLoad = hide
+    window.addEventListener('load', onWindowLoad, { once: true })
   }
 })
 
+onUnmounted(() => {
+  if (onWindowLoad) {
+    window.removeEventListener('load', onWindowLoad)
+  }
+  if (onViewportResize) {
+    window.removeEventListener('resize', onViewportResize)
+  }
+  if (onOrientationChange) {
+    window.removeEventListener('orientationchange', onOrientationChange)
+  }
+  if (onPageShow) {
+    window.removeEventListener('pageshow', onPageShow)
+  }
+})
 
 </script>
 
@@ -83,6 +132,11 @@ onMounted(() => {
   .app-fab {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
+    transition: none !important;
+  }
+
+  .app-fab > span {
+    animation: none !important;
   }
 }
 </style>

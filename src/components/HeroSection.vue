@@ -92,17 +92,10 @@ onUnmounted(() => {
         fetchpriority="high"
       />
       <!-- Multi-layer gradient for depth -->
-      <div class="absolute inset-0 bg-hero-gradient" />
+      <div class="absolute inset-0 bg-[#3a6048]/30" />
       <!-- Warm vignette bottom -->
-      <div
-        class="absolute bottom-0 left-0 right-0 h-2/3"
-        style="background: linear-gradient(to top, rgba(15,13,11,0.65) 0%, transparent 100%)"
-      />
-      <!-- Subtle noise texture overlay -->
-      <div
-        class="absolute inset-0 hidden opacity-[0.03] md:block"
-        style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22 numOctaves=%224%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22300%22 height=%22300%22 filter=%22url(%23n)%22 opacity=%221%22/></svg>')"
-      />
+
+
     </div>
 
     <!-- Orb 1: brand-500 gold (was #dcc07e warm gold — unified) -->

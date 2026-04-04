@@ -10,6 +10,7 @@ import GallerySection from '@/components/GallerySection.vue'
 import DocumentsSection from '@/components/DocumentsSection.vue'
 import PriceSection from '@/components/PriceSection.vue'
 import ContactsSection from '@/components/ContactsSection.vue'
+import ReviewsSection from '@/components/ReviewsSection.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -48,6 +49,7 @@ onMounted(() => {
       <DocumentsSection />
       <PriceSection />
       <ContactsSection />
+      <ReviewsSection />
     </main>
     <AppFooter />
 

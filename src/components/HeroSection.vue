@@ -16,7 +16,10 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const useVideo = ref(true)
 const heroVideoRef = ref<HTMLVideoElement | null>(null)
+const heroVideoSrc = ref(garden)
+let mobileVideoQuery: MediaQueryList | null = null
 let onVisibilityChange: (() => void) | null = null
+let onViewportChange: (() => void) | null = null
 
 function prefersInstantScroll() {
   return window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)').matches
@@ -36,8 +39,15 @@ const stats = computed(() => [
 onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
+  mobileVideoQuery = window.matchMedia('(max-width: 767px)')
 
   useVideo.value = !(prefersReducedMotion || saveData)
+
+  const updateVideoSource = () => {
+    heroVideoSrc.value = mobileVideoQuery?.matches ? gardenMobile : garden
+  }
+
+  updateVideoSource()
 
   onVisibilityChange = () => {
     const video = heroVideoRef.value
@@ -49,12 +59,34 @@ onMounted(() => {
     }
   }
 
+  onViewportChange = () => {
+    const video = heroVideoRef.value
+    const nextSrc = mobileVideoQuery?.matches ? gardenMobile : garden
+
+    if (heroVideoSrc.value === nextSrc) return
+
+    heroVideoSrc.value = nextSrc
+
+    if (!video) return
+
+    video.load()
+
+    if (useVideo.value && !document.hidden) {
+      void video.play().catch(() => undefined)
+    }
+  }
+
   document.addEventListener('visibilitychange', onVisibilityChange)
+  mobileVideoQuery.addEventListener('change', onViewportChange)
 })
 
 onUnmounted(() => {
   if (onVisibilityChange) {
     document.removeEventListener('visibilitychange', onVisibilityChange)
+  }
+
+  if (onViewportChange) {
+    mobileVideoQuery?.removeEventListener('change', onViewportChange)
   }
 })
 </script>
@@ -68,11 +100,11 @@ onUnmounted(() => {
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
       <video
+        ref="heroVideoRef"
         autoplay muted loop playsinline preload="auto"
         class="absolute inset-0 h-full w-full object-cover object-center hero-video"
       >
-        <source :src="gardenMobile" media="(max-width: 767px)" type="video/mp4" />
-        <source :src="garden" type="video/mp4" />
+        <source :src="heroVideoSrc" type="video/mp4" />
       </video>
       <!-- Multi-layer gradient for depth -->
       <div class="absolute inset-0 bg-[#3a6048]/40" />
@@ -121,19 +153,19 @@ onUnmounted(() => {
           style="background: linear-gradient(90deg, var(--color-brand-500), transparent);"
         />
 
-        <p class="delay-200 animate-fade-up max-w-xl font-body text-lg font-300 leading-relaxed md:text-xl" style="color: rgba(255,255,255,0.72);">
+        <p class="delay-200 animate-fade-up max-w-xl font-body text-lg font-600 leading-relaxed md:text-xl" style="color: rgba(255,255,255,0.9);">
           {{ t('hero.subtitle') }}
         </p>
 
         <div class="delay-300 animate-fade-up mt-10 flex flex-wrap items-start gap-5 sm:mt-12 sm:gap-8">
           <div v-for="stat in stats" :key="stat.value" class="flex flex-col gap-1">
             <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">{{ stat.value }}</div>
-            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">{{ stat.label }}</div>
+            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/80">{{ stat.label }}</div>
           </div>
           <div class="w-px self-stretch bg-white/15 mx-2 hidden sm:block" />
           <div class="flex flex-col gap-1">
             <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">4×</div>
-              <div class="font-body text-xs font-400 uppercase tracking-widest text-white/50">{{ t('hero.mealLabel') }}</div>
+              <div class="font-body text-xs font-400 uppercase tracking-widest text-white/80">{{ t('hero.mealLabel') }}</div>
           </div>
         </div>
 
@@ -171,3 +203,11 @@ onUnmounted(() => {
     />
   </section>
 </template>
+
+<style scoped>
+@media (max-width: 767px) {
+  .hero-video {
+    object-position: 58% center;
+  }
+}
+</style>

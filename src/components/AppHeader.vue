@@ -318,7 +318,7 @@ function scrollToSection(href: string) {
   justify-content: space-between;
   max-width: 80rem;
   margin: 0 auto;
-  padding: calc(16px - var(--s) * 7px) 1.25rem;
+  padding: calc(18px - var(--s) * 8px) 1.4rem;
   transition: padding var(--dur) var(--ease);
 }
 @media (min-width: 1024px) {
@@ -399,10 +399,10 @@ function scrollToSection(href: string) {
   display: none;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.5rem 1.15rem;
+  padding: 0.55rem 1.25rem;
   border-radius: 9999px;
   font-family: var(--font-family-body, system-ui, sans-serif);
-  font-size: 0.64rem;
+  font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;

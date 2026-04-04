@@ -13,7 +13,7 @@ import { computed, ref } from 'vue'
 import { useScrolled } from '@/composables/useScroll'
 import { useLocale } from '@/composables/useLocale'
 
-const { isScrolled } = useScrolled()
+const { isScrolled } = useScrolled(24)
 const { lang, setLang } = useLocale()
 const isMobileMenuOpen = ref(false)
 const activeItem = ref<string | null>(null)
@@ -241,12 +241,15 @@ function scrollToSection(href: string) {
 .ds-header {
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur: 650ms;
+  background-color: rgb(255, 255, 255);
   --s: 0;
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
 }
-.ds-header--scrolled { --s: 1; }
+.ds-header--scrolled { 
+  --s: 1;
+ }
 
 .ds-header__bg {
   position: absolute;
@@ -265,6 +268,15 @@ function scrollToSection(href: string) {
   pointer-events: none;
 }
 
+.ds-header--scrolled .ds-header__bg {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 0 rgba(15, 13, 11, 0.08),
+    0 12px 40px rgba(15, 13, 11, 0.08);
+}
+
 
 
 .ds-header__nav {
@@ -275,15 +287,15 @@ function scrollToSection(href: string) {
   justify-content: space-between;
   max-width: 80rem;
   margin: 0 auto;
-  padding: calc(22px - var(--s) * 12px) 2rem;
+  padding: calc(16px - var(--s) * 7px) 1.25rem;
   transition: padding var(--dur) var(--ease);
 }
 @media (min-width: 1024px) {
-  .ds-header__nav { padding-left: 2.5rem; padding-right: 2.5rem; }
+  .ds-header__nav { padding-left: 2rem; padding-right: 2rem; }
 }
 
 .ds-logo__img-wrap { position: relative; flex-shrink: 0; }
-.ds-logo__img { height: 40px; width: auto; object-fit: contain; }
+.ds-logo__img { height: 34px; width: auto; object-fit: contain; }
 
 .ds-nav__list {
   display: none;
@@ -305,16 +317,11 @@ function scrollToSection(href: string) {
   background: transparent;
   cursor: pointer;
   padding: 0.3rem 0;
-  /* text: white on dark hero, ink-700 on scrolled ivory */
-  color: rgba(
-    calc(255 - var(--s) * 187),
-    calc(255 - var(--s) * 176),
-    calc(255 - var(--s) * 215),
-    calc(0.8 + var(--s) * 0.2)
-  );
+  color: var(--color-brand-500);
   transition: color var(--dur) var(--ease);
   outline: none;
 }
+.ds-header--scrolled .ds-nav__link { color: var(--color-ink-800); }
 /* hover/active: brand-500 gold (was teal #00c4b4) */
 .ds-nav__link:hover,
 .ds-nav__link--active { color: var(--color-brand-500); }
@@ -338,10 +345,10 @@ function scrollToSection(href: string) {
   display: none;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.58rem 1.35rem;
+  padding: 0.5rem 1.15rem;
   border-radius: 9999px;
   font-family: var(--font-family-body, system-ui, sans-serif);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -375,7 +382,7 @@ function scrollToSection(href: string) {
 }
 .ds-cta:active { transform: translateY(0); }
 
-.ds-cta__icon { width: 13px; height: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ds-cta__icon { width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ds-cta__icon svg { width: 100%; height: 100%; }
 
 /* shimmer: gold rgba (was white) */
@@ -400,9 +407,9 @@ function scrollToSection(href: string) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
-  width: 36px; height: 36px;
-  padding: 6px;
+  gap: 4px;
+  width: 32px; height: 32px;
+  padding: 5px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -423,11 +430,7 @@ function scrollToSection(href: string) {
   display: block;
   height: 2px;
   border-radius: 2px;
-  background: rgb(
-    calc(255 - var(--s) * 240),
-    calc(255 - var(--s) * 242),
-    calc(255 - var(--s) * 244)
-  );
+  background: var(--color-ink-900);
   transition:
     background var(--dur) var(--ease),
     transform 0.38s cubic-bezier(0.16,1,0.3,1),

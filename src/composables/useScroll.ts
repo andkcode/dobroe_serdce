@@ -35,47 +35,27 @@ export function useScrollAnimation() {
 
 export function useActiveSection() {
   const activeSection = ref<string>('')
-  let sectionNodes: HTMLElement[] = []
-  let rafId = 0
-
-  const updateSections = () => {
-    sectionNodes = Array.from(document.querySelectorAll<HTMLElement>('section[id]'))
-  }
 
   const handleScroll = () => {
+    const sections = document.querySelectorAll<HTMLElement>('section[id]')
     const scrollY = window.scrollY + 100
 
-    for (const section of sectionNodes) {
+    sections.forEach((section) => {
       const top = section.offsetTop
       const height = section.offsetHeight
       if (scrollY >= top && scrollY < top + height) {
         activeSection.value = section.id
-        break
       }
-    }
-  }
-
-  const onScroll = () => {
-    if (rafId !== 0) return
-    rafId = window.requestAnimationFrame(() => {
-      rafId = 0
-      handleScroll()
     })
   }
 
   onMounted(() => {
-    updateSections()
-    window.addEventListener('resize', updateSections, { passive: true })
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
   })
 
   onUnmounted(() => {
-    window.removeEventListener('resize', updateSections)
-    window.removeEventListener('scroll', onScroll)
-    if (rafId !== 0) {
-      window.cancelAnimationFrame(rafId)
-    }
+    window.removeEventListener('scroll', handleScroll)
   })
 
   return { activeSection }
@@ -83,30 +63,18 @@ export function useActiveSection() {
 
 export function useScrolled(threshold = 80) {
   const isScrolled = ref(false)
-  let rafId = 0
 
   const handleScroll = () => {
     isScrolled.value = window.scrollY > threshold
   }
 
-  const onScroll = () => {
-    if (rafId !== 0) return
-    rafId = window.requestAnimationFrame(() => {
-      rafId = 0
-      handleScroll()
-    })
-  }
-
   onMounted(() => {
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
   })
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', onScroll)
-    if (rafId !== 0) {
-      window.cancelAnimationFrame(rafId)
-    }
+    window.removeEventListener('scroll', handleScroll)
   })
 
   return { isScrolled }

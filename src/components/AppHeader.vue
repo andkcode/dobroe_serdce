@@ -10,36 +10,69 @@
 -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useScrolled } from '@/composables/useScroll'
 import { useLocale } from '@/composables/useLocale'
 
+const { isScrolled } = useScrolled()
 const { lang, setLang } = useLocale()
-const { t, tm } = useI18n()
 const isMobileMenuOpen = ref(false)
 const activeItem = ref<string | null>(null)
 
-const navItems = computed(() => tm('header.nav') as { label: string; href: string }[])
+const ui = computed(() => {
+  if (lang.value === 'kk') {
+    return {
+      navAria: 'Басты навигация',
+      callAria: 'Қоңырау шалу',
+      openMenuAria: 'Мәзірді ашу',
+      mobileMenuAria: 'Мобильді мәзір',
+      callButton: 'Қоңырау шалу',
+      navItems: [
+        { label: 'Біз туралы', href: '#about' },
+        { label: 'Қызметтер', href: '#services' },
+        { label: 'Тұру', href: '#accommodation' },
+        { label: 'Құжаттар', href: '#documents' },
+        { label: 'Баға', href: '#price' },
+        { label: 'Байланыс', href: '#contacts' },
+      ],
+    }
+  }
 
-function prefersInstantScroll() {
-  return window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)').matches
-}
+  return {
+    navAria: 'Главная навигация',
+    callAria: 'Позвонить',
+    openMenuAria: 'Открыть меню',
+    mobileMenuAria: 'Мобильное меню',
+    callButton: 'Позвонить',
+    navItems: [
+      { label: 'О нас', href: '#about' },
+      { label: 'Услуги', href: '#services' },
+      { label: 'Проживание', href: '#accommodation' },
+      { label: 'Документы', href: '#documents' },
+      { label: 'Цена', href: '#price' },
+      { label: 'Контакты', href: '#contacts' },
+    ],
+  }
+})
+
+const navItems = computed(() => ui.value.navItems)
 
 function scrollToSection(href: string) {
   activeItem.value = href
   isMobileMenuOpen.value = false
-  document.querySelector(href)?.scrollIntoView({ behavior: prefersInstantScroll() ? 'auto' : 'smooth' })
+  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
 <template>
   <header
-    class="ds-header ds-header--scrolled"
+    class="ds-header"
+    :class="{ 'ds-header--scrolled': isScrolled }"
     role="banner"
   >
 
     <div class="ds-header__bg" aria-hidden="true" />
 
-    <nav class="ds-header__nav" :aria-label="t('header.navAria')">
+    <nav class="ds-header__nav" :aria-label="ui.navAria">
 
       <div class="ds-logo__img-wrap" style="position: relative; display: inline-block;">
         <div style="
@@ -100,22 +133,22 @@ function scrollToSection(href: string) {
 
         <div class="hidden items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1 backdrop-blur-sm md:flex">
           <button
-            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors cursor-pointer"
-            :class="lang === 'ru' ? 'bg-white text-sapphire-700' : 'text-black/40 hover:text-black/40'"
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
+            :class="lang === 'ru' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
             @click="setLang('ru')"
           >
             RU
           </button>
           <button
-            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors cursor-pointer"
-            :class="lang === 'kk' ? 'bg-white text-sapphire-700' : 'text-black/40 hover:text-black/40'"
+            class="rounded-full px-3 py-1 font-body text-xs font-600 tracking-wider transition-colors"
+            :class="lang === 'kk' ? 'bg-white text-sapphire-700' : 'text-white/70 hover:text-white'"
             @click="setLang('kk')"
           >
             KZ
           </button>
         </div>
 
-        <a href="tel:+380961462910" class="ds-cta" :aria-label="t('header.callAria')">
+        <a href="tel:+380961462910" class="ds-cta" :aria-label="ui.callAria">
           <span class="ds-cta__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
@@ -129,7 +162,7 @@ function scrollToSection(href: string) {
       <button
         class="ds-burger"
         :class="{ 'ds-burger--open': isMobileMenuOpen }"
-        :aria-label="t('header.openMenuAria')"
+        :aria-label="ui.openMenuAria"
         :aria-expanded="isMobileMenuOpen"
         @click="isMobileMenuOpen = !isMobileMenuOpen"
       >
@@ -145,7 +178,7 @@ function scrollToSection(href: string) {
         class="ds-drawer"
         role="dialog"
         aria-modal="true"
-        :aria-label="t('header.mobileMenuAria')"
+        :aria-label="ui.mobileMenuAria"
       >
         <div class="ds-drawer__sep" aria-hidden="true" />
         <ul class="ds-drawer__list" role="list">
@@ -165,7 +198,7 @@ function scrollToSection(href: string) {
           <svg class="ds-drawer__cta-icon" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
-          {{ t('header.callButton') }}
+          {{ ui.callButton }}
         </a>
           <div class="mt-3 flex justify-center gap-2">
             <button
@@ -219,11 +252,11 @@ function scrollToSection(href: string) {
   position: absolute;
   inset: 0;
   background: rgba(253, 252, 248, var(--s));
-  backdrop-filter: blur(calc(var(--s) * 12px));
-  -webkit-backdrop-filter: blur(calc(var(--s) * 12px));
+  backdrop-filter: blur(calc(var(--s) * 22px));
+  -webkit-backdrop-filter: blur(calc(var(--s) * 22px));
   box-shadow:
     0 1px 0 rgba(15,13,11, calc(var(--s) * 0.08)),
-    0 4px 24px rgba(15,13,11, calc(var(--s) * 0.05));
+    0 4px 48px rgba(15,13,11, calc(var(--s) * 0.06));
   transition:
     background var(--dur) var(--ease),
     backdrop-filter var(--dur) var(--ease),
@@ -323,8 +356,8 @@ function scrollToSection(href: string) {
   box-shadow:
     inset 0 0 0 9999px rgba(0, 99, 181, var(--s)),
     0 4px 20px rgba(0, 99, 181, calc(var(--s) * 0.22));
-  backdrop-filter: blur(calc((1 - var(--s)) * 8px));
-  -webkit-backdrop-filter: blur(calc((1 - var(--s)) * 8px));
+  backdrop-filter: blur(calc((1 - var(--s)) * 14px));
+  -webkit-backdrop-filter: blur(calc((1 - var(--s)) * 14px));
   transition:
     background  var(--dur) var(--ease),
     border-color var(--dur) var(--ease),
@@ -414,8 +447,8 @@ function scrollToSection(href: string) {
   z-index: 2;
   padding: 0 1.5rem 1.25rem;
   background: rgba(253,252,248,0.97);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   box-shadow: 0 8px 40px rgba(15,13,11,0.09);
 }
 @media (min-width: 1024px) { .ds-drawer { display: none; } }
@@ -527,56 +560,4 @@ function scrollToSection(href: string) {
 .ds-drawer-leave-to  { opacity: 0; transform: translateY(-8px); }
 .ds-drawer-enter-to,
 .ds-drawer-leave-from{ opacity: 1; transform: translateY(0); }
-
-@media (prefers-reduced-motion: reduce) {
-  .ds-header,
-  .ds-header *,
-  .ds-drawer__item,
-  .ds-drawer-enter-active,
-  .ds-drawer-leave-active {
-    animation: none !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .ds-header {
-    position: sticky;
-    top: 0;
-    inset: auto;
-  }
-
-  .ds-header__nav {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    transition: none !important;
-  }
-
-  .ds-header__bg,
-  .ds-drawer,
-  .ds-cta {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-
-  .ds-header__bg {
-    background: rgba(253, 252, 248, 0.98) !important;
-    transition: none !important;
-    box-shadow: 0 1px 0 rgba(15,13,11,0.08) !important;
-  }
-
-  .ds-burger,
-  .ds-burger__bar,
-  .ds-drawer,
-  .ds-drawer__item,
-  .ds-drawer__link,
-  .ds-drawer__dot,
-  .ds-drawer__cta,
-  .ds-nav__link,
-  .ds-nav__underline {
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
-  }
-}
 </style>

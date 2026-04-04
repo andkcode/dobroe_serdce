@@ -11,7 +11,6 @@
 import { computed, onMounted, onUnmounted, ref  } from 'vue'
 import garden from "../assets/hero/garden.mp4"
 import gardenMobile from "../assets/hero/garden-mobile.mp4"
-import heroFallback from "../assets/gallery/img.jpg"
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -69,29 +68,14 @@ onUnmounted(() => {
     <!-- ── Layered background ── -->
     <div class="absolute inset-0">
       <video
-        v-if="useVideo"
-        ref="heroVideoRef"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        :poster="heroFallback"
-        class="h-full w-full object-cover hero-video"
+        autoplay muted loop playsinline preload="auto"
+        class="absolute inset-0 h-full w-full object-cover object-center hero-video"
       >
         <source :src="gardenMobile" media="(max-width: 767px)" type="video/mp4" />
         <source :src="garden" type="video/mp4" />
       </video>
-      <img
-        v-else
-        :src="heroFallback"
-        alt=""
-        class="h-full w-full object-cover hero-video"
-        decoding="async"
-        fetchpriority="high"
-      />
       <!-- Multi-layer gradient for depth -->
-      <div class="absolute inset-0 bg-[#3a6048]/30" />
+      <div class="absolute inset-0 bg-[#3a6048]/40" />
       <!-- Warm vignette bottom -->
 
 
@@ -153,14 +137,14 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <div class="delay-400 animate-fade-up mt-9 flex flex-wrap items-center gap-3 sm:mt-11 sm:gap-4">
-          <button class="btn-primary" @click="scrollTo('#contacts')">
+        <div class="delay-400 animate-fade-up mt-9 flex flex-col items-stretch gap-3 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+          <button class="btn-primary w-full justify-center sm:w-auto" @click="scrollTo('#contacts')">
             {{ t('hero.ctaPrimary') }}
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-          <button class="btn-ghost" @click="scrollTo('#about')">
+          <button class="btn-ghost w-full justify-center sm:w-auto" @click="scrollTo('#about')">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>

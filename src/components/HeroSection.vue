@@ -254,12 +254,17 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
+  background-color: var(--color-sage-700);
 }
 
 .hero-media {
+  overflow: hidden;
+  background-color: var(--color-sage-700);
 }
 
 .hero-video {
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
@@ -325,15 +330,18 @@ onUnmounted(() => {
     width: 100%;
   }
 
+  .hero-media {
+    inset: -4px;
+  }
+
   .hero-video {
-    top: -3px;
-    left: -3px;
-    width: calc(100% + 6px);
-    height: calc(100% + 6px);
-    min-width: calc(100% + 6px);
-    min-height: calc(100% + 6px);
-    transform: translateZ(0) scale(1.04);
-    transform-origin: center center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: none;
     object-position: center center;
   }
 }

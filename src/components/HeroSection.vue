@@ -8,9 +8,9 @@
     • bg-hero-gradient → unchanged (uses CSS var already correct)
 -->
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref  } from 'vue'
-import garden from "../assets/hero/garden.mp4"
-import gardenMobile from "../assets/hero/garden-mobile.mp4"
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import garden from '../assets/hero/garden.mp4'
+import gardenMobile from '../assets/hero/garden-mobile.mp4'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -22,11 +22,14 @@ let onVisibilityChange: (() => void) | null = null
 let onViewportChange: (() => void) | null = null
 
 function prefersInstantScroll() {
-  return window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)').matches
+  return window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)')
+    .matches
 }
 
 function scrollTo(id: string) {
-  document.querySelector(id)?.scrollIntoView({ behavior: prefersInstantScroll() ? 'auto' : 'smooth' })
+  document
+    .querySelector(id)
+    ?.scrollIntoView({ behavior: prefersInstantScroll() ? 'auto' : 'smooth' })
 }
 
 const stats = computed(() => [
@@ -38,7 +41,8 @@ const stats = computed(() => [
 
 onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
+  const saveData =
+    (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
   mobileVideoQuery = window.matchMedia('(max-width: 767px)')
 
   useVideo.value = !(prefersReducedMotion || saveData)
@@ -92,7 +96,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-
   <section
     class="hero-section min-stable-screen relative flex items-center overflow-hidden"
     :aria-label="t('hero.aria')"
@@ -101,85 +104,150 @@ onUnmounted(() => {
     <div class="absolute inset-0">
       <video
         ref="heroVideoRef"
-        autoplay muted loop playsinline preload="auto"
-        class="absolute inset-0 h-full w-full object-cover object-center hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="hero-video absolute inset-0 h-full w-full object-cover object-center"
       >
         <source :src="heroVideoSrc" type="video/mp4" />
       </video>
       <!-- Multi-layer gradient for depth -->
       <div class="absolute inset-0 bg-[#3a6048]/40" />
       <!-- Warm vignette bottom -->
-
-
     </div>
 
     <!-- Orb 1: brand-500 gold (was #dcc07e warm gold — unified) -->
     <div
-      class="animate-float hidden md:block absolute right-[8%] top-[15%] h-80 w-80 rounded-full opacity-[0.08]"
-      style="background: radial-gradient(circle, var(--color-brand-500) 0%, transparent 70%); animation-delay: 0s;"
+      class="animate-float absolute top-[15%] right-[8%] hidden h-80 w-80 rounded-full opacity-[0.08] md:block"
+      style="
+        background: radial-gradient(circle, var(--color-brand-500) 0%, transparent 70%);
+        animation-delay: 0s;
+      "
     />
     <!-- Orb 2: sapphire-900 deep (was #b33628 red — replaced with on-brand calm dark) -->
     <div
-      class="animate-drift hidden md:block absolute bottom-[18%] left-[4%] h-56 w-56 rounded-full opacity-[0.06]"
-      style="background: radial-gradient(circle, var(--color-sapphire-900) 0%, transparent 70%); animation-delay: 2s;"
+      class="animate-drift absolute bottom-[18%] left-[4%] hidden h-56 w-56 rounded-full opacity-[0.06] md:block"
+      style="
+        background: radial-gradient(circle, var(--color-sapphire-900) 0%, transparent 70%);
+        animation-delay: 2s;
+      "
     />
     <!-- Orb 3: white — unchanged -->
     <div
-      class="animate-float hidden md:block absolute left-[35%] top-[10%] h-40 w-40 rounded-full opacity-[0.04]"
-      style="background: radial-gradient(circle, #ffffff 0%, transparent 70%); animation-delay: 3.5s;"
+      class="animate-float absolute top-[10%] left-[35%] hidden h-40 w-40 rounded-full opacity-[0.04] md:block"
+      style="
+        background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+        animation-delay: 3.5s;
+      "
     />
 
-    <div class="absolute left-8 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex">
+    <div
+      class="absolute top-1/2 left-8 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex"
+    >
       <div class="h-20 w-px bg-gradient-to-b from-transparent via-white/20 to-white/40" />
-      <div class="animate-rotate-slow flex h-7 w-7 items-center justify-center rounded-full border border-white/20" style="animation-duration: 15s;">
+      <div
+        class="animate-rotate-slow flex h-7 w-7 items-center justify-center rounded-full border border-white/20"
+        style="animation-duration: 15s"
+      >
         <div class="h-1 w-1 rounded-full bg-white/50" />
       </div>
       <div class="h-20 w-px bg-gradient-to-b from-white/40 via-white/20 to-transparent" />
     </div>
 
-    <div class="hero-content relative z-10 mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28 xl:px-16">
+    <div
+      class="hero-content relative z-10 mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28 xl:px-16"
+    >
       <div class="hero-copy lg:max-w-3xl">
-
-        <h1 class="hero-title delay-100 animate-fade-up font-display leading-none tracking-tight text-white text-center lg:text-left w-full"
-          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05;"
+        <h1
+          class="hero-title animate-fade-up font-display w-full text-center leading-none tracking-tight text-white delay-100 lg:text-left"
+          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05"
         >
           {{ t('hero.titleBlue') }}<br />
-            <span style="color: var(--color-brand-500);">{{ t('hero.titleGold') }}</span>
+          <span style="color: var(--color-brand-500)">{{ t('hero.titleGold') }}</span>
         </h1>
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->
         <div
-          class="hero-divider delay-200 animate-fade-in mt-7 mb-8 h-px w-24 origin-left"
-          style="background: linear-gradient(90deg, var(--color-brand-500), transparent);"
+          class="hero-divider animate-fade-in mt-7 mb-8 h-px w-24 origin-left delay-200"
+          style="background: linear-gradient(90deg, var(--color-brand-500), transparent)"
         />
 
-        <p class="hero-subtitle delay-200 animate-fade-up max-w-xl font-body text-lg font-600 leading-relaxed md:text-xl" style="color: rgba(255,255,255,0.9);">
+        <p
+          class="hero-subtitle animate-fade-up font-body font-600 max-w-xl text-left text-lg leading-relaxed delay-200 md:text-xl"
+          style="color: rgba(255, 255, 255, 0.9)"
+        >
           {{ t('hero.subtitle') }}
         </p>
 
-        <div class="hero-stats delay-300 animate-fade-up mt-10 flex flex-wrap items-start gap-5 sm:mt-12 sm:gap-8">
+        <div
+          class="hero-stats animate-fade-up mt-10 flex flex-wrap items-start justify-start gap-5 delay-300 sm:mt-12 sm:gap-8"
+        >
           <div v-for="stat in stats" :key="stat.value" class="hero-stat flex flex-col gap-1">
-            <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">{{ stat.value }}</div>
-            <div class="font-body text-xs font-400 uppercase tracking-widest text-white/80">{{ stat.label }}</div>
+            <div
+              class="font-display font-700 text-white"
+              style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1"
+            >
+              {{ stat.value }}
+            </div>
+            <div class="font-body font-400 text-xs tracking-widest text-white/80 uppercase">
+              {{ stat.label }}
+            </div>
           </div>
-          <div class="hero-stats-divider w-px self-stretch bg-white/15 mx-2 hidden sm:block" />
+          <div class="hero-stats-divider mx-2 hidden w-px self-stretch bg-white/15 sm:block" />
           <div class="hero-stat flex flex-col gap-1">
-            <div class="font-display font-700 text-white" style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1;">4×</div>
-              <div class="font-body text-xs font-400 uppercase tracking-widest text-white/80">{{ t('hero.mealLabel') }}</div>
+            <div
+              class="font-display font-700 text-white"
+              style="font-size: clamp(2rem, 3.5vw, 2.75rem); line-height: 1"
+            >
+              4×
+            </div>
+            <div class="font-body font-400 text-xs tracking-widest text-white/80 uppercase">
+              {{ t('hero.mealLabel') }}
+            </div>
           </div>
         </div>
 
-        <div class="hero-actions delay-400 animate-fade-up mt-9 flex flex-col items-stretch gap-3 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-          <button class="hero-action btn-primary w-full justify-center sm:w-auto" @click="scrollTo('#contacts')">
+        <div
+          class="hero-actions animate-fade-up mt-9 flex flex-col items-stretch gap-3 delay-400 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+        >
+          <button
+            class="hero-action btn-primary w-full justify-center sm:w-auto"
+            @click="scrollTo('#contacts')"
+          >
             {{ t('hero.ctaPrimary') }}
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-          <button class="hero-action btn-ghost w-full justify-center sm:w-auto" @click="scrollTo('#about')">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+          <button
+            class="hero-action btn-ghost w-full justify-center sm:w-auto"
+            @click="scrollTo('#about')"
+          >
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              />
             </svg>
             {{ t('hero.ctaSecondary') }}
           </button>
@@ -187,10 +255,20 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
-      <span class="font-body text-[10px] uppercase tracking-[0.2em] text-white/40">{{ t('hero.scrollHint') }}</span>
-      <button class="animate-scroll flex flex-col items-center" :aria-label="t('hero.scrollButtonAria')" @click="scrollTo('#about')">
-        <div class="h-8 w-5 rounded-full border border-white/25 flex items-start justify-center pt-1.5">
+    <div
+      class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
+    >
+      <span class="font-body text-[10px] tracking-[0.2em] text-white/40 uppercase">{{
+        t('hero.scrollHint')
+      }}</span>
+      <button
+        class="animate-scroll flex flex-col items-center"
+        :aria-label="t('hero.scrollButtonAria')"
+        @click="scrollTo('#about')"
+      >
+        <div
+          class="flex h-8 w-5 items-start justify-center rounded-full border border-white/25 pt-1.5"
+        >
           <div class="h-1.5 w-1 rounded-full bg-white/60" />
         </div>
       </button>
@@ -198,8 +276,16 @@ onUnmounted(() => {
 
     <!-- bottom gold line: brand-500 (was rgba(201,169,78,...)) -->
     <div
-      class="absolute bottom-0 left-0 right-0 h-px"
-      style="background: linear-gradient(90deg, transparent 0%, rgba(249,189,21,0.45) 30%, rgba(249,189,21,0.45) 70%, transparent 100%);"
+      class="absolute right-0 bottom-0 left-0 h-px"
+      style="
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(249, 189, 21, 0.45) 30%,
+          rgba(249, 189, 21, 0.45) 70%,
+          transparent 100%
+        );
+      "
     />
   </section>
 </template>
@@ -237,20 +323,19 @@ onUnmounted(() => {
 
   .hero-subtitle {
     max-width: none;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     line-height: 1.6;
   }
 
   .hero-stats {
-    justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
   }
 
   .hero-stat {
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .hero-stats-divider {

@@ -292,11 +292,9 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  background: var(--color-sage-700);
 }
 
 .hero-media {
-  background: var(--color-sage-700);
 }
 
 .hero-video {

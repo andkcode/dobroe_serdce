@@ -96,9 +96,50 @@ const reviewCards = [
         >
           Открыть больше отзывов
         </a>
+        
 
       </div>
     </div>
+         <div
+          class="hero-socials animate-fade-up mt-8 flex items-center justify-center w-full gap-5 delay-500 sm:mt-10 sm:gap-6"
+        >
+          <a
+            href="https://instagram.com/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="skill-icons:instagram"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
+          <a
+            href="https://t.me/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="logos:telegram"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
+          <a
+            href="https://wa.me/380961462910"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="logos:whatsapp-icon"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
+        </div>
   </section>
 </template>
 

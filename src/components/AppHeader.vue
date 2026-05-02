@@ -16,6 +16,7 @@ import { useLocale } from '@/composables/useLocale'
 const { isScrolled } = useScrolled(24)
 const { lang, setLang } = useLocale()
 const isMobileMenuOpen = ref(false)
+const isLangDropdownOpen = ref(false)
 const activeItem = ref<string | null>(null)
 
 const ui = computed(() => {
@@ -158,6 +159,50 @@ function scrollToSection(href: string) {
           </button>
         </div>
 
+        <!-- Mobile language dropdown -->
+        <div class="relative flex md:hidden">
+          <button
+            class="border-sapphire-700 bg-sapphire-700 rounded-full border px-3 py-1 text-xs font-600 tracking-wider text-white transition-colors"
+            @click="isLangDropdownOpen = !isLangDropdownOpen"
+          >
+            {{ lang === 'ru' ? 'RU' : 'KZ' }}
+            <svg
+              class="ml-1 inline-block h-3 w-3 transition-transform"
+              :class="{ 'rotate-180': isLangDropdownOpen }"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M7 10l5 5 5-5z" />
+            </svg>
+          </button>
+          <Transition
+            enter-active-class="transition-all duration-200"
+            leave-active-class="transition-all duration-200"
+            enter-from-class="opacity-0 scale-95"
+            leave-to-class="opacity-0 scale-95"
+          >
+            <div
+              v-if="isLangDropdownOpen"
+              class="absolute right-0 top-full mt-2 rounded-lg border border-sapphire-700 bg-white shadow-lg"
+            >
+              <button
+                class="block w-full px-4 py-2 text-left text-xs font-600 tracking-wider transition-colors hover:bg-sapphire-50"
+                :class="lang === 'ru' ? 'text-sapphire-700 bg-sapphire-50' : 'text-ink-800'"
+                @click="setLang('ru'); isLangDropdownOpen = false"
+              >
+                Русский (RU)
+              </button>
+              <button
+                class="block w-full px-4 py-2 text-left text-xs font-600 tracking-wider transition-colors hover:bg-sapphire-50"
+                :class="lang === 'kk' ? 'text-sapphire-700 bg-sapphire-50' : 'text-ink-800'"
+                @click="setLang('kk'); isLangDropdownOpen = false"
+              >
+                Қазақша (KZ)
+              </button>
+            </div>
+          </Transition>
+        </div>
+
         <a href="tel:+380961462910" class="ds-cta" :aria-label="ui.callAria">
           <span class="ds-cta__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -250,6 +295,18 @@ function scrollToSection(href: string) {
             <Icon
               icon="skill-icons:instagram"
               class="relative z-10 h-[30px] w-[30px] transition-all duration-300 group-hover:scale-110"
+            />
+          </a>
+                 <a
+            href="https://t.me/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="logos:telegram"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
             />
           </a>
           <a

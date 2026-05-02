@@ -9,8 +9,8 @@
 -->
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import garden from '../assets/hero/garden.mp4'
-import gardenMobile from '../assets/hero/garden-mobile.mp4'
+import garden from '../assets/hero/garden-old.mp4'
+import gardenMobile from '../assets/hero/garden-mobile-old.mp4'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -124,7 +124,7 @@ onUnmounted(() => {
       <div class="hero-copy lg:max-w-3xl">
         <h1
           class="hero-title animate-fade-up font-display w-full text-center leading-none tracking-tight text-white delay-100 lg:text-left"
-          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 400; line-height: 1.05"
+          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 700; line-height: 1.05"
         >
           {{ t('hero.titleBlue') }}<br />
           <span style="color: var(--color-brand-500)">{{ t('hero.titleGold') }}</span>
@@ -137,8 +137,8 @@ onUnmounted(() => {
         />
 
         <p
-          class="hero-subtitle animate-fade-up font-body font-600 max-w-xl text-left text-lg leading-relaxed delay-200 md:text-xl"
-          style="color: rgba(255, 255, 255, 0.9)"
+          class="hero-subtitle animate-fade-up font-body font-600 max-w-xl text-left text-xl leading-relaxed delay-200 md:text-xl"
+          style="color: rgba(255, 255, 255, 0.9);"
         >
           {{ t('hero.subtitle') }}
         </p>
@@ -213,6 +213,48 @@ onUnmounted(() => {
             </svg>
             {{ t('hero.ctaSecondary') }}
           </button>
+        </div>
+
+        <!-- Social media icons -->
+        <div
+          class="hero-socials animate-fade-up mt-8 flex items-center justify-center w-full gap-5 delay-500 sm:mt-10 sm:gap-6"
+        >
+          <a
+            href="https://instagram.com/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="skill-icons:instagram"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
+          <a
+            href="https://t.me/pansionat_dobroe_serdce"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="logos:telegram"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
+          <a
+            href="https://wa.me/380961462910"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="group relative inline-flex items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+          >
+            <Icon
+              icon="logos:whatsapp-icon"
+              class="relative z-10 h-8 w-8 text-white/70 transition-all duration-300 group-hover:text-white"
+            />
+          </a>
         </div>
       </div>
     </div>

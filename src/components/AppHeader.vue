@@ -390,7 +390,7 @@ function scrollToSection(href: string) {
   flex-shrink: 0;
 }
 .ds-logo__img {
-  height: 34px;
+  height: 38px;
   width: auto;
   object-fit: contain;
 }

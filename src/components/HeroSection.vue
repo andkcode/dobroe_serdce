@@ -119,7 +119,7 @@ onUnmounted(() => {
     </div>
 
     <div
-      class="hero-content relative z-10 mx-auto w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28 xl:px-16"
+      class="hero-content relative z-10 mx-auto mt-10 w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28 xl:px-16"
     >
       <div class="hero-copy lg:max-w-3xl">
         <h1
@@ -175,7 +175,7 @@ onUnmounted(() => {
           class="hero-actions animate-fade-up mt-9 flex flex-col items-stretch gap-3 delay-400 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
         >
           <button
-            class="hero-action btn-primary w-full justify-center sm:w-auto"
+            class="hero-action btn-primary justify-center sm:w-auto"
             @click="scrollTo('#contacts')"
           >
             {{ t('hero.ctaPrimary') }}
@@ -372,7 +372,6 @@ onUnmounted(() => {
   }
 
   .hero-action {
-    width: 100%;
   }
 
   .hero-media {

@@ -127,7 +127,7 @@ onUnmounted(() => {
           style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 700; line-height: 1.05"
         >
           {{ t('hero.titleBlue') }}<br />
-          <span style="color: var(--color-brand-500)">{{ t('hero.titleGold') }}</span>
+          <span>{{ t('hero.titleGold') }}</span>
         </h1>
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->

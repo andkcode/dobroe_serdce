@@ -101,7 +101,7 @@ onUnmounted(() => {
     :aria-label="t('hero.aria')"
   >
     <!-- ── Layered background ── -->
-    <div class="hero-media absolute inset-0">
+    <!-- <div class="hero-media absolute inset-0">
       <video
         ref="heroVideoRef"
         autoplay
@@ -112,11 +112,10 @@ onUnmounted(() => {
         class="hero-video absolute inset-0 h-full w-full object-cover object-center"
       >
         <source :src="heroVideoSrc" type="video/mp4" />
-      </video>
+      </video> -->
       <!-- Multi-layer gradient for depth -->
-      <div class="absolute inset-0 bg-[#3a6048]/10" />
-      <!-- Warm vignette bottom -->
-    </div>
+      <!-- <div class="absolute inset-0 bg-[#3a6048]/10" />
+    </div> -->
 
     <div
       class="hero-content relative z-10 mx-auto mt-10 w-full max-w-7xl px-6 py-20 lg:px-8 lg:py-28 xl:px-16"

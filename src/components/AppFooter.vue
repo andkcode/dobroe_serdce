@@ -137,6 +137,12 @@ function scrollTo(href: string) {
             <img src="../assets/logo.png" alt="" class="h-4 w-4 rounded-full opacity-25" />
             <span class="font-body text-xs text-black/20">{{ t('footer.madeWithCare') }}</span>
           </div>
+          <small>
+            <a class="text-black/20 flex flex-row" href="https://evola-tec.com" target="_blank">
+              <p>Powered by <strong>Evola</strong></p>
+                <div class="text-[#004275]/20 font-bold">Tec</div>
+            </a>
+          </small>
         </div>
       </div>
     </div>

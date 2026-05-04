@@ -123,8 +123,8 @@ onUnmounted(() => {
     >
       <div class="hero-copy lg:max-w-3xl">
         <h1
-          class="hero-title animate-fade-up font-display w-full text-center leading-none tracking-tight text-white delay-100 lg:text-left"
-          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 700; line-height: 1.05; will-change: transform"
+          class="hero-title animate-fade-up font-display w-full text-center leading-none tracking-tight text-white lg:text-left"
+          style="font-size: clamp(1.95rem, 8.2vw, 5.5rem); font-weight: 700; line-height: 1.05; will-change: transform; animation-delay: 0s;"
         >
           {{ t('hero.titleBlue') }}<br />
           <span>{{ t('hero.titleGold') }}</span>
@@ -132,19 +132,20 @@ onUnmounted(() => {
 
         <!-- decorative line: brand-500 → transparent (was #DAA532 → transparent) -->
         <div
-          class="hero-divider animate-fade-in mt-7 mb-8 h-px w-24 origin-left delay-200"
-          style="background: linear-gradient(90deg, var(--color-brand-500), transparent)"
+          class="hero-divider animate-fade-in mt-7 mb-8 h-px w-24 origin-left"
+          style="background: linear-gradient(90deg, var(--color-brand-500), transparent); animation-delay: 0.1s;"
         />
 
         <p
-          class="hero-subtitle animate-fade-up font-body font-600 max-w-xl text-left text-xl leading-relaxed delay-200 md:text-xl"
-          style="color: rgba(255, 255, 255, 0.9); will-change: transform"
+          class="hero-subtitle animate-fade-up font-body font-600 max-w-xl text-left text-xl leading-relaxed md:text-xl"
+          style="color: rgba(255, 255, 255, 0.9); will-change: transform; animation-delay: 0.1s;"
         >
           {{ t('hero.subtitle') }}
         </p>
 
         <div
-          class="hero-stats animate-fade-up mt-10 flex flex-wrap items-start justify-start gap-5 delay-300 sm:mt-12 sm:gap-8"
+          class="hero-stats animate-fade-up mt-10 flex flex-wrap items-start justify-start gap-5 sm:mt-12 sm:gap-8"
+          style="animation-delay: 0.2s;"
         >
           <div v-for="stat in stats" :key="stat.value" class="hero-stat flex flex-col gap-1">
             <div
